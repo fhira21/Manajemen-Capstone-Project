@@ -20,8 +20,8 @@ Capstone Project Management Platform adalah solusi terintegrasi untuk mengelola 
 ### 4. 📆 Kalender Proyek
 - Jadwal milestone teknis (berdasarkan GitLab) dan kegiatan administratif.
 
-### 5. 📝 Evaluasi & Pelaporan
-- Laporan mingguan/bulanan otomatis dari aktivitas GitLab.
+### 5. 📝 Pelaporan
+- Laporan bulanan otomatis dari aktivitas GitLab.
 - Laporan akhir proyek yang terintegrasi dengan log pengembangan yang diambil dari kegiatan gitlab itu sendiri.
 
 ### 6. 🔐 Role & Keamanan
@@ -71,7 +71,7 @@ Capstone Project Management Platform adalah solusi terintegrasi untuk mengelola 
 ---
 
 ## 📌 Status Proyek
-> Proyek ini masih dalam tahap pengembangan dengan pendekatan " ". Setiap fitur dikembangkan dalam sprint terpisah dan diuji secara berkala.
+> Proyek ini masih dalam tahap pengembangan. Setiap fitur dikembangkan dalam sprint terpisah dan diuji secara berkala.
 
 ---
 
