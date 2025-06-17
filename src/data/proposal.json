@@ -1,0 +1,26 @@
+[
+  {
+    "ID_Proposal": "PRP001",
+    "ID_Mahasiswa": "MHS001",
+    "ID_Mitra": "MTR001",
+    "ID_Dosen": "DSN001",
+    "Judul_Proyek": "Pengembangan Sistem Informasi Perpustakaan",
+    "Kategori_Proyek": "Pengembangan & Pengujian",
+    "Deskripsi_Masalah": "Sistem manual menyebabkan inefisiensi.",
+    "Goals": "Meningkatkan efisiensi pengelolaan data buku dan peminjaman.",
+    "Jumlah_Bimbing": 3,
+    "Informasi_Tambahan": "Membutuhkan akses ke database yang ada."
+  },
+  {
+    "ID_Proposal": "PRP002",
+    "ID_Mahasiswa": "MHS002",
+    "ID_Mitra": "MTR002",
+    "ID_Dosen": "DSN002",
+    "Judul_Proyek": "Analisis Sentimen Ulasan Produk E-commerce",
+    "Kategori_Proyek": "Data Analytic",
+    "Deskripsi_Masalah": "Perlu memahami sentimen pelanggan dari ulasan.",
+    "Goals": "Membangun model analisis sentimen yang akurat.",
+    "Jumlah_Bimbing": 2,
+    "Informasi_Tambahan": "Dataset ulasan akan disediakan oleh mitra."
+  }
+]

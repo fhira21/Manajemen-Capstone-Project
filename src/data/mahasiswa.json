@@ -1,0 +1,24 @@
+[
+  {
+    "ID_Mahasiswa": "MHS001",
+    "ID_User": "USR002",
+    "ID_CV": "CV001",
+    "NIM": "2022001",
+    "Nama": "Ani Lestari",
+    "Jenis_Kelamin": "Perempuan",
+    "No_Telepon": "081234567890",
+    "Email": "ani.lestari@student.ac.id",
+    "Alamat": "Jl. Merdeka No. 10"
+  },
+  {
+    "ID_Mahasiswa": "MHS002",
+    "ID_User": "USR005",
+    "ID_CV": "CV002",
+    "NIM": "2022002",
+    "Nama": "Bayu Pratama",
+    "Jenis_Kelamin": "Laki-Laki",
+    "No_Telepon": "087654321098",
+    "Email": "bayu.pratama@student.ac.id",
+    "Alamat": "Jl. Sudirman No. 25"
+  }
+]

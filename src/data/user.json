@@ -1,0 +1,38 @@
+[
+  {
+    "ID_User": "USR001",
+    "Username": "dosen_budi",
+    "Password": "password123",
+    "Role": "Dosen"
+  },
+  {
+    "ID_User": "USR002",
+    "Username": "mahasiswa_ani",
+    "Password": "password456",
+    "Role": "Mahasiswa"
+  },
+  {
+    "ID_User": "USR003",
+    "Username": "mitra_ptsolusi",
+    "Password": "password789",
+    "Role": "Mitra"
+  },
+  {
+    "ID_User": "USR004",
+    "Username": "dosen_siti",
+    "Password": "password101",
+    "Role": "Dosen"
+  },
+  {
+    "ID_User": "USR005",
+    "Username": "mahasiswa_bayu",
+    "Password": "password102",
+    "Role": "Mahasiswa"
+  },
+  {
+    "ID_User": "USR006",
+    "Username": "mitra_cvinovasi",
+    "Password": "password103",
+    "Role": "Mitra"
+  }
+]

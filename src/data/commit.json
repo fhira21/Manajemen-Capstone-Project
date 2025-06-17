@@ -1,0 +1,20 @@
+[
+  {
+    "ID_Commit": "CMT001",
+    "ID_Project": "PRJ001",
+    "Judul_Commit": "Implementasi modul user authentication",
+    "User": "ani.lestari@student.ac.id",
+    "Tgl_Commit": "2025-06-01",
+    "Url_Commit": "https://github.com/repo/project001/commit/abcdef123",
+    "Catatan": "Completed user login and registration."
+  },
+  {
+    "ID_Commit": "CMT002",
+    "ID_Project": "PRJ002",
+    "Judul_Commit": "Initial data collection script",
+    "User": "bayu.pratama@student.ac.id",
+    "Tgl_Commit": "2025-05-28",
+    "Url_Commit": "https://github.com/repo/project002/commit/fedcba321",
+    "Catatan": "Script for scraping product reviews."
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "ID_Issue": "ISS001",
+    "ID_Project": "PRJ001",
+    "Judul_Issue": "Bug di modul peminjaman",
+    "Uraian_Issue": "Ketika mencoba meminjam buku, terjadi error saat update status buku.",
+    "Tgl_Buat": "2025-06-10",
+    "Tgl_Update": "2025-06-12",
+    "Label": "Bug"
+  },
+  {
+    "ID_Issue": "ISS002",
+    "ID_Project": "PRJ002",
+    "Judul_Issue": "Permintaan fitur: visualisasi sentimen",
+    "Uraian_Issue": "Mitra meminta visualisasi hasil analisis sentimen dalam bentuk dashboard interaktif.",
+    "Tgl_Buat": "2025-06-05",
+    "Tgl_Update": "2025-06-05",
+    "Label": "Enhancement"
+  }
+]

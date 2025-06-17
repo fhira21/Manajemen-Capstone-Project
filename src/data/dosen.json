@@ -1,0 +1,16 @@
+[
+  {
+    "ID_Dosen": "DSN001",
+    "ID_User": "USR001",
+    "Nama": "Budi Santoso",
+    "Jenis_Kelamin": "Laki-Laki",
+    "NIP": "198001012005011001"
+  },
+  {
+    "ID_Dosen": "DSN002",
+    "ID_User": "USR004",
+    "Nama": "Siti Aminah",
+    "Jenis_Kelamin": "Perempuan",
+    "NIP": "198505152010022002"
+  }
+]

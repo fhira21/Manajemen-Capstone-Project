@@ -11,7 +11,7 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
-  const inputClasses = 'w-full rounded-xl h-10 p-2 focus:outline-none focus:ring-2 focus:ring-secondary';
+  const inputClasses = 'w-full rounded h-10 p-2 focus:outline-none focus:ring-2 focus:ring-secondary';
 
 
   return (

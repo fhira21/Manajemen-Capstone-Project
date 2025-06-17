@@ -1,0 +1,16 @@
+[
+  {
+    "ID_Mitra": "MTR001",
+    "ID_User": "USR003",
+    "Nama_Perusahaan": "PT. Solusi Digital",
+    "Email_PT": "info@solusidigital.com",
+    "No_Telepon_PT": "021-1234567"
+  },
+  {
+    "ID_Mitra": "MTR002",
+    "ID_User": "USR006",
+    "Nama_Perusahaan": "CV. Inovasi Bersama",
+    "Email_PT": "contact@inovasibersama.co.id",
+    "No_Telepon_PT": "022-9876543"
+  }
+]

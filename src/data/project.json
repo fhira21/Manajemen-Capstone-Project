@@ -1,0 +1,26 @@
+[
+  {
+    "ID_Project": "PRJ001",
+    "ID_Proposal": "PRP001",
+    "ID_Mahasiswa": "MHS001",
+    "ID_Dosen": "DSN001",
+    "Tgl_Deadline_Project": "2025-12-31",
+    "Tgl_Report": "2026-01-15",
+    "Nama_Project": "Sistem Informasi Perpustakaan v1.0",
+    "Status": "On Going",
+    "Issue": "Integrasi API Pembayaran",
+    "Commit": "Initial setup completed"
+  },
+  {
+    "ID_Project": "PRJ002",
+    "ID_Proposal": "PRP002",
+    "ID_Mahasiswa": "MHS002",
+    "ID_Dosen": "DSN002",
+    "Tgl_Deadline_Project": "2025-11-30",
+    "Tgl_Report": "2025-12-10",
+    "Nama_Project": "Analisis Sentimen Produk",
+    "Status": "On Progress",
+    "Issue": "Preprocessing data teks",
+    "Commit": "Data cleaning module finished"
+  }
+]

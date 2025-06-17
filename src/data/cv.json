@@ -1,0 +1,17 @@
+
+[
+  {
+    "ID_CV": "CV001",
+    "Pengalaman_Projek": "Website Development, Mobile App Design",
+    "Pengalaman_Organisasi": "Himpunan Mahasiswa Ilmu Komputer",
+    "Pengalaman_Pelatihan": "Workshop Data Science",
+    "Bidang": "IT, Desain Grafis"
+  },
+  {
+    "ID_CV": "CV002",
+    "Pengalaman_Projek": "Data Analysis, Machine Learning Model",
+    "Pengalaman_Organisasi": "Pecinta Alam Universitas",
+    "Pengalaman_Pelatihan": "Kursus Python for Data Science",
+    "Bidang": "Data Science, Machine Learning"
+  }
+]
