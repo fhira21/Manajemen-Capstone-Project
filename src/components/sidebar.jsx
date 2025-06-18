@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function Sidebar({ isOpen, toggleSidebar }) {
     return (
-        <div className="w-full h-screen flex flex-col justify-around bg-primary shadow-lg overflow-hidden">
+        <div className="w-full h-screen flex flex-col justify-around bg-primary  overflow-hidden">
             
             <div className={`m-5 border-b-2 p-4 flex flex-col justify-center items-center gap-2 ${!isOpen && 'md:items-center'}`}>
                 <img src="/assets/logo.png" alt="Logo" className={`${isOpen ? 'w-20 h-20' : 'w-8 h-8'} transition-all duration-300`} />

@@ -1,4 +1,4 @@
-import Logo from "../pages/Logo";
+import Logo from "../components/Logo";
 
 export default function AuthLayout({children, title}) {
   return (
