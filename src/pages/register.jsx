@@ -22,10 +22,10 @@ export default function Register() {
       />
 
       <div className="bg-primary w-full h-[600px] flex flex-col items-center justify-evenly rounded-2xl">
-        <h1 className='text-white font-bold text-4xl'>Register</h1>
+        <h1 className='text-white font-bold text-4xl'>Daftar</h1>
         <form className='w-[90%] flex flex-col items-center justify-center gap-4'>
           <div className="w-full flex flex-col items-start justify-center gap-2">
-            <p className='text-white'>Full Name</p>
+            <p className='text-white'>Nama lengkap</p>
             <input 
               className={inputClasses} 
               type="text" 
@@ -71,14 +71,14 @@ export default function Register() {
               defaultValue=""
               required
             >
-              <option value="" disabled>Select your role</option>
-              <option value="student">Student</option>
-              <option value="lecturer">Lecturer</option>
-              <option value="partner">Partner</option>
+              <option value="" disabled>Pilih role</option>
+              <option value="student">Mahasiswa</option>
+              <option value="lecturer">Dosen</option>
+              <option value="partner">Mitra</option>
             </select>
           </div>
-          <Button className='w-full' label='Register' />
-          <Link to="/login" className='w-full text-center text-white text-sm'>Already have an account? Login</Link>
+          <Button className='w-full' label='Daftar' />
+          <Link to="/login" className='w-full text-center text-white text-sm'>Sudah mempunai akun ? Login sekarang</Link>
         </form>
       </div>
     </AuthLayout>

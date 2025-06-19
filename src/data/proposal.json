@@ -1,26 +1,104 @@
-[
-  {
-    "ID_Proposal": "PRP001",
-    "ID_Mahasiswa": "MHS001",
-    "ID_Mitra": "MTR001",
-    "ID_Dosen": "DSN001",
-    "Judul_Proyek": "Pengembangan Sistem Informasi Perpustakaan",
-    "Kategori_Proyek": "Pengembangan & Pengujian",
-    "Deskripsi_Masalah": "Sistem manual menyebabkan inefisiensi.",
-    "Goals": "Meningkatkan efisiensi pengelolaan data buku dan peminjaman.",
-    "Jumlah_Bimbing": 3,
-    "Informasi_Tambahan": "Membutuhkan akses ke database yang ada."
-  },
-  {
-    "ID_Proposal": "PRP002",
-    "ID_Mahasiswa": "MHS002",
-    "ID_Mitra": "MTR002",
-    "ID_Dosen": "DSN002",
-    "Judul_Proyek": "Analisis Sentimen Ulasan Produk E-commerce",
-    "Kategori_Proyek": "Data Analytic",
-    "Deskripsi_Masalah": "Perlu memahami sentimen pelanggan dari ulasan.",
-    "Goals": "Membangun model analisis sentimen yang akurat.",
-    "Jumlah_Bimbing": 2,
-    "Informasi_Tambahan": "Dataset ulasan akan disediakan oleh mitra."
-  }
-]
+{
+  "PROPOSAL": [
+    {
+      "ID_Proposal": "PRP001",
+      "ID_Mitra": "MTR001",
+      "Judul_Project": "Website Redesign for E-commerce",
+      "Kategori_Project": "Pengembangan",
+      "Deskripsi_Masalah": "Current website is outdated and not mobile-friendly.",
+      "Goals": "Increase conversion rate by 20% and improve user experience.",
+      "Jumlah_orang": 3,
+      "Informasi_Tambahan": "Looking for students with expertise in UI/UX and front-end development."
+    },
+    {
+      "ID_Proposal": "PRP002",
+      "ID_Mitra": "MTR002",
+      "Judul_Project": "Mobile App for Event Management",
+      "Kategori_Project": "Pengembangan",
+      "Deskripsi_Masalah": "No dedicated mobile app for managing company events.",
+      "Goals": "Develop an intuitive app for event registration and scheduling.",
+      "Jumlah_orang": 4,
+      "Informasi_Tambahan": "Need students familiar with native mobile development (iOS/Android)."
+    },
+    {
+      "ID_Proposal": "PRP003",
+      "ID_Mitra": "MTR003",
+      "Judul_Project": "Market Sentiment Analysis using AI",
+      "Kategori_Project": "Penelitian",
+      "Deskripsi_Masalah": "Lack of automated tools for analyzing market sentiment from social media.",
+      "Goals": "Build an AI model to analyze sentiment and generate reports.",
+      "Jumlah_orang": 2,
+      "Informasi_Tambahan": "Seeking students with strong background in NLP and machine learning."
+    },
+    {
+      "ID_Proposal": "PRP004",
+      "ID_Mitra": "MTR004",
+      "Judul_Project": "Cloud-based Data Backup System",
+      "Kategori_Project": "Pengembangan",
+      "Deskripsi_Masalah": "Current data backup solution is unreliable and not scalable.",
+      "Goals": "Implement a robust and scalable cloud-based backup system.",
+      "Jumlah_orang": 3,
+      "Informasi_Tambahan": "Experience with AWS or Azure is a plus."
+    },
+    {
+      "ID_Proposal": "PRP005",
+      "ID_Mitra": "MTR005",
+      "Judul_Project": "SEO Optimization for Online Store",
+      "Kategori_Project": "Perencanaan",
+      "Deskripsi_Masalah": "Low organic traffic to the online store.",
+      "Goals": "Improve search engine ranking and increase organic traffic by 30%.",
+      "Jumlah_orang": 2,
+      "Informasi_Tambahan": "Knowledge of SEO best practices and content marketing."
+    },
+    {
+      "ID_Proposal": "PRP006",
+      "ID_Mitra": "MTR006",
+      "Judul_Project": "Telemedicine Platform Prototype",
+      "Kategori_Project": "Pengembangan",
+      "Deskripsi_Masalah": "Need a prototype for a new telemedicine platform.",
+      "Goals": "Develop a basic functional prototype for patient-doctor consultations.",
+      "Jumlah_orang": 4,
+      "Informasi_Tambahan": "Familiarity with healthcare industry regulations is beneficial."
+    },
+    {
+      "ID_Proposal": "PRP007",
+      "ID_Mitra": "MTR007",
+      "Judul_Project": "Educational Gamification Module",
+      "Kategori_Project": "Pengembangan",
+      "Deskripsi_Masalah": "Students find learning materials unengaging.",
+      "Goals": "Create an interactive gamified module to improve student engagement.",
+      "Jumlah_orang": 3,
+      "Informasi_Tambahan": "Experience in game design or educational technology."
+    },
+    {
+      "ID_Proposal": "PRP008",
+      "ID_Mitra": "MTR008",
+      "Judul_Project": "Smart Home Energy Monitoring System",
+      "Kategori_Project": "Penelitian",
+      "Deskripsi_Masalah": "Lack of real-time energy consumption monitoring in smart homes.",
+      "Goals": "Research and develop a prototype for a smart energy monitoring system.",
+      "Jumlah_orang": 2,
+      "Informasi_Tambahan": "Background in IoT and embedded systems."
+    },
+    {
+      "ID_Proposal": "PRP009",
+      "ID_Mitra": "MTR009",
+      "Judul_Project": "Fraud Detection System for Online Transactions",
+      "Kategori_Project": "Pengembangan",
+      "Deskripsi_Masalah": "Increasing number of fraudulent online transactions.",
+      "Goals": "Build a machine learning-based system to detect and prevent fraud.",
+      "Jumlah_orang": 3,
+      "Informasi_Tambahan": "Expertise in anomaly detection and big data."
+    },
+    {
+      "ID_Proposal": "PRP010",
+      "ID_Mitra": "MTR010",
+      "Judul_Project": "Supply Chain Optimization with Blockchain",
+      "Kategori_Project": "Penelitian",
+      "Deskripsi_Masalah": "Lack of transparency and traceability in the supply chain.",
+      "Goals": "Explore the feasibility of using blockchain for supply chain optimization.",
+      "Jumlah_orang": 2,
+      "Informasi_Tambahan": "Interest in blockchain technology and logistics."
+    }
+  ]
+}

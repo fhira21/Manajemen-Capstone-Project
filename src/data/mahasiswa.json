@@ -1,24 +1,114 @@
-[
-  {
-    "ID_Mahasiswa": "MHS001",
-    "ID_User": "USR002",
-    "ID_CV": "CV001",
-    "NIM": "2022001",
-    "Nama": "Ani Lestari",
-    "Jenis_Kelamin": "Perempuan",
-    "No_Telepon": "081234567890",
-    "Email": "ani.lestari@student.ac.id",
-    "Alamat": "Jl. Merdeka No. 10"
-  },
-  {
-    "ID_Mahasiswa": "MHS002",
-    "ID_User": "USR005",
-    "ID_CV": "CV002",
-    "NIM": "2022002",
-    "Nama": "Bayu Pratama",
-    "Jenis_Kelamin": "Laki-Laki",
-    "No_Telepon": "087654321098",
-    "Email": "bayu.pratama@student.ac.id",
-    "Alamat": "Jl. Sudirman No. 25"
-  }
-]
+{
+  "MAHASISWA": [
+    {
+      "ID_Mahasiswa": "MHS001",
+      "ID_User": "USR003",
+      "Nama": "Alice Wonderland",
+      "Foto_Profile": "profile_alice.jpg",
+      "NIM": "2022001",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "081234567890",
+      "Alamat": "Jl. Mawar No. 123",
+      "ID_CV": "CV001"
+    },
+    {
+      "ID_Mahasiswa": "MHS002",
+      "ID_User": "USR006",
+      "Nama": "Diana Prince",
+      "Foto_Profile": "profile_diana.jpg",
+      "NIM": "2022002",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "087654321098",
+      "Alamat": "Jl. Melati No. 45",
+      "ID_CV": "CV002"
+    },
+    {
+      "ID_Mahasiswa": "MHS003",
+      "ID_User": "USR008",
+      "Nama": "Frankenstein",
+      "Foto_Profile": "profile_frank.jpg",
+      "NIM": "2022003",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "081122334455",
+      "Alamat": "Jl. Tulip No. 67",
+      "ID_CV": "CV003"
+    },
+    {
+      "ID_Mahasiswa": "MHS004",
+      "ID_User": "USR011",
+      "Nama": "Harry Potter",
+      "Foto_Profile": "profile_harryp.jpg",
+      "NIM": "2022004",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "089988776655",
+      "Alamat": "Jl. Edelweiss No. 89",
+      "ID_CV": "CV004"
+    },
+    {
+      "ID_Mahasiswa": "MHS005",
+      "ID_User": "USR013",
+      "Nama": "Iris West",
+      "Foto_Profile": "profile_iris.jpg",
+      "NIM": "2022005",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "081212121212",
+      "Alamat": "Jl. Dahlia No. 10",
+      "ID_CV": "CV005"
+    },
+    {
+      "ID_Mahasiswa": "MHS006",
+      "ID_User": "USR015",
+      "Nama": "Jack Sparrow",
+      "Foto_Profile": "profile_jack.jpg",
+      "NIM": "2022006",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "085656565656",
+      "Alamat": "Jl. Anggrek No. 20",
+      "ID_CV": "CV006"
+    },
+    {
+      "ID_Mahasiswa": "MHS007",
+      "ID_User": "USR017",
+      "Nama": "Katniss Everdeen",
+      "Foto_Profile": "profile_katniss.jpg",
+      "NIM": "2022007",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "087878787878",
+      "Alamat": "Jl. Teratai No. 30",
+      "ID_CV": "CV007"
+    },
+    {
+      "ID_Mahasiswa": "MHS008",
+      "ID_User": "USR019",
+      "Nama": "Luke Skywalker",
+      "Foto_Profile": "profile_luke.jpg",
+      "NIM": "2022008",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "081313131313",
+      "Alamat": "Jl. Kemuning No. 40",
+      "ID_CV": "CV008"
+    },
+    {
+      "ID_Mahasiswa": "MHS009",
+      "ID_User": "USR021",
+      "Nama": "Mulan",
+      "Foto_Profile": "profile_mulan.jpg",
+      "NIM": "2022009",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "082323232323",
+      "Alamat": "Jl. Kamboja No. 50",
+      "ID_CV": "CV009"
+    },
+    {
+      "ID_Mahasiswa": "MHS010",
+      "ID_User": "USR023",
+      "Nama": "Neo Anderson",
+      "Foto_Profile": "profile_neo.jpg",
+      "NIM": "2022010",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "081414141414",
+      "Alamat": "Jl. Bakung No. 60",
+      "ID_CV": "CV010"
+    }
+  ]
+}

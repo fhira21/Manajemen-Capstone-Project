@@ -1,20 +1,104 @@
-[
-  {
-    "ID_Issue": "ISS001",
-    "ID_Project": "PRJ001",
-    "Judul_Issue": "Bug di modul peminjaman",
-    "Uraian_Issue": "Ketika mencoba meminjam buku, terjadi error saat update status buku.",
-    "Tgl_Buat": "2025-06-10",
-    "Tgl_Update": "2025-06-12",
-    "Label": "Bug"
-  },
-  {
-    "ID_Issue": "ISS002",
-    "ID_Project": "PRJ002",
-    "Judul_Issue": "Permintaan fitur: visualisasi sentimen",
-    "Uraian_Issue": "Mitra meminta visualisasi hasil analisis sentimen dalam bentuk dashboard interaktif.",
-    "Tgl_Buat": "2025-06-05",
-    "Tgl_Update": "2025-06-05",
-    "Label": "Enhancement"
-  }
-]
+{
+  "ISSUE": [
+    {
+      "ID_Issue": "ISS001",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Frontend UI responsiveness issue",
+      "User": "MHS001",
+      "Status": "Open",
+      "Tgl_Buat": "2024-05-16",
+      "Tgl_Update": "2024-05-17",
+      "Label": "Bug"
+    },
+    {
+      "ID_Issue": "ISS002",
+      "ID_Project": "PRJ002",
+      "Judul_Issue": "Database connection error on login",
+      "User": "MHS002",
+      "Status": "Closed",
+      "Tgl_Buat": "2024-05-21",
+      "Tgl_Update": "2024-05-22",
+      "Label": "Bug"
+    },
+    {
+      "ID_Issue": "ISS003",
+      "ID_Project": "PRJ003",
+      "Judul_Issue": "Model accuracy below threshold",
+      "User": "MHS003",
+      "Status": "Open",
+      "Tgl_Buat": "2024-05-26",
+      "Tgl_Update": "2024-05-27",
+      "Label": "Improvement"
+    },
+    {
+      "ID_Issue": "ISS004",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Add new product category to website",
+      "User": "MTR001",
+      "Status": "Open",
+      "Tgl_Buat": "2024-05-18",
+      "Tgl_Update": "2024-05-19",
+      "Label": "Feature Request"
+    },
+    {
+      "ID_Issue": "ISS005",
+      "ID_Project": "PRJ002",
+      "Judul_Issue": "Optimize image loading in app",
+      "User": "MHS006",
+      "Status": "Open",
+      "Tgl_Buat": "2024-05-23",
+      "Tgl_Update": "2024-05-24",
+      "Label": "Performance"
+    },
+    {
+      "ID_Issue": "ISS006",
+      "ID_Project": "PRJ006",
+      "Judul_Issue": "Integration with payment gateway failing",
+      "User": "MHS001",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-06",
+      "Tgl_Update": "2024-06-07",
+      "Label": "Bug"
+    },
+    {
+      "ID_Issue": "ISS007",
+      "ID_Project": "PRJ007",
+      "Judul_Issue": "Gamification scoring not accurate",
+      "User": "MHS005",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-11",
+      "Tgl_Update": "2024-06-12",
+      "Label": "Bug"
+    },
+    {
+      "ID_Issue": "ISS008",
+      "ID_Project": "PRJ008",
+      "Judul_Issue": "Sensor data not being transmitted to cloud",
+      "User": "MHS008",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-16",
+      "Tgl_Update": "2024-06-17",
+      "Label": "Bug"
+    },
+    {
+      "ID_Issue": "ISS009",
+      "ID_Project": "PRJ009",
+      "Judul_Issue": "False positives in fraud detection",
+      "User": "MHS010",
+      "Status": "Closed",
+      "Tgl_Buat": "2024-06-21",
+      "Tgl_Update": "2024-06-22",
+      "Label": "Improvement"
+    },
+    {
+      "ID_Issue": "ISS010",
+      "ID_Project": "PRJ010",
+      "Judul_Issue": "Documentation for blockchain integration needed",
+      "User": "MHS003",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-26",
+      "Tgl_Update": "2024-06-27",
+      "Label": "Documentation"
+    }
+  ]
+}

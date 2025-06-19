@@ -1,13 +1,13 @@
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../../components/PageTitle";
 
-export default function ProjectSubmission() {
+export default function StudentPortofolio() {
     return (
         <>
             <PageTitle
                 title="Project Submission"
                 description="Submit your project details and documentation here. This section allows you to manage your project submissions effectively."
             />
-            <h1>Project Submission</h1>
+            <h1>Portofolio sayu</h1>
         </>
     );
 }

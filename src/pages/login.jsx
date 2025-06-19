@@ -22,7 +22,7 @@ export default function Login() {
         description="Login to your account to access the management system."
       />
       <div className=" bg-primary w-full h-[600px] flex flex-col items-center justify-evenly rounded-2xl">
-        <h1 className='text-white font-bold text-4xl'>Login</h1>
+        <h1 className='text-white font-bold text-4xl'>Masuk</h1>
         <form action="" className='w-[90%] flex flex-col items-center justify-center gap-4'>
           <div className="w-full flex flex-col items-start justify-center gap-2">
             <p className='text-white'>Email</p>
@@ -51,9 +51,9 @@ export default function Login() {
               </button>
             </div>
           </div>
-          <Link to="/forgot-password" className='w-full text-right text-white text-sm'>Forgot Password?</Link>
-          <Button className='w-full' label='Login' onClick={() => {}} />
-          <Link to="/register" className='w-full text-center text-white text-sm'>Dont have account? Create account</Link>
+          <Link to="/forgot-password" className='w-full text-right text-white text-sm'>Lupa Password?</Link>
+          <Button className='w-full' label='Masuk' onClick={() => {}} />
+          <Link to="/register" className='w-full text-center text-white text-sm'>Belum mempunyai akun? Buat akun sekarang</Link>
         </form>
       </div>
     </AuthLayout>

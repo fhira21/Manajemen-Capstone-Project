@@ -1,16 +1,74 @@
-[
-  {
-    "ID_Mitra": "MTR001",
-    "ID_User": "USR003",
-    "Nama_Perusahaan": "PT. Solusi Digital",
-    "Email_PT": "info@solusidigital.com",
-    "No_Telepon_PT": "021-1234567"
-  },
-  {
-    "ID_Mitra": "MTR002",
-    "ID_User": "USR006",
-    "Nama_Perusahaan": "CV. Inovasi Bersama",
-    "Email_PT": "contact@inovasibersama.co.id",
-    "No_Telepon_PT": "022-9876543"
-  }
-]
+{
+  "MITRA": [
+    {
+      "ID_Mitra": "MTR001",
+      "ID_User": "USR001",
+      "Nama_Perusahaan": "Tech Solutions Inc.",
+      "Foto_Profile": "logo_techsol.png",
+      "No_Telepon": "021-1234567"
+    },
+    {
+      "ID_Mitra": "MTR002",
+      "ID_User": "USR005",
+      "Nama_Perusahaan": "Creative Minds Studio",
+      "Foto_Profile": "logo_creative.png",
+      "No_Telepon": "021-9876543"
+    },
+    {
+      "ID_Mitra": "MTR003",
+      "ID_User": "USR009",
+      "Nama_Perusahaan": "Global Data Analytics",
+      "Foto_Profile": "logo_globaldata.png",
+      "No_Telepon": "021-1122334"
+    },
+    {
+      "ID_Mitra": "MTR004",
+      "ID_User": "USR024",
+      "Nama_Perusahaan": "Innovate IT Solutions",
+      "Foto_Profile": "logo_innovate.png",
+      "No_Telepon": "021-5566778"
+    },
+    {
+      "ID_Mitra": "MTR005",
+      "ID_User": "USR025",
+      "Nama_Perusahaan": "Digital Marketing Pro",
+      "Foto_Profile": "logo_digitalmarketing.png",
+      "No_Telepon": "021-9988776"
+    },
+    {
+      "ID_Mitra": "MTR006",
+      "ID_User": "USR026",
+      "Nama_Perusahaan": "Health Tech Innovations",
+      "Foto_Profile": "logo_healthtech.png",
+      "No_Telepon": "021-1010101"
+    },
+    {
+      "ID_Mitra": "MTR007",
+      "ID_User": "USR027",
+      "Nama_Perusahaan": "EduTech Solutions",
+      "Foto_Profile": "logo_edutech.png",
+      "No_Telepon": "021-2020202"
+    },
+    {
+      "ID_Mitra": "MTR008",
+      "ID_User": "USR028",
+      "Nama_Perusahaan": "Green Energy Systems",
+      "Foto_Profile": "logo_greenenergy.png",
+      "No_Telepon": "021-3030303"
+    },
+    {
+      "ID_Mitra": "MTR009",
+      "ID_User": "USR029",
+      "Nama_Perusahaan": "Fintech Innovations Co.",
+      "Foto_Profile": "logo_fintech.png",
+      "No_Telepon": "021-4040404"
+    },
+    {
+      "ID_Mitra": "MTR010",
+      "ID_User": "USR030",
+      "Nama_Perusahaan": "Logistics Master Inc.",
+      "Foto_Profile": "logo_logistics.png",
+      "No_Telepon": "021-5050505"
+    }
+  ]
+}

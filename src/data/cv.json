@@ -1,17 +1,94 @@
-
-[
-  {
-    "ID_CV": "CV001",
-    "Pengalaman_Projek": "Website Development, Mobile App Design",
-    "Pengalaman_Organisasi": "Himpunan Mahasiswa Ilmu Komputer",
-    "Pengalaman_Pelatihan": "Workshop Data Science",
-    "Bidang": "IT, Desain Grafis"
-  },
-  {
-    "ID_CV": "CV002",
-    "Pengalaman_Projek": "Data Analysis, Machine Learning Model",
-    "Pengalaman_Organisasi": "Pecinta Alam Universitas",
-    "Pengalaman_Pelatihan": "Kursus Python for Data Science",
-    "Bidang": "Data Science, Machine Learning"
-  }
-]
+{
+  "CV_Mahasiswa": [
+    {
+      "ID_CV": "CV001",
+      "Link_Penghubung": "https://linkedin.com/in/alice",
+      "Pengalaman_Project": "Created a web application for task management.",
+      "Pengalaman_Organisasi": "Secretary of Student Council.",
+      "Pengalaman_Pelatihan": "Attended 'Full Stack Web Development' bootcamp.",
+      "Bidang": "Web Development",
+      "Keterampilan": "React, Node.js, MongoDB"
+    },
+    {
+      "ID_CV": "CV002",
+      "Link_Penghubung": "https://github.com/dianaprince",
+      "Pengalaman_Project": "Developed a mobile app for fitness tracking.",
+      "Pengalaman_Organisasi": "Head of Public Relations for IT Club.",
+      "Pengalaman_Pelatihan": "Completed 'Mobile App Design' course.",
+      "Bidang": "Mobile Development",
+      "Keterampilan": "Flutter, Dart, Firebase"
+    },
+    {
+      "ID_CV": "CV003",
+      "Link_Penghubung": "https://gitlab.com/frankenstein",
+      "Pengalaman_Project": "Built a data visualization dashboard.",
+      "Pengalaman_Organisasi": "Treasurer of Robotics Club.",
+      "Pengalaman_Pelatihan": "Certified in 'Data Science with Python'.",
+      "Bidang": "Data Science",
+      "Keterampilan": "Python, Pandas, Matplotlib"
+    },
+    {
+      "ID_CV": "CV004",
+      "Link_Penghubung": "https://linkedin.com/in/harrypotter",
+      "Pengalaman_Project": "Designed and implemented a game using Unity.",
+      "Pengalaman_Organisasi": "Member of Game Development Community.",
+      "Pengalaman_Pelatihan": "Participated in 'Game Design Fundamentals' workshop.",
+      "Bidang": "Game Development",
+      "Keterampilan": "Unity, C#, Blender"
+    },
+    {
+      "ID_CV": "CV005",
+      "Link_Penghubung": "https://github.com/iriswest",
+      "Pengalaman_Project": "Created a responsive e-commerce website.",
+      "Pengalaman_Organisasi": "Publicity Chair for Photography Club.",
+      "Pengalaman_Pelatihan": "Finished 'Front-End Web Development' specialization.",
+      "Bidang": "Web Development",
+      "Keterampilan": "HTML, CSS, JavaScript, React"
+    },
+    {
+      "ID_CV": "CV006",
+      "Link_Penghubung": "https://gitlab.com/jacksparrow",
+      "Pengalaman_Project": "Developed a secure authentication system.",
+      "Pengalaman_Organisasi": "Security Lead for Cyber Security Club.",
+      "Pengalaman_Pelatihan": "Completed 'Cybersecurity Basics' certification.",
+      "Bidang": "Cybersecurity",
+      "Keterampilan": "Network Security, Cryptography, Linux"
+    },
+    {
+      "ID_CV": "CV007",
+      "Link_Penghubung": "https://linkedin.com/in/katnisseverdeen",
+      "Pengalaman_Project": "Implemented a machine learning model for sentiment analysis.",
+      "Pengalaman_Organisasi": "Research Assistant at AI Lab.",
+      "Pengalaman_Pelatihan": "Attended 'Deep Learning Specialization'.",
+      "Bidang": "Artificial Intelligence",
+      "Keterampilan": "TensorFlow, Keras, Python"
+    },
+    {
+      "ID_CV": "CV008",
+      "Link_Penghubung": "https://github.com/lukeskywalker",
+      "Pengalaman_Project": "Built a blockchain-based voting system.",
+      "Pengalaman_Organisasi": "Blockchain Enthusiast Community Member.",
+      "Pengalaman_Pelatihan": "Certified in 'Blockchain Development'.",
+      "Bidang": "Blockchain",
+      "Keterampilan": "Solidity, Ethereum, Web3.js"
+    },
+    {
+      "ID_CV": "CV009",
+      "Link_Penghubung": "https://gitlab.com/mulan",
+      "Pengalaman_Project": "Designed a UI/UX for a mobile application.",
+      "Pengalaman_Organisasi": "Creative Director for Design Club.",
+      "Pengalaman_Pelatihan": "Completed 'UI/UX Design Masterclass'.",
+      "Bidang": "UI/UX Design",
+      "Keterampilan": "Figma, Sketch, Adobe XD"
+    },
+    {
+      "ID_CV": "CV010",
+      "Link_Penghubung": "https://linkedin.com/in/neoanderson",
+      "Pengalaman_Project": "Developed a cloud-based data backup solution.",
+      "Pengalaman_Organisasi": "Cloud Computing Interest Group Leader.",
+      "Pengalaman_Pelatihan": "AWS Certified Solutions Architect.",
+      "Bidang": "Cloud Computing",
+      "Keterampilan": "AWS, Azure, Google Cloud"
+    }
+  ]
+}

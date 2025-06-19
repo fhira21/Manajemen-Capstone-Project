@@ -54,18 +54,18 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                             } ${!isOpen && 'md:justify-center'}`
                         }>
                             <img src="/assets/icons/icons8-cv-100.png" alt="CV Icon" className="w-6 h-6" />
-                            {isOpen && <span>Add Cv</span>}
+                            {isOpen && <span>Menambahkan CV</span>}
                         </NavLink>
                     </li>
 
                     <li className="w-full rounded">
-                        <NavLink to="project-submission" className={({isActive}) => 
+                        <NavLink to="student-portofolio" className={({isActive}) => 
                             `flex items-center gap-2 text-white ${
                                 isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                             } ${!isOpen && 'md:justify-center'}`
                         }>
-                            <img src="/assets/icons/icons8-add-project-100.png" alt="Project Icon" className="w-6 h-6" />
-                            {isOpen && <span>Project submission</span>}
+                            <img src="/assets/icons/icons8-add-project-100.png" alt="Portofolio Icon" className="w-6 h-6" />
+                            {isOpen && <span>Portofolio Mahasiswa</span>}
                         </NavLink>
                     </li>
 
@@ -76,7 +76,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                             } ${!isOpen && 'md:justify-center'}`
                         }>
                             <img src="/assets/icons/icons8-project-management-100.png" alt="Project Selection Icon" className="w-6 h-6" />
-                            {isOpen && <span>Project selection</span>}
+                            {isOpen && <span>Pemilihan Proyek</span>}
                         </NavLink>
                     </li>
 
@@ -87,7 +87,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                             } ${!isOpen && 'md:justify-center'}`
                         }>
                             <img src="/assets/icons/icons8-manage-account-100.png" alt="Manage Account Icon" className="w-6 h-6" />
-                            {isOpen && <span>Manage account</span>}
+                            {isOpen && <span>Kelola Akun</span>}
                         </NavLink>
                     </li>
                 </ul>
@@ -102,7 +102,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                         } ${!isOpen && 'md:justify-center'}`
                     }>
                         <img src="/assets/icons/icons8-setting-100.png" alt="Settings Icon" className="w-6 h-6" />
-                        {isOpen && <span>Setting</span>}
+                        {isOpen && <span>Pengaturan</span>}
                     </NavLink>
                 </li>
 
@@ -113,7 +113,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                         } ${!isOpen && 'md:justify-center'}`
                     }>
                         <img src="/assets/icons/icons8-log-out-100.png" alt="Logout Icon" className="w-6 h-6" />
-                        {isOpen && <span>Logout</span>}
+                        {isOpen && <span>Keluar</span>}
                     </NavLink>
                 </li>
             </ul>

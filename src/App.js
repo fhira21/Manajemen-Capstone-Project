@@ -9,9 +9,9 @@ import Main from './pages/main';
 // halaman 
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/dasboard';
-import AddCurriculumVitae from './pages/AddCurriculumVitae';
-import ProjectSubmission from './pages/ProjectSubmission';
-import ProjectSelection from './pages/ProjectSelection';
+import AddCurriculumVitae from './pages/mahasiswa/AddCurriculumVitae';
+import StudentPortofolio from './pages//mahasiswa/StudentPortofolio';
+import ProjectSelection from './pages/mahasiswa/ProjectSelection';
 import ManageAccount from './pages/ManageAccount';
 
 import Settings from './pages/settings';
@@ -35,7 +35,7 @@ export default function App() {
           <Route index element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="add-curriculum-vitae" element={<AddCurriculumVitae/>} />
-          <Route path="project-submission" element={<ProjectSubmission />} />
+          <Route path="student-portofolio" element={<StudentPortofolio />} />
           <Route path="project-selection" element={<ProjectSelection />} />
           <Route path="manage-account" element={<ManageAccount />} />
           <Route path="setting" element={<Settings />} />
