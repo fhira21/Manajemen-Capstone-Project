@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'; // Keep these imports
+// import { BrowserRouter as Router } or similar should be REMOVED
+
 import { AuthProvider} from './context/AuthContext';
 import {ProtectedRoute} from './context/ProtectedRoute';
 import { AuthRoute } from './context/ProtectedRoute';
@@ -34,7 +36,6 @@ import SettingPartner from './pages/mitra/SettingPartner';
 export default function App() {
   return (
     <AuthProvider>
-      <Router>
         <Routes>
           {/* Public routes */}
           <Route path="/" element={<LandingPage />} />
@@ -101,7 +102,6 @@ export default function App() {
           {/* 404 */}
           <Route path="*" element={<h1 className="text-center text-3xl mt-10">404 Not Found</h1>} />
         </Routes>
-      </Router>
     </AuthProvider>
   );
 }
