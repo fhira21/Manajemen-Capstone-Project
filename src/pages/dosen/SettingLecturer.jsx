@@ -1,15 +1,15 @@
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../../components/PageTitle"
 
 
-export default function Setting() {
+export default function SettingLecturer() {
 
     return (
         <>
             <PageTitle
-                title="Settings"
+                title="Settings Lecturer"
                 description="Configure your application settings, manage preferences, and customize your experience. This section allows you to adjust various options to suit your needs."
              />        
-            <p>Settings</p>
+            <p>Settings Lecturer</p>
         </>
     )
 }

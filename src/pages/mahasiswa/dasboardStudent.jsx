@@ -1,6 +1,6 @@
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../../components/PageTitle"
 
-export default function Dashboard() {
+export default function DashboardStudent() {
     return (
         <>
         <PageTitle
@@ -8,7 +8,7 @@ export default function Dashboard() {
             description="Welcome to the dashboard, where you can manage your projects and settings."
         />
         <h1 className="">
-           Dashboard 
+           Dashboard Student
         </h1>
         </>
     )    

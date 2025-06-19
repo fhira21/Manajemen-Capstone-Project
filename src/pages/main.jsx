@@ -2,7 +2,10 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/sidebar";
 
-export default function Main() {
+
+export default function Main({ role }) {
+
+
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const toggleSidebar = () => {
@@ -17,7 +20,7 @@ export default function Main() {
                     isSidebarOpen ? "w-64 translate-x-0" : "w-0 md:w-16 -translate-x-full md:translate-x-0"
                 }`}
             >
-                <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+                <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} role={role} />
             </div>
             
             {/* Toggle button for mobile - Only visible when sidebar is closed */}
@@ -35,6 +38,7 @@ export default function Main() {
             
             {/* Content area */}
             <div className="flex-1 p-4 transition-all duration-300">
+                
                 <Outlet /> {/* Content area */}
             </div>
             
