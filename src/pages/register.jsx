@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import AuthLayout from '../layouts/authLayouts';
 import { useState } from 'react';
 import Button from '../components/buttonPrimary';
+import PageTitle from '../components/PageTitle';
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +15,12 @@ export default function Register() {
 
   return (
     <AuthLayout>
+
+      <PageTitle
+        title="Register"
+        description="Create a new account to access the management system."
+      />
+
       <div className="bg-primary w-full h-[600px] flex flex-col items-center justify-evenly rounded-2xl">
         <h1 className='text-white font-bold text-4xl'>Register</h1>
         <form className='w-[90%] flex flex-col items-center justify-center gap-4'>
@@ -53,6 +60,22 @@ export default function Register() {
                 />
               </button>
             </div>
+          </div>
+          <div className="w-full flex flex-col items-start justify-center gap-2">
+            <label htmlFor="role" className='text-white'>Role</label>
+            <select 
+              id="role"
+              className={inputClasses} 
+              name="role"
+              aria-label="Select role"
+              defaultValue=""
+              required
+            >
+              <option value="" disabled>Select your role</option>
+              <option value="student">Student</option>
+              <option value="lecturer">Lecturer</option>
+              <option value="partner">Partner</option>
+            </select>
           </div>
           <Button className='w-full' label='Register' />
           <Link to="/login" className='w-full text-center text-white text-sm'>Already have an account? Login</Link>

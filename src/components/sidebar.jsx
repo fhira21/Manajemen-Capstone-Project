@@ -11,7 +11,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
         
             <ul className="text-sm p-3 flex flex-col gap-2">
                 <li className="w-full rounded">
-                    <NavLink to="/dasboard" className={({isActive}) => 
+                    <NavLink to="dashboard" className={({isActive}) => 
                         `flex items-center gap-2 text-white ${
                             isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                         } ${!isOpen && 'md:justify-center'}`
@@ -22,7 +22,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 </li>
 
                 <li className="w-full rounded">
-                    <NavLink to="/add-curriculum-vitae" className={({isActive}) => 
+                    <NavLink to="add-curriculum-vitae" className={({isActive}) => 
                         `flex items-center gap-2 text-white ${
                             isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                         } ${!isOpen && 'md:justify-center'}`
@@ -33,7 +33,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 </li>
 
                 <li className="w-full rounded">
-                    <NavLink to="/project-submission" className={({isActive}) => 
+                    <NavLink to="project-submission" className={({isActive}) => 
                         `flex items-center gap-2 text-white ${
                             isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                         } ${!isOpen && 'md:justify-center'}`
@@ -44,7 +44,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 </li>
 
                 <li className="w-full rounded">
-                    <NavLink to="/project-selection" className={({isActive}) => 
+                    <NavLink to="project-selection" className={({isActive}) => 
                         `flex items-center gap-2 text-white ${
                             isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                         } ${!isOpen && 'md:justify-center'}`
@@ -55,7 +55,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 </li>
 
                 <li className="w-full rounded">
-                    <NavLink to="/manage-account" className={({isActive}) => 
+                    <NavLink to="manage-account" className={({isActive}) => 
                         `flex items-center gap-2 text-white ${
                             isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                         } ${!isOpen && 'md:justify-center'}`
@@ -68,7 +68,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
 
             <ul className="p-3 text-sm flex flex-col gap-2">
                 <li className="w-full rounded">
-                    <NavLink to="/setting" className={({isActive}) => 
+                    <NavLink to="setting" className={({isActive}) => 
                         `flex items-center gap-2 text-white ${
                             isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                         } ${!isOpen && 'md:justify-center'}`
@@ -79,7 +79,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 </li>
 
                 <li className="w-full rounded">
-                    <NavLink to="/logout" className={({isActive}) => 
+                    <NavLink to="logout" className={({isActive}) => 
                         `flex items-center gap-2 text-white ${
                             isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                         } ${!isOpen && 'md:justify-center'}`
