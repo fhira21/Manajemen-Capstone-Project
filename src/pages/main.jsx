@@ -67,7 +67,7 @@ export default function Main({ role }) {
     }, [showProfileModal]);
 
     return (
-        <div className="flex min-h-screen relative">
+        <div className="flex min-h-screen  relative">
             {/* Sidebar */}
             <div 
                 className={`fixed md:relative z-10 min-h-screen transition-all duration-300 ease-in-out ${

@@ -73,7 +73,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
     };
   
     return (
-        <div className={`w-full h-full flex flex-col items-center bg-primary overflow-hidden`}>
+        <div className={`w-full md:h-full h-screen flex flex-col items-center justify-between bg-primary overflow-hidden`}>
             {/* Header with logo and toggle button */}
             <div className={`w-full flex flex-col items-center  border-b p-2 gap-5`}>
             {/* Toggle button */}
