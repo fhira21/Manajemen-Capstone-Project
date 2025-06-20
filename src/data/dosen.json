@@ -4,70 +4,70 @@
       "ID_Dosen": "DSN001",
       "ID_User": "USR002",
       "Nama": "Jane Doe",
-      "Foto_Profile": "profile_jane.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "1234567890"
     },
     {
       "ID_Dosen": "DSN002",
       "ID_User": "USR004",
       "Nama": "Bob Marley",
-      "Foto_Profile": "profile_bob.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "0987654321"
     },
     {
       "ID_Dosen": "DSN003",
       "ID_User": "USR007",
       "Nama": "Evan Smith",
-      "Foto_Profile": "profile_evan.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "1122334455"
     },
     {
       "ID_Dosen": "DSN004",
       "ID_User": "USR010",
       "Nama": "Henry Golding",
-      "Foto_Profile": "profile_henry.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "5544332211"
     },
     {
       "ID_Dosen": "DSN005",
       "ID_User": "USR012",
       "Nama": "Olivia Wilson",
-      "Foto_Profile": "profile_olivia.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "9876123456"
     },
     {
       "ID_Dosen": "DSN006",
       "ID_User": "USR014",
       "Nama": "Peter Parker",
-      "Foto_Profile": "profile_peter.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "6789012345"
     },
     {
       "ID_Dosen": "DSN007",
       "ID_User": "USR016",
       "Nama": "Quinn Fabray",
-      "Foto_Profile": "profile_quinn.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "2345678901"
     },
     {
       "ID_Dosen": "DSN008",
       "ID_User": "USR018",
       "Nama": "Rachel Green",
-      "Foto_Profile": "profile_rachel.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "8901234567"
     },
     {
       "ID_Dosen": "DSN009",
       "ID_User": "USR020",
       "Nama": "Samwise Gamgee",
-      "Foto_Profile": "profile_sam.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "3456789012"
     },
     {
       "ID_Dosen": "DSN010",
       "ID_User": "USR022",
       "Nama": "Tina Fey",
-      "Foto_Profile": "profile_tina.jpg",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "7890123456"
     }
   ]

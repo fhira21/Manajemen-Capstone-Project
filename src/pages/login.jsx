@@ -45,22 +45,26 @@ export default function Login() {
       role: user.Role
     });
 
-    // Store user role in localStorage
-    localStorage.setItem('userRole', user.Role);
-    
-    // Redirect based on role
-    switch (user.Role) {
-      case 'Mahasiswa':
-        navigate('/student/dashboard');
-        break;
-      case 'Dosen':
-        navigate('/lecturer/dashboard');
-        break;
-      case 'Mitra':
-        navigate('/partner/dashboard');
-        break;
-      default:
-        setError('Role tidak valid');
+    // Check if there's a saved redirect path
+    const redirectPath = sessionStorage.getItem('redirectPath');
+    if (redirectPath) {
+      sessionStorage.removeItem('redirectPath');
+      navigate(redirectPath);
+    } else {
+      // Default redirects based on role
+      switch (user.Role) {
+        case 'Mahasiswa':
+          navigate('/student/dashboard');
+          break;
+        case 'Dosen':
+          navigate('/lecturer/dashboard');
+          break;
+        case 'Mitra':
+          navigate('/partner/dashboard');
+          break;
+        default:
+          setError('Role tidak valid');
+      }
     }
   };
 

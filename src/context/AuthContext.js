@@ -6,13 +6,23 @@ const AuthContext = createContext();
 // Create the Auth Provider component
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   
-  // Check if user data exists in localStorage on component mount
+  // Check localStorage for user data when the app loads
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
+    
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.error('Error parsing stored user data:', error);
+        localStorage.removeItem('user');
+      }
     }
+    
+    // Set loading to false after checking authentication
+    setLoading(false);
   }, []);
   
   // Login function
@@ -34,13 +44,27 @@ export function AuthProvider({ children }) {
     user,
     login,
     logout,
+    loading,
     isAuthenticated: !!user
   };
   
+  // Only render children after checking authentication
   return (
     <AuthContext.Provider value={authContextValue}>
-      {children}
+      {!loading ? children : <LoadingScreen />}
     </AuthContext.Provider>
+  );
+}
+
+// Simple loading component
+function LoadingScreen() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="p-8 text-center">
+        <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p className="text-gray-700 text-lg">Loading...</p>
+      </div>
+    </div>
   );
 }
 

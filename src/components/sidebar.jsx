@@ -73,7 +73,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
     };
   
     return (
-        <div className={`w-full h-screen flex flex-col items-center bg-primary overflow-hidden`}>
+        <div className={`w-full h-full flex flex-col items-center bg-primary overflow-hidden`}>
             {/* Header with logo and toggle button */}
             <div className={`w-full flex flex-col items-center  border-b p-2 gap-5`}>
             {/* Toggle button */}
@@ -105,7 +105,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             {/* Scrollable container for navigation menus */}
             <div className="flex-grow w-full overflow-y-auto scrollbar-thin scrollbar-thumb-secondary scrollbar-track-transparent">
             {/* Navigation menu - main items */}
-            <ul className="w-full p-2">
+            <ul className="w-full flex flex-col gap-2  p-2">
                 {menuItems.map((item, index) => (
                 <li key={index} className="w-full rounded">
                     <NavLink to={item.to} className={({isActive}) => 
@@ -122,7 +122,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             </div>
 
             {/* Navigation menu - bottom items (fixed at bottom) */}
-            <ul className="w-full p-2">
+            <ul className="w-full flex flex-col gap-2  p-2">
             {/* Setting Link */}
             <li className="w-full rounded">
                 <NavLink to="setting" className={({isActive}) => 
