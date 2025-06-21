@@ -2,6 +2,7 @@ import { useState } from "react";
 import PageTitle from "../../components/PageTitle";
 import { toast, ToastContainer } from "react-toastify"; // Import ToastContainer
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS
+import Button from "../../components/buttonPrimary";
 
 export default function AddCurriculumVitae() {
     const inputClasses = 'w-full border-2 rounded h-10 p-2 focus:outline-none focus:ring-2 focus:ring-secondary';
@@ -245,7 +246,7 @@ export default function AddCurriculumVitae() {
             {/* Add ToastContainer to render notifications */}
             <ToastContainer position="top-right" />
 
-            <div className="w-full flex flex-col justify-start items-center">
+            <div className="w-full border h-max p-5 gap-6 rounded-xl shadow flex flex-col justify-start items-center">
                 <h1 className="w-full text-2xl font-bold">Menambahkan Curriculum Vitae (CV)</h1>
 
                 <form onSubmit={handleSubmit}
@@ -368,7 +369,7 @@ export default function AddCurriculumVitae() {
                         <textarea 
                             id="ringkasan" 
                             rows="3" 
-                            className={`${inputClasses} h-auto resize-none text-sm ${errors.ringkasan ? 'border-red-500' : ''}`}
+                            className={`${inputClasses} h-full resize-none text-sm ${errors.ringkasan ? 'border-red-500' : ''}`}
                             placeholder="Tuliskan ringkasan profil anda"
                             value={formData.ringkasan}
                             onChange={handleChange}
@@ -377,28 +378,28 @@ export default function AddCurriculumVitae() {
                     </div>
 
                     {/* Buttons */}
-                    <div className="w-full flex justify-start gap-4 mt-4">
-                        <button 
-                            type="button" 
-                            className="px-4 py-1.5 rounded-md bg-gray-200 hover:bg-gray-300 transition flex items-center gap-2 text-sm"
+                    <div className="flex flex-col-reverse md:flex-row justify-start w-full md:w-[60%] gap-4  mt-4">
+                        <Button
+                            className="bg-gray-300  hover:bg-gray-600  "  
                             onClick={handleOpenModal}
-                        >
-                            <img src="/assets/icons/icons8-add-100.png" alt="Add icon" className="w-4 h-4" />
-                            Hal Lain
-                        </button>
-                        <button 
-                            type="submit" 
-                            className="bg-blue-600 text-white px-4 py-1.5 rounded-md hover:bg-blue-700 transition text-sm"
-                        >
-                            Tambahkan CV
-                        </button>
+                            label="Hal Lain" 
+                            type="submit"
+                            rightIcon={<img src="/assets/icons/icons8-add-100.png" alt="Add icon" className="w-4 h-4" />}
+                        />
+
+                        <Button
+                            className="bg-secondary text-white"
+                            onClick={handleSubmit} 
+                            label="Simpan CV" 
+                            type="submit"
+                        />
                     </div>
                 </form>
             </div>
 
             {/* Modal for "Hal Lain" button */}
             {isModalOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" 
+                <div className="fixed inset-0 bg-black backdrop-blur-sm bg-opacity-20  flex items-center justify-center z-50" 
                     onClick={handleCloseModal}
                 >
                     <div 
@@ -497,21 +498,19 @@ export default function AddCurriculumVitae() {
                         </div>
                     
                         {/* Modal Footer */}
-                        <div className="flex gap-2 items-center p-2">
+                        <div className="flex flex-col gap-2 items-center ">
 
-
-                            <button 
-                                onClick={handleCloseModal} 
-                                className="bg-gray-200 text-gray-700 px-3 py-1.5 rounded-md hover:bg-gray-300 transition text-sm"
-                            >
-                                Batal
-                            </button>
-                            <button 
+                            
+                            <Button
+                                className="bg-secondary"
                                 onClick={handleSaveAdditionalInfo} 
-                                className="bg-blue-600 text-white px-3 py-1.5 rounded-md hover:bg-blue-700 transition text-sm"
-                            >
-                                Simpan Informasi
-                            </button>
+                                label="Simpan Informasi"
+                            />
+                            <Button
+                                className="bg-red-500 hover:bg-red-600 text-white"
+                                onClick={handleCloseModal} 
+                                label="Batal"
+                            />
                         </div>
 
                         </div>

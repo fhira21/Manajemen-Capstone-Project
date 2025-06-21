@@ -80,7 +80,7 @@ export default function Main({ role }) {
             {/* Main content area */}
             <div className="flex-1 flex flex-col">
                 {/* Header */}
-                <header className="bg-white shadow-md p-4">
+                <header className="bg-white border-b shadow p-4">
                     <div className="flex justify-between items-center">
                         {/* Left section */}
                         <div className="flex items-center">
@@ -123,7 +123,7 @@ export default function Main({ role }) {
                         </div>
                         
                         {/* Right section */}
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center gap-0 md:gap-2 ">
 
 
                             
@@ -212,7 +212,7 @@ export default function Main({ role }) {
                 >
                     {/* Overlay */}
                     <div 
-                        className="absolute inset-0 bg-black bg-opacity-80 backdrop-blur-sm"
+                        className="absolute inset-0 bg-black backdrop-blur-sm bg-opacity-20 "
                         onClick={closeModal}
                         aria-hidden="true"
                     />
@@ -229,7 +229,7 @@ export default function Main({ role }) {
 
                         {/* Profile Image */}
                         <div className="relative group">
-                            <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4  shadow-xl">
+                            <div className="w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4  shadow-xl">
                                 {userDetails?.Foto_Profile ? (
                                     <img 
                                         src={userDetails.Foto_Profile} 
@@ -250,7 +250,7 @@ export default function Main({ role }) {
 
                         {/* User profile */}
                         <div className=" p-2 text-center ">
-                            <div className="font-bold text-white">
+                            <div className="font-bold text-black">
                                 {userDetails ? (
                                     userDetails.Nama || 
                                     userDetails.Nama_Perusahaan || 
@@ -259,7 +259,7 @@ export default function Main({ role }) {
                                     user?.name || "User"
                                 )}
                             </div>
-                            <div className="text-md text-secondary capitalize">{role}</div>
+                            <div className="text-md text-black font-bold">{role}</div>
                         </div>
                     </div>
                 </div>

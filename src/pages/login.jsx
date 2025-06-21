@@ -120,7 +120,7 @@ export default function Login() {
             </div>
           </div>
           <Link to="/forgot-password" className='w-full text-right text-white text-sm'>Lupa Password?</Link>
-          <Button className='w-full' label='Masuk' type="submit" />
+          <Button className='w-full bg-secondary' label='Masuk' type="submit" />
           <Link to="/register" className='w-full text-center text-white text-sm'>Belum mempunyai akun? Buat akun sekarang</Link>
         </form>
       </div>

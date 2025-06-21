@@ -212,7 +212,7 @@ export default function Register() {
           </div>
 
           <Button 
-            className='w-full' 
+            className='w-full bg-secondary' 
             label={isSubmitting ? 'Memproses...' : 'Daftar'} 
             type="submit"
             disabled={isSubmitting}
