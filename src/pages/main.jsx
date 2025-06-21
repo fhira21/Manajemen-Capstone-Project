@@ -67,7 +67,7 @@ export default function Main({ role }) {
     }, [showProfileModal]);
 
     return (
-        <div className="flex min-h-screen  relative">
+        <div className="flex h-svh  relative">
             {/* Sidebar */}
             <div 
                 className={`fixed md:relative z-10 min-h-screen transition-all duration-300 ease-in-out ${
@@ -189,7 +189,7 @@ export default function Main({ role }) {
                 </header>
                 
                 {/* Main content */}
-                <div className="flex-1 p-4 overflow-auto">
+                <div className="flex-1 p-4 h-[calc(100vh-240px)]">
                     <Outlet />
                 </div>
             </div>

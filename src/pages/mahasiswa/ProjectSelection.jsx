@@ -4,7 +4,7 @@ import PROPOSAL from '../../data/proposal.json';
 import Button from "../../components/buttonPrimary";
 import { useState, useEffect } from "react";
 
-export default function ProjectSelection(params) {
+export default function ProjectSelection() {
     const [searchText, setSearchText] = useState("");
     const [filteredProposals, setFilteredProposals] = useState(PROPOSAL.PROPOSAL || []);
     const [selectedCategories, setSelectedCategories] = useState([]);
@@ -115,7 +115,7 @@ export default function ProjectSelection(params) {
                     <div className="flex gap-2 w-full">
                         <input 
                             type="text" 
-                            placeholder="Search projects..." 
+                            placeholder="Cari proyek..." 
                             className={inputClasses}
                             value={searchText}
                             onChange={(e) => setSearchText(e.target.value)}
@@ -131,7 +131,7 @@ export default function ProjectSelection(params) {
                     {/* Filter dropdown */}
                     <div id="filterDropdown" className="absolute top-12 right-0 w-64 bg-white shadow-lg rounded-md border p-3 z-10 hidden">
                         <div className="flex justify-between items-center mb-2">
-                            <h3 className="font-bold">Filters</h3>
+                            <h3 className="font-bold">Filter</h3>
                             <button 
                                 className="text-gray-500 hover:text-gray-700"
                                 onClick={closeFilterDropdown}
@@ -141,7 +141,7 @@ export default function ProjectSelection(params) {
                         </div>
                         
                         <div className="mb-3">
-                            <label className="block text-sm font-medium mb-1">Categories</label>
+                            <label className="block text-sm font-medium mb-1">Kategory Proyek</label>
                             <div className="max-h-40 overflow-y-auto border rounded p-2">
                                 {allCategories.map((category, idx) => (
                                     <div key={idx} className="flex items-center mb-1">
@@ -161,88 +161,143 @@ export default function ProjectSelection(params) {
                         </div>
                         
                         <div className="mb-3">
-                            <label className="block text-sm font-medium mb-1">Team Size</label>
+                            <label className="block text-sm font-medium mb-1">Banyaknya anggota</label>
                             <select 
                                 className={inputClasses}
                                 value={selectedTeamSize}
                                 onChange={(e) => setSelectedTeamSize(e.target.value)}
                             >
-                                <option value="">Any Size</option>
-                                <option value="1-2">1-2 members</option>
-                                <option value="3-5">3-5 members</option>
-                                <option value="5+">5+ members</option>
+                                <option value="">Anggota</option>
+                                <option value="1-2">1-2 Anggota</option>
+                                <option value="3-5">3-5 Anggota</option>
+                                <option value="5+">5+ Anggota</option>
                             </select>
                         </div>
                         <div className="flex justify-end gap-2 mt-2">
                             <button 
                                 className="px-3 py-1 text-sm border rounded hover:bg-gray-100"
                                 onClick={resetFilters}
-                            >Reset</button>
+                            >Atur ulang</button>
                             <button 
                                 className="px-3 py-1 text-sm bg-secondary text-white rounded"
                                 onClick={applyFilters}
-                            >Apply</button>
+                            >Terapkan</button>
                         </div>
                     </div>
+                    
+                    {(selectedCategories.length > 0 || selectedTeamSize) && (
+                        <div className="w-full flex flex-wrap gap-2 items-center">
+                            <p>Filter: </p>
+                            {selectedCategories.map((category, index) => (
+                                <span 
+                                    key={index} 
+                                    className="font-medium text-[0.6rem] p-1 border text-center rounded-xl"
+                                    style={{
+                                        backgroundColor: `${getCategoryColor(category)}20`,
+                                        color: getCategoryColor(category)
+                                    }}  
+                                >
+                                    {category}
+                                    <button
+                                        className="text-white ml-1 bg-red-600 w-4 h-4 rounded-full"
+                                        onClick={() => handleCategoryChange(category)}
+                                    >
+                                        ✕
+                                    </button>
+                                </span>
+                            ))}
+                            {selectedTeamSize && (
+                                <span 
+                                    className="font-medium text-[0.6rem] p-1 border text-center rounded-xl"
+                                    style={{
+                                        backgroundColor: "#F0F0F0",
+                                        color: "#333333"
+                                    }}  
+                                >
+                                    {selectedTeamSize === "1-2" ? "1-2 Anggota" : 
+                                     selectedTeamSize === "3-5" ? "3-5 Anggota" : 
+                                     "5+ Anggota"}
+                                    <button
+                                        className="text-white ml-1 bg-red-600 w-4 h-4 rounded-full"
+                                        onClick={() => setSelectedTeamSize("")}
+                                    >
+                                        ✕
+                                    </button>
+                                </span>
+                            )}
+                        </div>
+                    )}
                 </div>
 
-                <div className="scrollbar-primary w-full h-[calc(100vh-200px)] overflow-y-auto  border-b-2 border-t-2">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4  ">
-                        {/* card 3 baris */}    
-                        {filteredProposals.length > 0 ? (
-                            filteredProposals.map((project) => (
-                                <div key={project.ID_Proposal} className="flex flex-col border-2 justify-around gap-5 items-center rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
-                                    <div 
-                                        className="w-full flex items-center justify-center font-bold h-[90px] rounded-md"
-                                        style={{ 
-                                            backgroundColor: `${getCategoryColor(project.Judul_Project)}20` 
-                                        }}
-                                    >
-                                        <p className="w-full text-center text-xs" 
-                                           style={{ 
-                                               color: getCategoryColor(project.Judul_Project) 
-                                           }}
+                <div className="scrollbar-primary h-full w-full overflow-y-auto">
+                    <div className="scrollbar-primary h-full w-full overflow-y-auto ">
+                        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {filteredProposals.length > 0 ? (
+                                filteredProposals.map((project) => (
+                                    <div key={project.ID_Proposal} className="flex flex-col border-2 justify-around gap-5 items-center rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+                                        <div 
+                                            className="w-full flex items-center justify-center font-bold h-[90px] rounded-md"
+                                            style={{ 
+                                                backgroundColor: `${getCategoryColor(project.Judul_Project)}20` 
+                                            }}
                                         >
-                                            {project.Judul_Project}
-                                        </p>
-                                    </div>
-
-                                    <div className="w-full flex flex-wrap gap-2 ">
-                                        {project.Kategori_Project && project.Kategori_Project.map((category, index) => (
-                                            <span 
-                                                key={index} 
-                                                className="font-medium text-[0.6rem] p-1 border  text-center  rounded-xl"
-                                                style={{ 
-                                                    backgroundColor: `${getCategoryColor(category)}20`, 
-                                                    color: getCategoryColor(category) 
-                                                }}
+                                            <p className="w-full text-center text-xs" 
+                                               style={{ 
+                                                   color: getCategoryColor(project.Judul_Project) 
+                                               }}
                                             >
-                                                {category}{index < project.Kategori_Project.length - 1 ? ', ' : ''}
-                                            </span>
-                                        ))}
+                                                {project.Judul_Project}
+                                            </p>
+                                        </div>
+                                           
+                                        <div className="w-full flex flex-wrap gap-2 ">
+                                            {project.Kategori_Project && project.Kategori_Project.map((category, index) => (
+                                                <span 
+                                                    key={index} 
+                                                    className="font-medium text-[0.6rem] p-1 border  text-center  rounded-xl"
+                                                    style={{ 
+                                                        backgroundColor: `${getCategoryColor(category)}20`, 
+                                                        color: getCategoryColor(category) 
+                                                    }}
+                                                >
+                                                    {category}{index < project.Kategori_Project.length - 1 ? ', ' : ''}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        
+                                        <div className="w-full">
+                                            <p className="h-min-[200px]">{project.Deskripsi_Masalah}</p> 
+                                        </div>
+                                        <div className="w-full">
+                                            <Button
+                                                className='bg-secondary'
+                                                label="Detail"
+                                            />
+                                        </div>
                                     </div>
-
-                                    <div className="w-full">
-                                        <p className="font-semibold">Dibuthkan <span className="text-secondary">{project.Jumlah_orang}</span> Anggota</p>
-                                    </div>
-                                    
-                                    <div className="w-full">
-                                        <p className="h-min-[200px]">{project.Deskripsi_Masalah}</p> 
-                                    </div>
-                                    <div className="w-full">
-                                        <Button
-                                            className='bg-secondary'
-                                            label="Detail"
-                                        />
-                                    </div>
+                                ))
+                            ) : (
+                            <div className="col-span-3 flex  flex-col  justify-center items-center p-10 text-center">
+                                <p className="text-gray-500 mb-2">Tidak ada proyek yang ditemukan.</p>
+                                <div className="text-sm text-gray-400">
+                                    {searchText && (
+                                        <p>Pencarian: "{searchText}"</p>
+                                    )}
+                                    {selectedCategories.length > 0 && (
+                                        <p>Kategori: {selectedCategories.join(", ")}</p>
+                                    )}
+                                    {selectedTeamSize && (
+                                        <p>Anggota: {
+                                            selectedTeamSize === "1-2" ? "1-2 orang" : 
+                                            selectedTeamSize === "3-5" ? "3-5 orang" : "5+ orang"
+                                        }</p>
+                                    )}
+                                    <p className="mt-2">Coba menggunakan kata kunci lain atau mengatur ulang filter.</p>
                                 </div>
-                            ))
-                        ) : (
-                            <div className="col-span-3 flex justify-center items-center p-10">
-                                <p className="text-gray-500">No matching projects found.</p>
                             </div>
                         )}
                     </div>
+                </div>
                 </div>
             </div>
         </>
