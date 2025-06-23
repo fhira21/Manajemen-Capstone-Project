@@ -13,7 +13,7 @@ import Unauthorized from './pages/Unauthorized';
 
 // Halaman mahasiswa
 import LandingPage from './pages/LandingPage';
-import DashboardStudent from './pages/mahasiswa/dasboardStudent';
+import DashboardStudent from './pages/mahasiswa/DashboardStudent';
 import AddCurriculumVitae from './pages/mahasiswa/AddCurriculumVitae';
 import StudentPortofolio from './pages/mahasiswa/StudentPortofolio';
 import ProjectSelection from './pages/mahasiswa/ProjectSelection';
