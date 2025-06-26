@@ -184,12 +184,13 @@ export default function ProjectSelection() {
                             value={searchText}
                             onChange={(e) => setSearchText(e.target.value)}
                         />              
-                        <Button
-                            label="Filter"
-                            className="bg-secondary w-max p-2 font-normal text-white"
-                            leftIcon={<img src="/assets/icons/icons8-filter-100.png" alt="Filter Icon" className="w-5 h-5" />}
+                        <button
+                            className="bg-secondary  w-10 h-10 items-center flex justify-center rounded-md  hover:bg-secondary/80 "
                             onClick={toggleFilterDropdown}
-                        />
+                        >
+                            <img src="/assets/icons/icons8-filter-100.png" alt="Filter Icon" className="w-5 h-5" />
+                        </button>
+
                     </div>
 
                     {/* Filter dropdown */}
