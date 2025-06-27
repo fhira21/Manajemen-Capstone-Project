@@ -39,28 +39,31 @@ const proposals = [
   },
 ];
 
-const statusStyles = {
-  Disetujui: "bg-[#70E947] text-white",
-  Revisi: "bg-[#E94747] text-white",
-  Menunggu: "bg-[#E4C900] text-white",
-};
-
 export default function ProposalPartner() {
   const [filter, setFilter] = useState("Semua");
   const [selectedProposal, setSelectedProposal] = useState(null);
   const [komentar, setKomentar] = useState("");
   const [reviewStatus, setReviewStatus] = useState("Review");
-
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [lastKomentar, setLastKomentar] = useState("");
   const filtered =
     filter === "Semua"
       ? proposals
       : proposals.filter((p) => p.status === filter);
 
-    const handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setLastKomentar(komentar);
     setKomentar("");
     setReviewStatus("Review");
-    setSelectedProposal(null); 
+    setSelectedProposal(null);
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 3000);
+    };
+  const statusStyles = {
+  Disetujui: "bg-[#70E947] text-white",
+  Revisi: "bg-[#E94747] text-white",
+  Menunggu: "bg-[#E4C900] text-white",
   };
   return (
     <>
@@ -68,26 +71,26 @@ export default function ProposalPartner() {
         title="Proposal Mitra"
         description="Evaluasi & bimbing proyek capstone mahasiswa"
       />
-      <div className="flex flex-1 justify-center items-start flex-col px-4">
-  <div className="bg-white rounded-xl shadow-md w-full p-6">
-    <h1 className="text-2xl font-bold">Proposal Mitra</h1>
-    <div className="mt-6 flex items-center gap-2 mb-6">
-      <label className="text-sm font-semibold">Status</label>
-      <select
-        className="border rounded-lg px-2 py-1 text-sm bg-gray-300 text-[#1C1C1C]"
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-      >
-        <option value="Semua">Semua</option>
-        <option value="Disetujui">Disetujui</option>
-        <option value="Revisi">Revisi</option>
-        <option value="Menunggu">Menunggu</option>
-      </select>
-    </div>
+    <div className="h-full overflow-auto px-4 py-6">
+      <div className="bg-white rounded-md shadow-md w-full p-6">
+          <h1 className="text-2xl font-bold text-[#4F4F4F]">Proposal Mitra</h1>
+          <div className="mt-6 flex items-center gap-2 mb-6">
+            <label className="text-sm font-semibold">Status</label>
+            <select
+              className="border rounded-lg px-2 py-1 text-sm bg-[#BDBDBD] text-[#1C1C1C]"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+            >
+              <option value="Semua">Semua</option>
+              <option value="Disetujui">Disetujui</option>
+              <option value="Revisi">Revisi</option>
+              <option value="Menunggu">Menunggu</option>
+            </select>
+          </div>
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm border-collapse">
               <thead>
-                <tr>
+                <tr className="text-[#424242]">
                   <th className="p-2">No</th>
                   <th className="p-2">Nama Mitra</th>
                   <th className="p-2">Judul Proposal</th>
@@ -101,7 +104,7 @@ export default function ProposalPartner() {
                   <tr key={p.id} className="hover:bg-gray-50">
                     <td className="p-2 text-center">{idx + 1}</td>
                     <td className="p-2 bg-[#E5ECF6]">{p.mitra}</td>
-                    <td className="p-2 bg-[#E5ECF6]">{p.judul}</td>
+                    <td className="p-2 bg-[#E5ECF6] break-words max-w-xs">{p.judul}</td>
                     <td className="p-2 text-center bg-[#E5ECF6]">
                       <span
                         className={`block w-full px-2 py-1 rounded-lg text-xs font-medium ${
@@ -138,19 +141,26 @@ export default function ProposalPartner() {
                 </button>
 
                 <h2 className="text-lg font-bold mb-4">Detail Proposal</h2>
-                <p>
-                  <strong>Nama Mitra:</strong> {selectedProposal.mitra}
-                </p>
-                <p>
-                  <strong>Judul:</strong> {selectedProposal.judul}
-                </p>
-                <p>
-                  <strong>Status:</strong> {selectedProposal.status}
-                </p>
-                <p>
-                  <strong>Tanggal:</strong> {selectedProposal.tanggal}
-                </p>
-
+                <table className="w-full text-sm border-gray-300">
+                  <tbody>
+                    <tr>
+                      <td className="py-2 font-semibold w-1/3 border-y">Nama Mitra</td>
+                      <td className="py-2 border-y">{selectedProposal.mitra}</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-semibold border-y">Judul</td>
+                      <td className="py-2 border-y">{selectedProposal.judul}</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-semibold border-y">Status</td>
+                      <td className="py-2 border-y">{selectedProposal.status}</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 font-semibold border-y">Tanggal</td>
+                      <td className="py-2 border-y">{selectedProposal.tanggal}</td>
+                    </tr>
+                  </tbody>
+                </table>
                 <form onSubmit={handleSubmit} className="mt-4 space-y-2">
                   <textarea
                     placeholder="Komentar"
@@ -159,27 +169,37 @@ export default function ProposalPartner() {
                     className="w-full border rounded p-2 text-sm"
                     rows={3}
                   />
-                  <select
-                    value={reviewStatus}
-                    onChange={(e) => setReviewStatus(e.target.value)}
-                    className="w-full border rounded p-2 text-sm"
-                  >
-                    <option value="Review">Review</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Approve">Approve</option>
-                  </select>
-                  <button
-                    type="submit"
-                    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full"
-                  >
-                    Kirim Komentar
-                  </button>
+                  <div className="flex justify-between items-center">
+                    <select
+                      value={reviewStatus}
+                      onChange={(e) => setReviewStatus(e.target.value)}
+                      className="border rounded px-5 py-2 text-sm"
+                    >
+                      <option value="Review">Review</option>
+                      <option value="Pending">Pending</option>
+                      <option value="Approve">Approve</option>
+                    </select>
+                    <button
+                      type="submit"
+                      className="bg-blue-600 justify-end text-white px-3 py-2 rounded hover:bg-blue-700"
+                    >
+                      Kirim Komentar
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
           )}
         </div>
       </div>
+      {showSuccess && (
+            <div className="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded shadow-lg z-[9999] transition-opacity duration-300 text-sm space-y-1">
+              <p>
+                <strong>Komentar : </strong> {lastKomentar}
+              </p>
+              <p>Komentar anda telah dikirim</p>
+            </div>
+          )}
     </>
   );
 }
