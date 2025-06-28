@@ -2,12 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/sidebar";
 import { useAuth } from "../context/AuthContext";
-
-// Import user data files
-import userData from "../data/user.json";
-import mahasiswaData from "../data/mahasiswa.json";
-import dosenData from "../data/dosen.json";
-import mitraData from "../data/mitra.json";
+import { getMahasiswa, getDosen, getMitra } from "../data/localStorage";
 
 export default function Main({ role }) {
     const { user } = useAuth();
@@ -20,15 +15,23 @@ export default function Main({ role }) {
     const getUserDetails = () => {
         if (!user) return null;
         
-        switch(user.role) {
-            case 'Mahasiswa':
-                return mahasiswaData.MAHASISWA.find(m => m.ID_User === user.id);
-            case 'Dosen':
-                return dosenData.DOSEN.find(d => d.ID_User === user.id);
-            case 'Mitra':
-                return mitraData.MITRA.find(m => m.ID_User === user.id);
-            default:
-                return null;
+        try {
+            switch(user.role) {
+                case 'Mahasiswa':
+                    const mahasiswaData = getMahasiswa();
+                    return mahasiswaData.find(m => m.ID_User === user.id);
+                case 'Dosen':
+                    const dosenData = getDosen();
+                    return dosenData.find(d => d.ID_User === user.id);
+                case 'Mitra':
+                    const mitraData = getMitra();
+                    return mitraData.find(m => m.ID_User === user.id);
+                default:
+                    return null;
+            }
+        } catch (error) {
+            console.error("Error getting user details:", error);
+            return null;
         }
     };
     

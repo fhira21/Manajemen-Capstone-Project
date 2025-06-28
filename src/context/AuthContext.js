@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { getCurrentUser, setCurrentUser, logout as logoutFromStorage } from '../data/localStorage';
 
 // Create the context
 const AuthContext = createContext();
@@ -10,15 +11,14 @@ export function AuthProvider({ children }) {
   
   // Check localStorage for user data when the app loads
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.error('Error parsing stored user data:', error);
-        localStorage.removeItem('user');
+    try {
+      const storedUser = getCurrentUser();
+      if (storedUser) {
+        setUser(storedUser);
       }
+    } catch (error) {
+      console.error('Error getting stored user data:', error);
+      logoutFromStorage(); // Clear any corrupted data
     }
     
     // Set loading to false after checking authentication
@@ -28,15 +28,13 @@ export function AuthProvider({ children }) {
   // Login function
   const login = (userData) => {
     setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
-    localStorage.setItem('userRole', userData.role);
+    setCurrentUser(userData); // Use localStorage.js function
   };
   
   // Logout function
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('user');
-    localStorage.removeItem('userRole');
+    logoutFromStorage(); // Use localStorage.js function
   };
   
   // The value to be provided to consumers of this context

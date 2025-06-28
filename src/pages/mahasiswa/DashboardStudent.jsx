@@ -1,16 +1,12 @@
 import PageTitle from "../../components/PageTitle";
-// Import data langsung dari file JSON
-import commitData from "../../data/commit.json";
-import issueData from "../../data/issue.json";
-import mahasiswaData from "../../data/mahasiswa.json";
-import projectData from "../../data/project.json";
-import userData from "../../data/user.json";
+// Import localStorage utilities if needed in future
+// import { getUser, getProject, getMahasiswa } from "../../data/localStorage";
 
 export default function DashboardStudent() {
   return (
     <>
       <PageTitle title="Dashboard Mahasiswa"
-      description={'asdasd'} />
+      description={'Dashboard untuk mahasiswa'} />
 
       <div className="">
         <p>dashboard</p>

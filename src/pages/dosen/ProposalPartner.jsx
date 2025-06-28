@@ -1,9 +1,32 @@
 import { useState, useEffect } from "react";
 import PageTitle from "../../components/PageTitle";
-import PROPOSAL from "../../data/proposal.json";
-import MITRA from "../../data/mitra.json";
+import { getProposals, getMitra, updateProposal } from "../../data/localStorage";
 
 export default function ProposalPartner() {
+  const [filter, setFilter] = useState("Semua");
+  const [selectedProposal, setSelectedProposal] = useState(null);
+  const [komentar, setKomentar] = useState("");
+  const [reviewStatus, setReviewStatus] = useState("Menunggu");
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [lastKomentar, setLastKomentar] = useState("");
+  const [proposals, setProposals] = useState([]);
+  const [mitraData, setMitraData] = useState([]);
+
+  useEffect(() => {
+    const loadData = () => {
+      try {
+        const proposalData = getProposals();
+        const mitraList = getMitra();
+        setProposals(proposalData);
+        setMitraData(mitraList);
+      } catch (error) {
+        console.error("Error loading data:", error);
+      }
+    };
+
+    loadData();
+  }, []);
+
   const handleStatusOnlySubmit = () => {
     const updatedProposals = proposals.map((p) =>
       p.ID_Proposal === selectedProposal.ID_Proposal
@@ -12,17 +35,10 @@ export default function ProposalPartner() {
     );
 
     setProposals(updatedProposals);
+    // Update localStorage
+    updateProposal(selectedProposal.ID_Proposal, { status: reviewStatus });
     setSelectedProposal(null);
   };
-
-  const [filter, setFilter] = useState("Semua");
-  const [selectedProposal, setSelectedProposal] = useState(null);
-  const [komentar, setKomentar] = useState("");
-  const [reviewStatus, setReviewStatus] = useState("Menunggu");
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [lastKomentar, setLastKomentar] = useState("");
-
-  const [proposals, setProposals] = useState(PROPOSAL.PROPOSAL);
 
   const filtered =
     filter === "Semua"
@@ -44,6 +60,8 @@ export default function ProposalPartner() {
     );
 
     setProposals(updatedProposals);
+    // Update localStorage
+    updateProposal(selectedProposal.ID_Proposal, { status: reviewStatus });
     setLastKomentar(komentar);
     setKomentar("");
     setSelectedProposal(null);
@@ -58,8 +76,8 @@ export default function ProposalPartner() {
     Menunggu: "bg-[#E4C900] text-white",
   };
 
-  const getMitra = (idMitra) => {
-    return MITRA.MITRA.find((m) => m.ID_Mitra === idMitra);
+  const getMitraById = (idMitra) => {
+    return mitraData.find((m) => m.ID_Mitra === idMitra);
   };
 
   useEffect(() => {
@@ -109,7 +127,7 @@ export default function ProposalPartner() {
                   <tr key={p.ID_Proposal} className="hover:bg-gray-50">
                     <td className="p-2 text-center">{idx + 1}</td>
                     <td className="p-2 bg-[#E5ECF6]">
-                      {getMitra(p.ID_Mitra)?.Nama_Perusahaan ||
+                      {getMitraById(p.ID_Mitra)?.Nama_Perusahaan ||
                         "Tidak Diketahui"}
                     </td>
                     <td className="p-2 bg-[#E5ECF6] break-words max-w-xs">
@@ -155,16 +173,16 @@ export default function ProposalPartner() {
 
                 <div className="flex items-center gap-4 mb-6">
                   <img
-                    src={getMitra(selectedProposal.ID_Mitra)?.Foto_Profile}
+                    src={getMitraById(selectedProposal.ID_Mitra)?.Foto_Profile}
                     alt="Foto Mitra"
                     className="w-14 h-14 rounded-full object-cover"
                   />
                   <div>
                     <p className="font-bold text-sm">
-                      {getMitra(selectedProposal.ID_Mitra)?.Nama_Perusahaan}
+                      {getMitraById(selectedProposal.ID_Mitra)?.Nama_Perusahaan}
                     </p>
                     <p className="text-xs text-gray-600">
-                      {getMitra(selectedProposal.ID_Mitra)?.No_Telepon}
+                      {getMitraById(selectedProposal.ID_Mitra)?.No_Telepon}
                     </p>
                   </div>
                 </div>

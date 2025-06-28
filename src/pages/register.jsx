@@ -3,6 +3,7 @@ import AuthLayout from '../layouts/authLayouts';
 import { useState } from 'react';
 import Button from '../components/buttonPrimary';
 import PageTitle from '../components/PageTitle';
+import { addUser, getUserByUsername, getUserByEmail } from '../data/localStorage';
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -56,6 +57,9 @@ export default function Register() {
     } else if (formData.username.length < 3) {
       newErrors.username = 'Username minimal 3 karakter';
       isValid = false;
+    } else if (getUserByUsername(formData.username)) {
+      newErrors.username = 'Username sudah digunakan';
+      isValid = false;
     }
 
     // Email validation
@@ -64,6 +68,9 @@ export default function Register() {
       isValid = false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = 'Format email tidak valid';
+      isValid = false;
+    } else if (getUserByEmail(formData.email)) {
+      newErrors.email = 'Email sudah digunakan';
       isValid = false;
     }
 
@@ -92,19 +99,47 @@ export default function Register() {
     return isValid;
   };
 
+  const generateUserId = () => {
+    // Generate ID_User based on existing users
+    const existingUsers = JSON.parse(localStorage.getItem('USER') || '[]');
+    const lastId = existingUsers.length > 0 
+      ? Math.max(...existingUsers.map(user => parseInt(user.ID_User.replace('USR', '')))) 
+      : 0;
+    return `USR${String(lastId + 1).padStart(3, '0')}`;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate form submission (no actual database call)
-      setTimeout(() => {
-        console.log('Form data:', formData);
+      try {
+        // Create new user object
+        const newUser = {
+          ID_User: generateUserId(),
+          Username: formData.username,
+          Email: formData.email,
+          Password: formData.password, // In production, this should be hashed
+          Role: formData.role === 'student' ? 'Mahasiswa' : 
+                formData.role === 'lecturer' ? 'Dosen' : 'Mitra'
+        };
+
+        // Add user to localStorage
+        const success = addUser(newUser);
+        
+        if (success) {
+          setIsSubmitting(false);
+          alert('Pendaftaran berhasil! Silakan login.');
+          navigate('/login');
+        } else {
+          throw new Error('Gagal menyimpan data pengguna');
+        }
+      } catch (error) {
+        console.error('Registration error:', error);
         setIsSubmitting(false);
-        alert('Pendaftaran berhasil! Silakan login.');
-        navigate('/login');
-      }, 1000);
+        alert('Terjadi kesalahan saat mendaftar. Silakan coba lagi.');
+      }
     } else {
       alert('Terdapat kesalahan dalam pengisian form. Silakan periksa kembali.');
     }

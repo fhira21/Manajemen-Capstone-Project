@@ -1,9 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageTitle from "../../components/PageTitle";
-import MAHASISWA from "../../data/mahasiswa.json";
+import { getMahasiswa } from "../../data/localStorage";
 
 export default function DataMahasiswa() {
   const [selectedStudent, setSelectedStudent] = useState(null);
+  const [mahasiswaData, setMahasiswaData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadMahasiswaData = () => {
+      try {
+        const rawData = localStorage.getItem('MAHASISWA');
+        
+        if (rawData) {
+          const parsedData = JSON.parse(rawData);
+          setMahasiswaData(parsedData);
+        } else {
+          setMahasiswaData([]);
+        }
+      } catch (error) {
+        console.error("Error loading mahasiswa data:", error);
+        setMahasiswaData([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadMahasiswaData();
+  }, []);
 
   return (
     <>
@@ -17,17 +41,29 @@ export default function DataMahasiswa() {
         </h2>
 
         <div className="flex justify-start">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
-            {MAHASISWA.MAHASISWA.map((m) => (
-              <div
-                key={m.ID_Mahasiswa}
-                className="border p-4 rounded-md shadow bg-white space-y-2"
-              >
-                <img
-                  src={m.Foto_Profile}
-                  alt={m.Nama}
-                  className="w-full aspect-square object-cover rounded-lg"
-                />
+          {loading ? (
+            <div className="w-full text-center py-8 text-gray-500">
+              <p>Loading data mahasiswa...</p>
+            </div>
+          ) : mahasiswaData.length === 0 ? (
+            <div className="w-full text-center py-8 text-gray-500">
+              <p>Tidak ada data mahasiswa yang tersedia</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7">
+              {mahasiswaData.map((m) => (
+                <div
+                  key={m.ID_Mahasiswa}
+                  className="border p-4 rounded-md shadow bg-white space-y-2"
+                >
+                  <img
+                    src={m.Foto_Profile || "/assets/logo.png"}
+                    alt={m.Nama}
+                    className="w-full aspect-square object-cover rounded-lg"
+                    onError={(e) => {
+                      e.target.src = "/assets/logo.png";
+                    }}
+                  />
 
                 <div>
                   <p className="font-semibold text-lg text-primary">{m.Nama}</p>
@@ -55,8 +91,9 @@ export default function DataMahasiswa() {
                   </button>
                 </div>
               </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       {selectedStudent && (
@@ -71,9 +108,12 @@ export default function DataMahasiswa() {
 
             <div className="flex items-center gap-4 mb-4">
               <img
-                src={selectedStudent.Foto_Profile}
+                src={selectedStudent.Foto_Profile || "/assets/logo.png"}
                 alt={selectedStudent.Nama}
                 className="w-16 h-16 rounded-full object-cover"
+                onError={(e) => {
+                  e.target.src = "/assets/logo.png";
+                }}
               />
               <div>
                 <p className="font-bold">{selectedStudent.Nama}</p>

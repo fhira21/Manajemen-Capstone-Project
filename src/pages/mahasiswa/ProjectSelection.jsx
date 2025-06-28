@@ -1,8 +1,5 @@
 import PageTitle from "../../components/PageTitle";
-import PROJECT from '../../data/project.json';
-import PROPOSAL from '../../data/proposal.json';  
-import MITRA from '../../data/mitra.json';
-import USER from '../../data/user.json';
+import { getProposals, getMitra, getUsers } from '../../data/localStorage';
 import Button from "../../components/buttonPrimary";
 import { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProjectSelection() {
     const [searchText, setSearchText] = useState("");
-    const [filteredProposals, setFilteredProposals] = useState(PROPOSAL.PROPOSAL || []);
+    const [filteredProposals, setFilteredProposals] = useState([]);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedTeamSize, setSelectedTeamSize] = useState("");
     const [showDetails, setShowDetails] = useState(false);
@@ -18,6 +15,30 @@ export default function ProjectSelection() {
     const [selectedMitra, setSelectedMitra] = useState(null);
     const [selectedUser, setSelectedUser] = useState(null);
     const [appliedProjects, setAppliedProjects] = useState([]);
+    
+    // State untuk data dari localStorage
+    const [proposals, setProposals] = useState([]);
+    const [mitras, setMitras] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    // Load data dari localStorage saat component mount
+    useEffect(() => {
+        try {
+            const proposalsData = getProposals();
+            const mitrasData = getMitra();
+            const usersData = getUsers();
+            
+            setProposals(proposalsData || []);
+            setMitras(mitrasData || []);
+            setUsers(usersData || []);
+            setFilteredProposals(proposalsData || []);
+        } catch (error) {
+            console.error('Error loading data from localStorage:', error);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
 
     // Define colors for each letter A-Z
     const categoryColors = {
@@ -37,8 +58,8 @@ export default function ProjectSelection() {
   
     const inputClasses = 'w-full rounded h-10 p-2 border-2 focus:outline-none focus:ring-2 focus:ring-secondary';
 
-    // Get all unique categories from proposals
-    const allCategories = [...new Set(PROPOSAL.PROPOSAL?.flatMap(p => p.Kategori_Project || []))];
+    // Get all unique categories from proposals (dari localStorage)
+    const allCategories = [...new Set(proposals?.flatMap(p => p.Kategori_Project || []))];
 
     // Handle apply to project
     const handleApplyProject = (projectId) => {
@@ -75,13 +96,13 @@ export default function ProjectSelection() {
     const handleShowDetails = (project) => {
         setSelectedProject(project);
         
-        // Find related mitra data
-        const mitra = MITRA.MITRA.find(m => m.ID_Mitra === project.ID_Mitra);
+        // Find related mitra data dari localStorage
+        const mitra = mitras.find(m => m.ID_Mitra === project.ID_Mitra);
         setSelectedMitra(mitra);
         
-        // Find related user data
+        // Find related user data dari localStorage
         if (mitra) {
-            const user = USER.USER.find(u => u.ID_User === mitra.ID_User);
+            const user = users.find(u => u.ID_User === mitra.ID_User);
             setSelectedUser(user);
         }
         
@@ -98,9 +119,9 @@ export default function ProjectSelection() {
 
     // Filter proposals based on search text, categories, and team size
     useEffect(() => {
-        if (!PROPOSAL.PROPOSAL) return;
+        if (!proposals || proposals.length === 0) return;
 
-        let filtered = [...PROPOSAL.PROPOSAL];
+        let filtered = [...proposals];
         
         if (searchText) {
             filtered = filtered.filter(project => 
@@ -130,7 +151,7 @@ export default function ProjectSelection() {
         }
         
         setFilteredProposals(filtered);
-    }, [searchText, selectedCategories, selectedTeamSize]);
+    }, [searchText, selectedCategories, selectedTeamSize, proposals]);
 
     // Toggle filter dropdown
     const toggleFilterDropdown = () => {
@@ -173,8 +194,14 @@ export default function ProjectSelection() {
                 draggable
                 pauseOnHover
             />
-        
-            <div className="flex flex-col items-center h-full justify-start gap-4">
+
+            {/* Loading state */}
+            {loading ? (
+                <div className="flex justify-center items-center h-64">
+                    <div className="text-lg">Memuat data...</div>
+                </div>
+            ) : (
+                <div className="flex flex-col items-center h-full justify-start gap-4">
                 <div className="w-full gap-2 flex flex-col relative">
                     <div className="flex gap-2 w-full">
                         <input 
@@ -317,11 +344,15 @@ export default function ProjectSelection() {
                                 <h1 className="text-2xl font-bold mb-2">{selectedProject?.Judul_Project}</h1>
                                 
                                 <div className="flex items-center gap-2 mb-6">
-                                    <div className="w-10 h-10 rounded-full overflow-hidden">
+                                    <div className="w-10 h-10 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
                                         <img 
-                                            src={selectedMitra?.Foto_Profile || 'https://via.placeholder.com/40'} 
+                                            src={selectedMitra?.Foto_Profile || 'https://via.placeholder.com/40x40/4F46E5/ffffff?text=M'} 
                                             alt="Profile Mitra" 
                                             className="w-full h-full object-cover"
+                                            onError={(e) => {
+                                                e.target.onerror = null;
+                                                e.target.src = 'https://via.placeholder.com/40x40/4F46E5/ffffff?text=M';
+                                            }}
                                         />
                                     </div>
                                     <div>
@@ -482,6 +513,7 @@ export default function ProjectSelection() {
                     </div>
                 </div>
             </div>
+            )}
         </>
     )
 }

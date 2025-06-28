@@ -4,7 +4,7 @@ import AuthLayout from '../layouts/authLayouts';
 import Button from '../components/buttonPrimary';
 import PageTitle from '../components/PageTitle';
 import { useAuth } from '../context/AuthContext';
-import usersData from '../data/user.json'; // Make sure this path is correct
+import { getUsers, setCurrentUser } from '../data/localStorage';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,8 +22,16 @@ export default function Login() {
     e.preventDefault();
     setError('');
 
+    // Get users from localStorage
+    const users = getUsers();
+    
+    if (!users || users.length === 0) {
+      setError('Tidak ada data pengguna. Silakan daftar terlebih dahulu.');
+      return;
+    }
+
     // Find user by email or username
-    const user = usersData.USER.find(
+    const user = users.find(
       (u) => u.Email === email || u.Username === email
     );
 
@@ -37,7 +45,10 @@ export default function Login() {
       return;
     }
 
-    // Login user
+    // Save current user to localStorage for session management
+    setCurrentUser(user);
+
+    // Login user using AuthContext
     login({
       id: user.ID_User,
       name: user.Username,
