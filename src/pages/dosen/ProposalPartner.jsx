@@ -1,33 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageTitle from "../../components/PageTitle";
 import PROPOSAL from "../../data/proposal.json";
 import MITRA from "../../data/mitra.json";
-import { useEffect } from "react";
 
 export default function ProposalPartner() {
+  const handleStatusOnlySubmit = () => {
+  const updatedProposals = proposals.map((p) =>
+    p.ID_Proposal === selectedProposal.ID_Proposal
+      ? { ...p, status: reviewStatus }
+      : p
+  );
+
+  setProposals(updatedProposals);
+  setSelectedProposal(null);
+};
+
   const [filter, setFilter] = useState("Semua");
   const [selectedProposal, setSelectedProposal] = useState(null);
   const [komentar, setKomentar] = useState("");
-  const [reviewStatus, setReviewStatus] = useState("Review");
+  const [reviewStatus, setReviewStatus] = useState("Menunggu");
   const [showSuccess, setShowSuccess] = useState(false);
   const [lastKomentar, setLastKomentar] = useState("");
 
+  const [proposals, setProposals] = useState(PROPOSAL.PROPOSAL);
+
   const filtered =
     filter === "Semua"
-      ? PROPOSAL.PROPOSAL
-      : PROPOSAL.PROPOSAL.filter((p) => p.status === filter);
+      ? proposals
+      : proposals.filter((p) => p.status === filter);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (komentar.trim() === "") {
       alert("Komentar tidak boleh kosong!");
       return;
     }
+
+    const updatedProposals = proposals.map((p) =>
+      p.ID_Proposal === selectedProposal.ID_Proposal
+        ? { ...p, status: reviewStatus }
+        : p
+    );
+
+    setProposals(updatedProposals);
     setLastKomentar(komentar);
     setKomentar("");
-    setReviewStatus("Review");
     setSelectedProposal(null);
     setShowSuccess(true);
+
     setTimeout(() => setShowSuccess(false), 3000);
   };
 
@@ -44,7 +65,7 @@ export default function ProposalPartner() {
   useEffect(() => {
     if (selectedProposal) {
       setKomentar("");
-      setReviewStatus("Review");
+      setReviewStatus(selectedProposal.status);
     }
   }, [selectedProposal]);
 
@@ -183,36 +204,46 @@ export default function ProposalPartner() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="mt-6 space-y-2">
-                  <textarea
-                    placeholder="Komentar"
-                    value={komentar}
-                    onChange={(e) => setKomentar(e.target.value)}
-                    className="w-full border rounded p-2 text-sm"
-                    rows={3}
-                  />
-                  <div className="flex justify-between items-center">
-                    <select
-                      value={reviewStatus}
-                      onChange={(e) => setReviewStatus(e.target.value)}
-                      className="border rounded px-5 py-2 text-sm"
-                    >
-                      <option value="Review">Review</option>
-                      <option value="Pending">Pending</option>
-                      <option value="Approve">Approve</option>
-                    </select>
-                    <button
-                      type="submit"
-                      disabled={komentar.trim() === ""}
-                      className={`px-3 py-2 rounded text-white ${
-                        komentar.trim() === ""
-                          ? "bg-gray-400 cursor-not-allowed"
-                          : "bg-blue-600 hover:bg-blue-700"
-                      }`}
-                    >
-                      Kirim Komentar
-                    </button>
-                  </div>
-                </form>
+  <textarea
+    placeholder="Komentar"
+    value={komentar}
+    onChange={(e) => setKomentar(e.target.value)}
+    className="w-full border rounded p-2 text-sm"
+    rows={3}
+  />
+  <div className="flex justify-between items-center gap-2">
+    <select
+      value={reviewStatus}
+      onChange={(e) => setReviewStatus(e.target.value)}
+      className="border rounded px-5 py-2 text-sm"
+    >
+      <option value="Revisi">Revisi</option>
+      <option value="Menunggu">Menunggu</option>
+      <option value="Disetujui">Disetujui</option>
+    </select>
+    <div className="flex gap-2">
+      <button
+        type="submit"
+        disabled={komentar.trim() === ""}
+        className={`px-3 py-2 rounded text-white ${
+          komentar.trim() === ""
+            ? "bg-gray-400 cursor-not-allowed"
+            : "bg-blue-600 hover:bg-blue-700"
+        }`}
+      >
+        Kirim Komentar
+      </button>
+      <button
+        type="button"
+        onClick={handleStatusOnlySubmit}
+        className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</form>
+
               </div>
             </div>
           )}
