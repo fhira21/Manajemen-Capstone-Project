@@ -84,13 +84,13 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
                 aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}>
                 {isOpen ? (
                     <img 
-                    src="/assets/icons/icons8-sidebar-collapse-100.png" 
+                    src="/assets/icons/icons8-hamburger-128.png" 
                     alt="Collapse sidebar" 
                     className="h-8 w-8" 
                     />
                 ) : (
                     <img 
-                    src="/assets/icons/icons8-sidebar-open-100.png" 
+                    src="/assets/icons/icons8-hamburger-128.png" 
                     alt="Expand sidebar" 
                     className="h-8 w-8" 
                     />

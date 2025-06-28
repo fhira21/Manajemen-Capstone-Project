@@ -5,6 +5,8 @@ import MITRA from '../../data/mitra.json';
 import USER from '../../data/user.json';
 import Button from "../../components/buttonPrimary";
 import { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProjectSelection() {
     const [searchText, setSearchText] = useState("");
@@ -15,6 +17,7 @@ export default function ProjectSelection() {
     const [selectedProject, setSelectedProject] = useState(null);
     const [selectedMitra, setSelectedMitra] = useState(null);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [appliedProjects, setAppliedProjects] = useState([]);
 
     // Define colors for each letter A-Z
     const categoryColors = {
@@ -36,6 +39,28 @@ export default function ProjectSelection() {
 
     // Get all unique categories from proposals
     const allCategories = [...new Set(PROPOSAL.PROPOSAL?.flatMap(p => p.Kategori_Project || []))];
+
+    // Handle apply to project
+    const handleApplyProject = (projectId) => {
+        // Add project to applied projects
+        setAppliedProjects([...appliedProjects, projectId]);
+        
+        // Show success toast
+        toast.success('Lamaran berhasil terkirim!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
+
+    // Check if project is already applied
+    const isProjectApplied = (projectId) => {
+        return appliedProjects.includes(projectId);
+    };
 
     // Handle category selection (multiple)
     const handleCategoryChange = (category) => {
@@ -135,8 +160,21 @@ export default function ProjectSelection() {
                 title="Project Selection"
                 description="Select a project to view details, manage tasks, and collaborate with team members. This section allows you to efficiently navigate through your projects."
             />
+            
+            {/* Toast Container */}
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
         
-            <div className="flex  flex-col items-center h-full justify-start gap-4">
+            <div className="flex flex-col items-center h-full justify-start gap-4">
                 <div className="w-full gap-2 flex flex-col relative">
                     <div className="flex gap-2 w-full">
                         <input 
@@ -146,12 +184,13 @@ export default function ProjectSelection() {
                             value={searchText}
                             onChange={(e) => setSearchText(e.target.value)}
                         />              
-                        <Button
-                            label="Filter"
-                            className="bg-secondary w-max p-2 font-normal text-white"
-                            leftIcon={<img src="/assets/icons/icons8-filter-100.png" alt="Filter Icon" className="w-5 h-5" />}
+                        <button
+                            className="bg-secondary  w-10 h-10 items-center flex justify-center rounded-md  hover:bg-secondary/80 "
                             onClick={toggleFilterDropdown}
-                        />
+                        >
+                            <img src="/assets/icons/icons8-filter-100.png" alt="Filter Icon" className="w-5 h-5" />
+                        </button>
+
                     </div>
 
                     {/* Filter dropdown */}
@@ -265,7 +304,7 @@ export default function ProjectSelection() {
                                 </span>
                             </div>
                             <button 
-                                className=" text-white bg-red-600 rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-400 transition-colors" 
+                                className="text-white bg-red-600 rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-400 transition-colors" 
                                 onClick={handleCloseDetails}
                             >
                                 ✕
@@ -348,10 +387,21 @@ export default function ProjectSelection() {
                                         </div>
 
                                         <div className="pt-4 border-t">
-                                            <Button
-                                                className='font-normal text-sm bg-secondary w-full'
-                                                label="Ajukan Diri untuk Proyek Ini"
-                                            />
+                                            {isProjectApplied(selectedProject?.ID_Proposal) ? (
+                                                <button
+                                                    className="font-normal text-sm bg-green-500 w-full text-white rounded-lg py-2 cursor-default"
+                                                    disabled
+                                                >
+                                                    Lamaran Terkirim ✓
+                                                </button>
+                                            ) : (
+                                                <button
+                                                    onClick={() => handleApplyProject(selectedProject?.ID_Proposal)}
+                                                    className="font-normal text-sm bg-secondary w-full text-white rounded-lg py-2 hover:bg-secondary/80 transition-colors"
+                                                >
+                                                    Ajukan Diri untuk Proyek Ini
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
