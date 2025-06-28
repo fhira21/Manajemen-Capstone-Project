@@ -5,15 +5,15 @@ import MITRA from "../../data/mitra.json";
 
 export default function ProposalPartner() {
   const handleStatusOnlySubmit = () => {
-  const updatedProposals = proposals.map((p) =>
-    p.ID_Proposal === selectedProposal.ID_Proposal
-      ? { ...p, status: reviewStatus }
-      : p
-  );
+    const updatedProposals = proposals.map((p) =>
+      p.ID_Proposal === selectedProposal.ID_Proposal
+        ? { ...p, status: reviewStatus }
+        : p
+    );
 
-  setProposals(updatedProposals);
-  setSelectedProposal(null);
-};
+    setProposals(updatedProposals);
+    setSelectedProposal(null);
+  };
 
   const [filter, setFilter] = useState("Semua");
   const [selectedProposal, setSelectedProposal] = useState(null);
@@ -204,46 +204,45 @@ export default function ProposalPartner() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="mt-6 space-y-2">
-  <textarea
-    placeholder="Komentar"
-    value={komentar}
-    onChange={(e) => setKomentar(e.target.value)}
-    className="w-full border rounded p-2 text-sm"
-    rows={3}
-  />
-  <div className="flex justify-between items-center gap-2">
-    <select
-      value={reviewStatus}
-      onChange={(e) => setReviewStatus(e.target.value)}
-      className="border rounded px-5 py-2 text-sm"
-    >
-      <option value="Revisi">Revisi</option>
-      <option value="Menunggu">Menunggu</option>
-      <option value="Disetujui">Disetujui</option>
-    </select>
-    <div className="flex gap-2">
-      <button
-        type="submit"
-        disabled={komentar.trim() === ""}
-        className={`px-3 py-2 rounded text-white ${
-          komentar.trim() === ""
-            ? "bg-gray-400 cursor-not-allowed"
-            : "bg-blue-600 hover:bg-blue-700"
-        }`}
-      >
-        Kirim Komentar
-      </button>
-      <button
-        type="button"
-        onClick={handleStatusOnlySubmit}
-        className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded"
-      >
-        Submit
-      </button>
-    </div>
-  </div>
-</form>
-
+                  <textarea
+                    placeholder="Komentar"
+                    value={komentar}
+                    onChange={(e) => setKomentar(e.target.value)}
+                    className="w-full border rounded p-2 text-sm"
+                    rows={3}
+                  />
+                  <div className="flex justify-between items-center gap-2">
+                    <select
+                      value={reviewStatus}
+                      onChange={(e) => setReviewStatus(e.target.value)}
+                      className="border rounded px-5 py-2 text-sm"
+                    >
+                      <option value="Revisi">Revisi</option>
+                      <option value="Menunggu">Menunggu</option>
+                      <option value="Disetujui">Disetujui</option>
+                    </select>
+                    <div className="flex gap-2">
+                      <button
+                        type="submit"
+                        disabled={komentar.trim() === ""}
+                        className={`px-3 py-2 rounded text-white ${
+                          komentar.trim() === ""
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-blue-600 hover:bg-blue-700"
+                        }`}
+                      >
+                        Kirim Komentar
+                      </button>
+                      <button
+                        type="button"
+                        onClick={handleStatusOnlySubmit}
+                        className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           )}
