@@ -6,7 +6,9 @@ export default function AuthLayout({children, title}) {
           <div className="col-span-6  hidden sm:flex  items-center justify-center">
             <div className="text-center flex flex-col gap-2 items-center w-[70%] justify-center">
               <h1 className="text-4xl tracking-wider font-bold mb-2">Application Management Capstone</h1>
-              <Logo className="w-48 h-48 " />
+              <div className="bg-primary p-10  rounded-xl">
+                <Logo className="w-48 h-48 " />
+              </div>
             </div>
           </div>
           

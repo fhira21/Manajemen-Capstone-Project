@@ -2,6 +2,9 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
+
+import Logo from './Logo';
+
 export default function Sidebar({ isOpen, toggleSidebar, role }) {
   const navigate = useNavigate();
   const { logout } = useAuth(); // Make sure this is correctly destructured
@@ -98,7 +101,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
                 </button>
             </div>
             
-            <img src="/assets/logo.png" alt="Logo" className={`${isOpen ? 'w-20 h-20' : 'hidden'}`} />
+            <Logo  className={`${isOpen ? 'w-24 h-24'  : 'hidden'}`} />
             {isOpen && <h1 className="w-full text-center text-white text-xl font-bold">Manajemen Capstone</h1>}
             </div>
 
