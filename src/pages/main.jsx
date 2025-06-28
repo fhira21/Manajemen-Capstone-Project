@@ -67,7 +67,7 @@ export default function Main({ role }) {
     }, [showProfileModal]);
 
     return (
-        <div className="flex h-svh  relative">
+        <div className="flex h-svh  relative bg-white">
             {/* Sidebar */}
             <div 
                 className={`fixed md:relative z-10 min-h-screen transition-all duration-300 ease-in-out ${
@@ -80,7 +80,7 @@ export default function Main({ role }) {
             {/* Main content area */}
             <div className="flex-1 flex flex-col">
                 {/* Header */}
-                <header className="bg-white border-b shadow p-4">
+                <header className="bg-white border-b shadow p-4 ]">
                     <div className="flex justify-between items-center">
                         {/* Left section */}
                         <div className="flex items-center">
