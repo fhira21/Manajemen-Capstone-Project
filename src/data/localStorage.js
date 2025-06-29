@@ -604,10 +604,33 @@ export const getProposalById = (id) => {
   return proposals.find(proposal => proposal.ID_Proposal === id);
 };
 
-// ====================================================
-// FUNGSI-FUNGSI UNTUK MENGELOLA DATA USER
-// USER Functions
-// ====================================================
+/**
+ * Menambah komentar dosen ke proposal berdasarkan ID
+ * Cara pakai: addKomentarDosen("PRP001", "Komentar dosen tentang proposal ini");
+ */
+export const addKomentarDosen = (id, komentar) => {
+  const proposals = getProposals();
+  const index = proposals.findIndex(proposal => proposal.ID_Proposal === id);
+  if (index !== -1) {
+    // Inisialisasi array komentarDosen jika belum ada
+    if (!proposals[index].komentarDosen) {
+      proposals[index].komentarDosen = [];
+    }
+    
+    // Tambah komentar baru dengan timestamp
+    const newKomentar = {
+      id: Date.now().toString(),
+      komentar: komentar,
+      tanggal: new Date().toLocaleDateString('id-ID'),
+      timestamp: new Date().toISOString()
+    };
+    
+    proposals[index].komentarDosen.push(newKomentar);
+    return saveProposals(proposals);
+  }
+  return false;
+};
+
 
 /**
  * Mengambil semua data user dari localStorage

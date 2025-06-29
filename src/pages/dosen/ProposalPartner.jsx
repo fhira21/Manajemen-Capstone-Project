@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PageTitle from "../../components/PageTitle";
-import { getProposals, getMitra, updateProposal } from "../../data/localStorage";
+import { getProposals, getMitra, updateProposal, addKomentarDosen } from "../../data/localStorage";
 
 export default function ProposalPartner() {
   const [filter, setFilter] = useState("Semua");
@@ -28,15 +28,13 @@ export default function ProposalPartner() {
   }, []);
 
   const handleStatusOnlySubmit = () => {
-    const updatedProposals = proposals.map((p) =>
-      p.ID_Proposal === selectedProposal.ID_Proposal
-        ? { ...p, status: reviewStatus }
-        : p
-    );
-
-    setProposals(updatedProposals);
-    // Update localStorage
+    // Update localStorage dengan status baru
     updateProposal(selectedProposal.ID_Proposal, { status: reviewStatus });
+    
+    // Reload data proposals
+    const updatedProposalData = getProposals();
+    setProposals(updatedProposalData);
+    
     setSelectedProposal(null);
   };
 
@@ -53,18 +51,24 @@ export default function ProposalPartner() {
       return;
     }
 
-    const updatedProposals = proposals.map((p) =>
-      p.ID_Proposal === selectedProposal.ID_Proposal
-        ? { ...p, status: reviewStatus }
-        : p
-    );
-
-    setProposals(updatedProposals);
-    // Update localStorage
+    // Update status proposal
     updateProposal(selectedProposal.ID_Proposal, { status: reviewStatus });
+    
+    // Simpan komentar ke localStorage
+    addKomentarDosen(selectedProposal.ID_Proposal, komentar);
+    
+    // Reload data proposals untuk menampilkan komentar terbaru
+    const updatedProposalData = getProposals();
+    setProposals(updatedProposalData);
+    
+    // Update selectedProposal dengan data terbaru yang sudah ada komentarnya
+    const updatedSelectedProposal = updatedProposalData.find(
+      p => p.ID_Proposal === selectedProposal.ID_Proposal
+    );
+    setSelectedProposal(updatedSelectedProposal);
+    
     setLastKomentar(komentar);
     setKomentar("");
-    setSelectedProposal(null);
     setShowSuccess(true);
 
     setTimeout(() => setShowSuccess(false), 3000);
@@ -221,9 +225,31 @@ export default function ProposalPartner() {
                   <div>{selectedProposal.tanggal}</div>
                 </div>
 
+                {/* Section Komentar Dosen yang sudah ada */}
+                {selectedProposal.komentarDosen && selectedProposal.komentarDosen.length > 0 && (
+                  <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                    <h3 className="text-sm font-semibold text-[#4F4F4F] mb-3">
+                      Komentar Dosen Sebelumnya
+                    </h3>
+                    <div className="space-y-3 max-h-32 overflow-y-auto">
+                      {selectedProposal.komentarDosen.map((kom) => (
+                        <div key={kom.id} className="bg-white p-3 rounded border-l-4 border-blue-500">
+                          <p className="text-sm text-gray-800">{kom.komentar}</p>
+                          <p className="text-xs text-gray-500 mt-1">
+                            {kom.tanggal}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit} className="mt-6 space-y-2">
+                  <label className="text-sm font-semibold text-[#4F4F4F]">
+                    Tambah Komentar Baru
+                  </label>
                   <textarea
-                    placeholder="Komentar"
+                    placeholder="Masukkan komentar Anda untuk proposal ini..."
                     value={komentar}
                     onChange={(e) => setKomentar(e.target.value)}
                     className="w-full border rounded p-2 text-sm"
@@ -241,9 +267,19 @@ export default function ProposalPartner() {
                     </select>
                     <div className="flex gap-2">
                       <button
+                        type="button"
+                        onClick={() => {
+                          setKomentar("");
+                          setSelectedProposal(null);
+                        }}
+                        className="px-3 py-2 bg-gray-400 hover:bg-gray-500 text-white rounded text-sm"
+                      >
+                        Batal
+                      </button>
+                      <button
                         type="submit"
                         disabled={komentar.trim() === ""}
-                        className={`px-3 py-2 rounded text-white ${
+                        className={`px-3 py-2 rounded text-white text-sm ${
                           komentar.trim() === ""
                             ? "bg-gray-400 cursor-not-allowed"
                             : "bg-blue-600 hover:bg-blue-700"
@@ -254,9 +290,9 @@ export default function ProposalPartner() {
                       <button
                         type="button"
                         onClick={handleStatusOnlySubmit}
-                        className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded"
+                        className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded text-sm"
                       >
-                        Submit
+                        Ubah Status
                       </button>
                     </div>
                   </div>

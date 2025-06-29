@@ -811,7 +811,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 3,
       "Informasi_Tambahan": "Looking for students with expertise in UI/UX and front-end development.",
       "status": "Disetujui",
-      "tanggal": "16 April 2025"
+      "tanggal": "16 April 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP002",
@@ -823,7 +824,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 4,
       "Informasi_Tambahan": "Need students familiar with native mobile development (iOS/Android).",
       "status": "Revisi",
-      "tanggal": "10 Mei 2025"
+      "tanggal": "10 Mei 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP003",
@@ -835,7 +837,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 2,
       "Informasi_Tambahan": "Seeking students with strong background in NLP and machine learning.",
       "status": "Menunggu",
-      "tanggal": "27 April 2025"
+      "tanggal": "27 April 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP004",
@@ -847,7 +850,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 3,
       "Informasi_Tambahan": "Experience with AWS or Azure is a plus.",
       "status": "Disetujui",
-      "tanggal": "14 Mei 2025"
+      "tanggal": "14 Mei 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP005",
@@ -859,7 +863,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 2,
       "Informasi_Tambahan": "Knowledge of SEO best practices and content marketing.",
       "status": "Revisi",
-      "tanggal": "29 Mei 2025"
+      "tanggal": "29 Mei 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP006",
@@ -871,7 +876,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 4,
       "Informasi_Tambahan": "Familiarity with healthcare industry regulations is beneficial.",
       "status": "Menunggu",
-      "tanggal": "30 Mei 2025"
+      "tanggal": "30 Mei 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP007",
@@ -883,7 +889,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 3,
       "Informasi_Tambahan": "Experience in game design or educational technology.",
       "status": "Disetujui",
-      "tanggal": "02 Juni 2025"
+      "tanggal": "02 Juni 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP008",
@@ -895,7 +902,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 2,
       "Informasi_Tambahan": "Background in IoT and embedded systems.",
       "status": "Menunggu",
-      "tanggal": "04 Juni 2025"
+      "tanggal": "04 Juni 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP009",
@@ -907,7 +915,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 3,
       "Informasi_Tambahan": "Expertise in anomaly detection and big data.",
       "status": "Revisi",
-      "tanggal": "08 Juni 2025"
+      "tanggal": "08 Juni 2025",
+      "komentarDosen": []
     },
     {
       "ID_Proposal": "PRP010",
@@ -919,7 +928,8 @@ export default function SetDummyData() {
       "Jumlah_orang": 2,
       "Informasi_Tambahan": "Interest in blockchain technology and logistics.",
       "status": "Disetujui",
-      "tanggal": "10 Juni 2025"
+      "tanggal": "10 Juni 2025",
+      "komentarDosen": []
     }
   ];
 
