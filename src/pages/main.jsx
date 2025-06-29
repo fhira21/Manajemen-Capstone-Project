@@ -94,7 +94,7 @@ export default function Main({ role }) {
                                     aria-label="Open sidebar"
                                 >
                                     <img 
-                                        src="/assets/icons/icons8-sidebar-open-100.png" 
+                                        src="/assets/icons/icons8-hamburger-128.png" 
                                         alt="Open sidebar"
                                         className="h-6 w-6"
                                     />

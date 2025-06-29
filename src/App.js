@@ -11,11 +11,14 @@ import DashboardDosen from './pages/dosen/dashboardLecturer';
 import DashboardMitra from './pages/mitra/dashboardPartner';
 import Unauthorized from './pages/Unauthorized';
 
+// Halaman dummy data
+import SetDummyData from './pages/SetDummyData';
+
+
 // Halaman mahasiswa
 import LandingPage from './pages/LandingPage';
 import DashboardStudent from './pages/mahasiswa/DashboardStudent';
-import AddCurriculumVitae from './pages/mahasiswa/AddCurriculumVitae';
-import StudentPortofolio from './pages/mahasiswa/StudentPortofolio';
+import CVPortofolio from './pages/mahasiswa/CVPortofolio';
 import ProjectSelection from './pages/mahasiswa/ProjectSelection';
 import ManageAccountStudent from './pages/mahasiswa/ManageAccountStudent';
 import SettingStudent from './pages/mahasiswa/SettingStudent';
@@ -38,6 +41,7 @@ export default function App() {
     <AuthProvider>
         <Routes>
           {/* Public routes */}
+          <Route path="/set-dummy-data" element={<SetDummyData />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
           
@@ -61,8 +65,7 @@ export default function App() {
           }>
             <Route index element={<DashboardStudent />} />
             <Route path="dashboard" element={<DashboardStudent />} />
-            <Route path="add-curriculum-vitae" element={<AddCurriculumVitae />} />
-            <Route path="student-portofolio" element={<StudentPortofolio />} />
+            <Route path="add-curriculum-vitae" element={<CVPortofolio/>} />
             <Route path="project-selection" element={<ProjectSelection />} />
             <Route path="manage-account-student" element={<ManageAccountStudent />} />
             <Route path="setting" element={<SettingStudent />} />
