@@ -60,7 +60,7 @@ export default function ListStudentRegister() {
             </div>
             <div
               className={`py-2 px-2 rounded-2xl shadow-xl ${
-                jomblo === "menunggu"
+                jomblo === "Menunggu"
                   ? "bg-[#E4C900] text-white"
                   : "hover:bg-[#E4C900]"
               }`}
@@ -147,7 +147,7 @@ export default function ListStudentRegister() {
                   onClick={handleStatusOnlySubmit}
                   className="px-3 py-1 rounded bg-green-600 hover:bg-green-700 text-white text-sm"
                 >
-                  Ubah Status
+                  Submit
                 </button>
               </div>
             </div>
