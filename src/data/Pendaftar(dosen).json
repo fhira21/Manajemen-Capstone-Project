@@ -1,0 +1,74 @@
+{
+    "PENDFTAR": [
+        {
+            "ID": "STU001",
+            "Nama": "Andi Pratama",
+            "Proyek": "Sistem Informasi Perpustakaan",
+            "Tanggal Daftar": "2025-06-01",
+            "Status": "Disetujui"
+        },
+        {
+            "ID": "STU002",
+            "Nama": "Budi Santoso",
+            "Proyek": "Aplikasi Manajemen Tugas",
+            "Tanggal Daftar": "2025-06-02",
+            "Status": "Menunggu"
+        },
+        {
+            "ID": "STU003",
+            "Nama": "Citra Dewi",
+            "Proyek": "Website E-Learning",
+            "Tanggal Daftar": "2025-06-03",
+            "Status": "Menunggu"
+        },
+        {
+            "ID": "STU004",
+            "Nama": "Dedi Supriyadi",
+            "Proyek": "Aplikasi Kasir UMKM",
+            "Tanggal Daftar": "2025-06-04",
+            "Status": "Disetujui"
+        },
+        {
+            "ID": "STU005",
+            "Nama": "Eka Lestari",
+            "Proyek": "Sistem Informasi Akademik",
+            "Tanggal Daftar": "2025-06-05",
+            "Status": "Disetujui"
+        },
+        {
+            "ID": "STU006",
+            "Nama": "Farhan Ramadhan",
+            "Proyek": "Platform Booking Lapangan",
+            "Tanggal Daftar": "2025-06-06",
+            "Status": "Menunggu"
+        },
+        {
+            "ID": "STU007",
+            "Nama": "Gita Nuraini",
+            "Proyek": "Monitoring Keuangan Pribadi",
+            "Tanggal Daftar": "2025-06-07",
+            "Status": "Disetujui"
+        },
+        {
+            "ID": "STU008",
+            "Nama": "Hadi Wibowo",
+            "Proyek": "Aplikasi Inventaris Sekolah",
+            "Tanggal Daftar": "2025-06-08",
+            "Status": "Menunggu"
+        },
+        {
+            "ID": "STU009",
+            "Nama": "Indah Permatasari",
+            "Proyek": "Sistem Informasi Kegiatan Kampus",
+            "Tanggal Daftar": "2025-06-09",
+            "Status": "Menunggu"
+        },
+        {
+            "ID": "STU010",
+            "Nama": "Joko Haryanto",
+            "Proyek": "Aplikasi Absensi Karyawan",
+            "Tanggal Daftar": "2025-06-10",
+            "Status": "Disetujui"
+        }
+    ]
+}
