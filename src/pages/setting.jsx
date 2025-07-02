@@ -19,7 +19,7 @@ export default function Settings() {
             case 'Mahasiswa':
                 return <p className="text-lg text-blue-600">Settings untuk Mahasiswa</p>;
             case 'Dosen':
-                return <p className="text-lg text-green-600">Settings untuk Dosen</p>;
+                return <p className="text-lg text-orange-400">Settings untuk Dosen</p>;
             case 'Mitra':
                 return <p className="text-lg text-purple-600">Settings untuk Mitra</p>;
             default:
