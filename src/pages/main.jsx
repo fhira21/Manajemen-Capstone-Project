@@ -125,7 +125,7 @@ export default function Main({ role }) {
                         <div className="flex gap-2 items-center justify-content-center">
                         {/* Right section */}
                         <NavLink
-                            to="setting" 
+                            to="settings" 
                             // onClick={() => setShowProfileModal(true)}
                             className=" flex items-center gap-0 md:gap-2 ">
                             {/* Profile picture button */}

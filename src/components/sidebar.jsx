@@ -49,11 +49,8 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             menuItems = [];
     }
 
-    // Menu yang sama untuk semua role (setting dan logout)
-    const commonMenu = [
-        { to: "setting", icon: "/assets/icons/icons8-setting-100.png", label: "Pengaturan" },
-        { to: "logout", icon: "/assets/icons/icons8-log-out-100.png", label: "Keluar" }
-    ];
+
+
 
     // Handle menu item click
     const handleItemClick = (item) => {
@@ -125,7 +122,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             <ul className="w-full flex flex-col gap-2  p-2">
             {/* Setting Link */}
             <li className="w-full rounded">
-                <NavLink to="setting" className={({isActive}) => 
+                <NavLink to="settings" className={({isActive}) => 
                 `flex items-center gap-2 text-white ${
                     isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
                 } ${!isOpen && 'md:justify-center'}`
