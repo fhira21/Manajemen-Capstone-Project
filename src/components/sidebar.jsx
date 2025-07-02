@@ -15,7 +15,6 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
         { to: "add-curriculum-vitae", icon: "/assets/icons/icons8-cv-100.png", label: "Menambahkan CV" },
         { to: "student-portofolio", icon: "/assets/icons/icons8-add-project-100.png", label: "Portofolio Mahasiswa" },
         { to: "project-selection", icon: "/assets/icons/icons8-project-management-100.png", label: "Pemilihan Proyek" },
-        { to: "manage-account-student", icon: "/assets/icons/icons8-manage-account-100.png", label: "Kelola Akun" }
     ];
     // Menu untuk Dosen
     const dosenMenu = [
@@ -24,7 +23,6 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
         { to: "student-data", icon: "/assets/icons/icons8-student-datar-90.png", label: "Data Mahasiswa" },
         { to: "student-list-register", icon: "/assets/icons/icons8-list-student-register-64.png", label: "Mahasiswa Pendaftar " },
         { to: "progres-project", icon: "/assets/icons/icons8-graph-progress-100.png", label: "Progress Proyek " },
-        { to: "manage-account-lecturer", icon: "/assets/icons/icons8-manage-account-100.png", label: "Kelola Akun" }
     ];
 
     // Menu untuk Mitra
@@ -33,7 +31,6 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
         { to: "submit-new-project", icon: "/assets/icons/icons8-project-management-100.png", label: "Mengajukan Proyek Baru" },
         { to: "student-list-register", icon: "/assets/icons/icons8-list-student-register-64.png", label: "Mahasiswa Pendaftar " },
         { to: "project-selection", icon: "/assets/icons/icons8-list-view-select-proyek-96.png", label: "Pemilihan Proyek" },
-        { to: "manage-account-partner", icon: "/assets/icons/icons8-manage-account-100.png", label: "Kelola Akun" },
     ];
 
     // Pilih menu berdasarkan role

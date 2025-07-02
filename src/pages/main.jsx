@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import Sidebar from "../components/sidebar";
 import { useAuth } from "../context/AuthContext";
 
@@ -78,9 +78,9 @@ export default function Main({ role }) {
             </div>
             
             {/* Main content area */}
-            <div className="flex-1 flex flex-col">
+            <div className=" flex-1 flex flex-col">
                 {/* Header */}
-                <header className="bg-white border-b shadow p-4 ]">
+                <header className="bg-white border-b shadow p-4 ">
                     <div className="flex justify-between items-center">
                         {/* Left section */}
                         <div className="flex items-center">
@@ -122,14 +122,14 @@ export default function Main({ role }) {
                             </div>
                         </div>
                         
+                        <div className="flex gap-2 items-center justify-content-center">
                         {/* Right section */}
-                        <div className="flex items-center gap-0 md:gap-2 ">
-
-
-                            
+                        <NavLink
+                            to="setting" 
+                            // onClick={() => setShowProfileModal(true)}
+                            className=" flex items-center gap-0 md:gap-2 ">
                             {/* Profile picture button */}
-                            <button 
-                                onClick={() => setShowProfileModal(true)}
+                            <div 
                                 className="h-10 w-10 rounded-full overflow-hidden   transition-transform hover:scale-105"
                                 aria-label="View profile"
                             >
@@ -145,7 +145,7 @@ export default function Main({ role }) {
                                         {user?.name?.charAt(0)?.toUpperCase() || "U"}
                                     </div>
                                 )}
-                            </button>
+                            </div>
 
 
                             {/* User profile */}
@@ -163,28 +163,26 @@ export default function Main({ role }) {
                                     <div className="text-sm text-gray-500 capitalize">{role}</div>
                                 </div>
                             </div>
+                        </NavLink>
                             
                             {/* Notification icon */}
-                            <div className="relative">
-                                <button 
-                                    className="p-2 rounded-full hover:bg-secondary relative"
-                                    aria-label="Notifications"
+                            <button 
+                                className="p-2 rounded-full hover:bg-secondary relative"
+                                aria-label="Notifications"
                                 >
                                     <img 
-                                        src="/assets/icons/icons8-notification-100.png" 
-                                        alt=""
-                                        className="h-6 w-6"
-                                    />
-                                    {notificationCount > 0 && (
+                                    src="/assets/icons/icons8-notification-100.png" 
+                                    alt=""
+                                    className="h-6 w-6"
+                                />
+                                {notificationCount > 0 && (
                                         <span className="absolute top-1 right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                                             {notificationCount}
                                         </span>
-                                    )}
-                                </button>
-                            </div>
-                            
-
+                            )}
+                            </button>
                         </div>
+
                     </div>
                 </header>
                 
