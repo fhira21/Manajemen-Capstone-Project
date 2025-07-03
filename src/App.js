@@ -7,8 +7,6 @@ import { AuthRoute } from './context/ProtectedRoute';
 import Login from './pages/login';
 import Register from './pages/register';
 import Main from './pages/main';
-import DashboardDosen from './pages/dosen/dashboardLecturer';
-import DashboardMitra from './pages/mitra/dashboardPartner';
 import Unauthorized from './pages/Unauthorized';
 
 
@@ -19,7 +17,7 @@ import Settings from './pages/setting';
 
 // Halaman mahasiswa
 import LandingPage from './pages/LandingPage';
-import DashboardStudent from './pages/mahasiswa/DashboardStudent';
+import Dashboard from './pages/Dashboard';
 import CurriculumVitae from './pages/mahasiswa/CurriculumVitae';
 import ProjectSelection from './pages/mahasiswa/ProjectSelection';
 
@@ -58,8 +56,8 @@ export default function App() {
               <Main role="Mahasiswa" />
             </ProtectedRoute>
           }>
-            <Route index element={<DashboardStudent />} />
-            <Route path="dashboard" element={<DashboardStudent />} />
+            <Route index element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="curriculum-vitae" element={<CurriculumVitae />} />
             <Route path="project-selection" element={<ProjectSelection />} />
             <Route path="settings" element={<Settings />} />
@@ -71,8 +69,8 @@ export default function App() {
               <Main role="Dosen" />
             </ProtectedRoute>
           }>
-            <Route index element={<DashboardDosen />} />
-            <Route path="dashboard" element={<DashboardDosen />} />
+            <Route index element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="proposal-partner" element={<ProposalPartner />} />
             <Route path="student-data" element={<StudentData />} />
             <Route path="student-list-register" element={<ListStudentRegister />} />
@@ -86,8 +84,8 @@ export default function App() {
               <Main role="Mitra" />
             </ProtectedRoute>
           }>
-            <Route index element={<DashboardMitra />} />
-            <Route path="dashboard" element={<DashboardMitra />} />
+            <Route index element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
             <Route path="submit-new-project" element={<SubmitNewProject />} />
             <Route path="student-list-register" element={<ListStudentRegister />} />
             <Route path="project-selection" element={<ProjectSelection />} />

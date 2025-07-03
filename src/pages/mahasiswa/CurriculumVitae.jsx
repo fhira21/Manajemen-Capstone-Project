@@ -18,13 +18,12 @@ export default function CurriculumVitae() {
 
     // Check if the user has a CV
     useEffect(() => {
+        // Reset states when component mounts or user changes
+        setCvInfo(null);
+        setHasCV(false);
+        
         // Load view preference from localStorage if available
         const savedView = localStorage.getItem('cvViewMode');
-        if (savedView === 'view') {
-            setHasCV(true);
-        } else if (savedView === 'edit') {
-            setHasCV(false);
-        }
         
         // Get the user ID from the authentication context
         let userId = null;
@@ -57,11 +56,20 @@ export default function CurriculumVitae() {
                     if (cv) {
                         console.log('Found CV for user:', cv);
                         setCvInfo(cv);
-                        // Only set hasCV if we didn't already set it from localStorage
-                        if (savedView !== 'edit') {
+                        
+                        // Set view mode based on localStorage or default to view if CV exists
+                        if (savedView === 'edit') {
+                            setHasCV(false);
+                        } else {
                             setHasCV(true);
                         }
+                    } else {
+                        console.log('CV ID exists in user data but no matching CV found');
+                        setHasCV(false);
                     }
+                } else {
+                    console.log('User has no CV ID');
+                    setHasCV(false);
                 }
             } else {
                 console.log('User not found in mahasiswa data');
@@ -379,7 +387,7 @@ export default function CurriculumVitae() {
             ) : (
                 <>
                     {/* Navigation Tabs - Left aligned on large screens, centered on mobile */}
-                    <div className="w-full flex justify-center md:justify-start mb-6 px-2 sm:px-4">
+                    <div className="w-full flex justify-center md:justify-start mb-6 ">
                         <div className="grid grid-cols-2 gap-1 w-full max-w-md md:max-w-xs bg-transparent rounded-md shadow-sm" role="group">
                             <button 
                                 type="button" 
@@ -443,7 +451,7 @@ export default function CurriculumVitae() {
                         </div>
                     </div>
             
-            {/* Show CV data if it exists, otherwise show form */}
+            {/* Show CV data if it exists and user has chosen to view it, otherwise show form */}
             {hasCV && cvInfo ? (
                 <div className="overflow-y-auto w-full border h-full p-5 gap-6 rounded-xl shadow flex flex-col justify-start items-start">
                     <h1 className="w-full text-2xl font-bold border-b pb-3">Curriculum Vitae</h1>
@@ -674,7 +682,7 @@ export default function CurriculumVitae() {
                     {/* Buttons */}
                     <div className="flex flex-col-reverse md:flex-row justify-start w-full gap-4 mt-14">
                         <Button
-                            className="text-black bg-gray-300 hover:bg-gray-500 hover:text-white"  
+                            className="text-black bg-gray-500 hover:bg-gray-600"  
                             onClick={handleOpenModal}
                             label="Hal Lain" 
                             type="button"
