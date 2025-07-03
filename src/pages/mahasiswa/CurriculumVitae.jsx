@@ -5,9 +5,11 @@ import "react-toastify/dist/ReactToastify.css";
 import Button from "../../components/buttonPrimary";
 import cvData from "../../data/cv.json";
 import mahasiswaData from "../../data/mahasiswa.json";
+import { useAuth } from "../../context/AuthContext";
 
-export default function AddCurriculumVitae() {
+export default function CurriculumVitae() {
     const inputClasses = 'w-full border-2 rounded h-10 p-2 focus:outline-none focus:ring-2 focus:ring-secondary';
+    const { user } = useAuth(); // Get user from AuthContext
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [errors, setErrors] = useState({});
     const [hasCV, setHasCV] = useState(false);
@@ -16,25 +18,73 @@ export default function AddCurriculumVitae() {
 
     // Check if the user has a CV
     useEffect(() => {
-        // In a real app, you would get the logged-in user's ID from localStorage/auth context
-        // For demo purposes, we'll assume the user is the one with ID_User: "USR003"
-        const userId = "USR003"; // This would be replaced with actual logged in user ID
-
-        // Find the user data
-        const user = mahasiswaData.MAHASISWA.find(m => m.ID_User === userId);
-        if (user) {
-            setUserInfo(user);
-            
-            // Check if user has CV
-            if (user.ID_CV) {
-                const cv = cvData.CV_Mahasiswa.find(cv => cv.ID_CV === user.ID_CV);
-                if (cv) {
-                    setHasCV(true);
-                    setCvInfo(cv);
+        // Load view preference from localStorage if available
+        const savedView = localStorage.getItem('cvViewMode');
+        if (savedView === 'view') {
+            setHasCV(true);
+        } else if (savedView === 'edit') {
+            setHasCV(false);
+        }
+        
+        // Get the user ID from the authentication context
+        let userId = null;
+        
+        if (user && user.id) {
+            userId = user.id; // Get user ID directly from auth context
+        } else {
+            // If not found in auth context, try from localStorage
+            const storedUser = localStorage.getItem('user');
+            if (storedUser) {
+                try {
+                    const userData = JSON.parse(storedUser);
+                    userId = userData.id;
+                } catch (error) {
+                    console.error('Error parsing stored user data:', error);
                 }
             }
         }
-    }, []);
+        
+        if (userId) {
+            // Find the user data in mahasiswa collection
+            const mahasiswaUser = mahasiswaData.MAHASISWA.find(m => m.ID_User === userId);
+            if (mahasiswaUser) {
+                console.log('Found mahasiswa user:', mahasiswaUser);
+                setUserInfo(mahasiswaUser);
+                
+                // Check if user has CV
+                if (mahasiswaUser.ID_CV) {
+                    const cv = cvData.CV_Mahasiswa.find(cv => cv.ID_CV === mahasiswaUser.ID_CV);
+                    if (cv) {
+                        console.log('Found CV for user:', cv);
+                        setCvInfo(cv);
+                        // Only set hasCV if we didn't already set it from localStorage
+                        if (savedView !== 'edit') {
+                            setHasCV(true);
+                        }
+                    }
+                }
+            } else {
+                console.log('User not found in mahasiswa data');
+            }
+        } else {
+            // Fallback for development/testing purposes
+            console.log('No user ID found, using default');
+            const defaultUserId = "USR003";
+            const defaultUser = mahasiswaData.MAHASISWA.find(m => m.ID_User === defaultUserId);
+            if (defaultUser) {
+                setUserInfo(defaultUser);
+                if (defaultUser.ID_CV) {
+                    const cv = cvData.CV_Mahasiswa.find(cv => cv.ID_CV === defaultUser.ID_CV);
+                    if (cv) {
+                        setCvInfo(cv);
+                        if (savedView !== 'edit') {
+                            setHasCV(true);
+                        }
+                    }
+                }
+            }
+        }
+    }, [user]); // Add user to dependency array
 
     const [additionalInfo, setAdditionalInfo] = useState({
         pengalaman_project: "",
@@ -131,7 +181,7 @@ export default function AddCurriculumVitae() {
         
         const requiredFields = [
             'nama', 'tanggal_lahir', 'gender', 'email', 
-            'telepon', 'email_aktif', 'alamat', 'ringkasan'
+            'telepon', 'email_aktif', 'alamat', 'ringkasan' // ringkasan is the Ringkasan Profil field
         ];
         
         requiredFields.forEach(field => {
@@ -228,25 +278,39 @@ export default function AddCurriculumVitae() {
             });
 
             // In a real app, you would save the CV and update the user's CV ID
+            
+            // Generate a unique CV ID (in a real app, this would come from the backend)
+            const newCvId = `CV${Math.floor(Math.random() * 1000).toString().padStart(3, '0')}`;
+            
+            // Save the CV data with the authenticated user's information
             setHasCV(true);
             setCvInfo({
                 ...finalData,
-                ID_CV: "CV002", // This would be generated by the backend
+                ID_CV: newCvId,
                 Link_Penghubung: finalData.link_penghubung,
+                Ringkasan_Profil: finalData.ringkasan,
                 Pengalaman_Project: finalData.pengalaman_project,
                 Pengalaman_Organisasi: finalData.pengalaman_organisasi,
                 Pengalaman_Pelatihan: finalData.pengalaman_pelatihan,
                 Bidang: finalData.bidang.join(", "),
                 Keterampilan: finalData.keterampilan.join(", ")
             });
+            
+            // Update user info with the new CV ID
             setUserInfo(prev => ({
                 ...prev,
-                ID_CV: "CV002", // This would be generated by the backend
+                ID_CV: newCvId,
                 Nama: finalData.nama,
                 Jenis_Kelamin: finalData.gender,
                 No_Telepon: finalData.telepon,
                 Alamat: finalData.alamat
             }));
+            
+            // In a real app, you would save this to the backend
+            // For this demo, we'll store the CV ID in localStorage to persist between page refreshes
+            if (user && user.id) {
+                localStorage.setItem('userCV', newCvId);
+            }
         } else {
             toast.error("Mohon lengkapi semua field yang wajib diisi", {
                 position: "top-right",
@@ -261,11 +325,32 @@ export default function AddCurriculumVitae() {
         }
     };
 
+    // Function to check if user is authenticated and is a student
+    const isAuthenticatedStudent = () => {
+        if (!user) return false;
+        
+        const role = user.role || localStorage.getItem('userRole');
+        return role === 'Mahasiswa';
+    };
+    
+    // Handle case when user isn't properly authenticated
+    useEffect(() => {
+        if (userInfo === null && !isAuthenticatedStudent()) {
+            toast.error("Anda tidak memiliki akses atau tidak terautentikasi sebagai mahasiswa", {
+                position: "top-right",
+                autoClose: 5000
+            });
+        }
+    }, [userInfo]);
+
+    // Check if user data is loading
+    const isLoading = user === undefined;
+    
     return (
-        <>
+        <div className="w-full flex flex-col justify-center items-start h-full overflow-y-auto">
             <PageTitle
-                title="Add Curriculum Vitae"
-                description="Add a new curriculum vitae to the system. This section allows you to upload and manage CVs for candidates."
+                title="Curriculum Vitae"
+                description="Manage your curriculum vitae data to improve your profile visibility."
             />
 
             {/* Toast Container positioned top-right */}
@@ -286,42 +371,149 @@ export default function AddCurriculumVitae() {
                 }}
             />
             
+            {/* Show loading state if user data is still loading */}
+            {isLoading ? (
+                <div className="flex justify-center items-center w-full h-64">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary"></div>
+                </div>
+            ) : (
+                <>
+                    {/* Navigation Tabs - Left aligned on large screens, centered on mobile */}
+                    <div className="w-full flex justify-center md:justify-start mb-6 px-2 sm:px-4">
+                        <div className="grid grid-cols-2 gap-1 w-full max-w-md md:max-w-xs bg-transparent rounded-md shadow-sm" role="group">
+                            <button 
+                                type="button" 
+                                onClick={() => {
+                                    setHasCV(false);
+                                    localStorage.setItem('cvViewMode', 'edit');
+                                }} 
+                                className={`px-2 sm:px-6 py-3 text-xs sm:text-sm font-medium transition-all duration-200 
+                                    ${!hasCV 
+                                        ? 'bg-secondary text-white shadow-md' 
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} 
+                                    rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50`}
+                            >
+                                <span className="flex justify-center items-center">
+                                    {cvInfo ? (
+                                        <>
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg>
+                                            <span className="whitespace-normal text-center">Edit CV</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                                            </svg>
+                                            <span className="whitespace-normal text-center">Tambah CV</span>
+                                        </>
+                                    )}
+                                </span>
+                            </button>
+                            <button 
+                                type="button" 
+                                onClick={() => {
+                                    // Only allow navigating to view CV if one exists
+                                    if (cvInfo) {
+                                        setHasCV(true);
+                                        localStorage.setItem('cvViewMode', 'view');
+                                    } else {
+                                        // If no CV exists, show a toast notification
+                                        toast.info("Anda belum memiliki CV. Silakan buat CV terlebih dahulu.", {
+                                            position: "top-right",
+                                            autoClose: 3000
+                                        });
+                                    }
+                                }} 
+                                className={`px-2 sm:px-6 py-3 text-xs sm:text-sm font-medium transition-all duration-200
+                                    ${hasCV 
+                                        ? 'bg-secondary text-white shadow-md' 
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}
+                                    rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50`}
+                            >
+                                <span className="flex justify-center items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                    <span className="whitespace-normal text-center">Lihat CV</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+            
             {/* Show CV data if it exists, otherwise show form */}
             {hasCV && cvInfo ? (
                 <div className="overflow-y-auto w-full border h-full p-5 gap-6 rounded-xl shadow flex flex-col justify-start items-start">
-                    <h1 className="w-full text-2xl font-bold border-b pb-3">Curriculum Vitae (CV)</h1>
+                    <h1 className="w-full text-2xl font-bold border-b pb-3">Curriculum Vitae</h1>
                     
-                    {/* Personal Info Section */}
-                    <div className="w-full">
-                        <h2 className="text-xl font-semibold mb-4 text-primary">Informasi Pribadi</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <p className="text-sm font-medium text-gray-500">Nama</p>
-                                <p className="text-base">{userInfo?.Nama || "Tidak Ada Data"}</p>
+                    {/* Main Info Section with Personal Info and Skills side by side */}
+                    <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        {/* Personal Info Section */}
+                        <div className="lg:col-span-2">
+                            <h2 className="text-xl font-semibold mb-4 text-primary">Informasi Pribadi</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p className="text-sm font-medium text-gray-500">Nama</p>
+                                    <p className="text-base">{userInfo?.Nama || "Tidak Ada Data"}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-gray-500">NIM</p>
+                                    <p className="text-base">{userInfo?.NIM || "Tidak Ada Data"}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-gray-500">Jenis Kelamin</p>
+                                    <p className="text-base">{userInfo?.Jenis_Kelamin || "Tidak Ada Data"}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-gray-500">Nomor Telepon</p>
+                                    <p className="text-base">{userInfo?.No_Telepon || "Tidak Ada Data"}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-gray-500">Alamat</p>
+                                    <p className="text-base">{userInfo?.Alamat || "Tidak Ada Data"}</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-medium text-gray-500">Link Penghubung</p>
+                                    <a href={cvInfo.Link_Penghubung} target="_blank" rel="noopener noreferrer" 
+                                    className="text-blue-500 hover:underline">
+                                        {cvInfo.Link_Penghubung}
+                                    </a>
+                                </div>
                             </div>
-                            <div>
-                                <p className="text-sm font-medium text-gray-500">NIM</p>
-                                <p className="text-base">{userInfo?.NIM || "Tidak Ada Data"}</p>
+                        </div>
+                        
+                        {/* Skills Section - Moved to right side */}
+                        <div className="lg:col-span-1">
+                            <h2 className="text-xl font-semibold mb-4 text-primary">Keterampilan</h2>
+                            <div className="border p-4 rounded-lg bg-gray-50">
+                                <p className="text-sm font-medium text-gray-500 mb-2">Bidang</p>
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                    {cvInfo.Bidang.split(',').map((bidang, index) => (
+                                        <span key={index} className="px-3 py-1 bg-primary text-white rounded-full text-sm">
+                                            {bidang.trim()}
+                                        </span>
+                                    ))}
+                                </div>
+                                
+                                <p className="text-sm font-medium text-gray-500 mb-2">Keahlian</p>
+                                <div className="flex flex-wrap gap-2">
+                                    {cvInfo.Keterampilan.split(',').map((skill, index) => (
+                                        <span key={index} className="px-3 py-1 bg-secondary text-white rounded-full text-sm">
+                                            {skill.trim()}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
-                            <div>
-                                <p className="text-sm font-medium text-gray-500">Jenis Kelamin</p>
-                                <p className="text-base">{userInfo?.Jenis_Kelamin || "Tidak Ada Data"}</p>
-                            </div>
-                            <div>
-                                <p className="text-sm font-medium text-gray-500">Nomor Telepon</p>
-                                <p className="text-base">{userInfo?.No_Telepon || "Tidak Ada Data"}</p>
-                            </div>
-                            <div>
-                                <p className="text-sm font-medium text-gray-500">Alamat</p>
-                                <p className="text-base">{userInfo?.Alamat || "Tidak Ada Data"}</p>
-                            </div>
-                            <div>
-                                <p className="text-sm font-medium text-gray-500">Link Penghubung</p>
-                                <a href={cvInfo.Link_Penghubung} target="_blank" rel="noopener noreferrer" 
-                                   className="text-blue-500 hover:underline">
-                                    {cvInfo.Link_Penghubung}
-                                </a>
-                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Profile Summary Section */}
+                    <div className="w-full mt-6">
+                        <h2 className="text-xl font-semibold mb-4 text-primary">Ringkasan Profil</h2>
+                        <div className="border p-4 rounded-lg bg-gray-50">
+                            <p className="text-base">{cvInfo.Ringkasan_Profil || "Tidak Ada Data"}</p>
                         </div>
                     </div>
                     
@@ -344,42 +536,7 @@ export default function AddCurriculumVitae() {
                         </div>
                     </div>
                     
-                    {/* Skills Section */}
-                    <div className="w-full mt-6">
-                        <h2 className="text-xl font-semibold mb-4 text-primary">Bidang & Keterampilan</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <p className="text-sm font-medium text-gray-500">Bidang</p>
-                                <div className="flex flex-wrap gap-2 mt-2">
-                                    {cvInfo.Bidang.split(',').map((bidang, index) => (
-                                        <span key={index} className="px-3 py-1 bg-primary text-white rounded-full text-sm">
-                                            {bidang.trim()}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                            <div>
-                                <p className="text-sm font-medium text-gray-500">Keterampilan</p>
-                                <div className="flex flex-wrap gap-2 mt-2">
-                                    {cvInfo.Keterampilan.split(',').map((skill, index) => (
-                                        <span key={index} className="px-3 py-1 bg-secondary text-white rounded-full text-sm">
-                                            {skill.trim()}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {/* Edit Button */}
-                    <div className="w-full flex justify-end mt-8">
-                        <Button
-                            className="bg-secondary text-white"
-                            onClick={() => setHasCV(false)} // For demo purposes, set to edit mode
-                            label="Edit CV" 
-                            type="button"
-                        />
-                    </div>
+                    {/* Removed Edit Button as it's now in the tab navigation */}
                 </div>
             ) : (
                 /* Form to create CV */
@@ -515,7 +672,7 @@ export default function AddCurriculumVitae() {
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex flex-col-reverse md:flex-row justify-start w-full md:w-[60%] gap-4 mt-14">
+                    <div className="flex flex-col-reverse md:flex-row justify-start w-full gap-4 mt-14">
                         <Button
                             className="text-black bg-gray-300 hover:bg-gray-500 hover:text-white"  
                             onClick={handleOpenModal}
@@ -656,6 +813,8 @@ export default function AddCurriculumVitae() {
                     </div>
                 </div>
             )}
-        </>
+            </>
+            )}
+        </div>
     );
 }

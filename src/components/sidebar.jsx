@@ -12,7 +12,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
     // Menu untuk Mahasiswa
     const mahasiswaMenu = [
         { to: "dashboard", icon: "/assets/icons/icons8-home-100.png", label: "Dashboard" },
-        { to: "add-curriculum-vitae", icon: "/assets/icons/icons8-cv-100.png", label: "Menambahkan CV" },
+        { to: "curriculum-vitae", icon: "/assets/icons/icons8-cv-100.png", label: "Curriculum Vitae" },
         { to: "project-selection", icon: "/assets/icons/icons8-project-management-100.png", label: "Pemilihan Proyek" },
         { to: "settings", icon: "/assets/icons/icons8-setting-100.png", label: "Pengaturan" },
     ];
@@ -77,7 +77,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             <div className={`flex  items-center w-full ${isOpen ? 'p-2 justify-end' : 'justify-center'} `}>
                 <button 
                 onClick={toggleSidebar}
-                className={`hidden md:flex hover:bg-secondary/20  rounded transition-colors ${isOpen ? 'p-2' : 'p-2'}`}
+                className={`hidden md:flex hover:bg-secondary/20      rounded transition-colors ${isOpen ? 'p-2' : 'p-2'}`}
                 aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}>
                 {isOpen ? (
                     <img 
