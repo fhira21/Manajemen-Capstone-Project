@@ -14,6 +14,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
         { to: "dashboard", icon: "/assets/icons/icons8-home-100.png", label: "Dashboard" },
         { to: "add-curriculum-vitae", icon: "/assets/icons/icons8-cv-100.png", label: "Menambahkan CV" },
         { to: "project-selection", icon: "/assets/icons/icons8-project-management-100.png", label: "Pemilihan Proyek" },
+        { to: "settings", icon: "/assets/icons/icons8-setting-100.png", label: "Pengaturan" },
     ];
     // Menu untuk Dosen
     const dosenMenu = [
@@ -119,17 +120,19 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
 
             {/* Navigation menu - bottom items (fixed at bottom) */}
             <ul className="w-full flex flex-col gap-2  p-2">
-            {/* Setting Link */}
-            <li className="w-full rounded">
-                <NavLink to="settings" className={({isActive}) => 
-                `flex items-center gap-2 text-white ${
-                    isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
-                } ${!isOpen && 'md:justify-center'}`
-                }>
-                <img src="/assets/icons/icons8-setting-100.png" alt="Pengaturan Icon" className="w-6 h-6" />
-                {isOpen && <span>Pengaturan</span>}
-                </NavLink>
-            </li>
+            {/* Setting Link - only show for non-Mahasiswa roles */}
+            {role !== 'Mahasiswa' && (
+              <li className="w-full rounded">
+                  <NavLink to="settings" className={({isActive}) => 
+                  `flex items-center gap-2 text-white ${
+                      isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
+                  } ${!isOpen && 'md:justify-center'}`
+                  }>
+                  <img src="/assets/icons/icons8-setting-100.png" alt="Pengaturan Icon" className="w-6 h-6" />
+                  {isOpen && <span>Pengaturan</span>}
+                  </NavLink>
+              </li>
+            )}
             
             {/* Logout Button */}
             <li className="w-full rounded">
