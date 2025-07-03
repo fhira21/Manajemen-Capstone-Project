@@ -58,11 +58,11 @@ export default function Main({ role }) {
                             {!isSidebarOpen && (
                                 <button 
                                     onClick={toggleSidebar} 
-                                    className="md:hidden mr-3 p-2 rounded bg-primary hover:bg-secondary"
+                                    className="md:hidden mr-3 p-2 rounded bg-primary hover:bg-primary/70"
                                     aria-label="Open sidebar"
                                 >
                                     <img 
-                                        src="/assets/icons/icons8-sidebar-open-100.png" 
+                                        src="/assets/icons/icons8-hamburger-128.png" 
                                         alt="Open sidebar"
                                         className="h-6 w-6"
                                     />

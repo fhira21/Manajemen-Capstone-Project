@@ -77,7 +77,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             <div className={`flex  items-center w-full ${isOpen ? 'p-2 justify-end' : 'justify-center'} `}>
                 <button 
                 onClick={toggleSidebar}
-                className={`hidden md:flex hover:bg-secondary rounded-md transition-colors ${isOpen ? 'p-2' : 'p-2'}`}
+                className={`hidden md:flex hover:bg-secondary/20  rounded transition-colors ${isOpen ? 'p-2' : 'p-2'}`}
                 aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}>
                 {isOpen ? (
                     <img 
