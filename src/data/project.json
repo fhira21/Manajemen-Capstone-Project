@@ -7,9 +7,41 @@
       "ID_Mitra": "MTR001",
       "ID_Mahasiswa": ["MHS001", "MHS005", "MHS009"],
       "Nama_Project": "Website Redesign for E-commerce",
-      "Tgl_Update_Project": "2024-05-15",
-      "Tgl_Rapat": "2024-05-10",
-      "Status": "Perencanaan"
+      "Tgl_Update_Project": "2024-06-28",
+      "Tgl_Rapat": "2024-07-10",
+      "Status": "Pengembangan",
+      "Deskripsi": "Redesign e-commerce website untuk meningkatkan pengalaman pengguna dan meningkatkan konversi penjualan",
+      "Target_Selesai": "2024-08-15",
+      "Progres": 65,
+      "Prioritas": "Tinggi",
+      "Teknologi": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+      "Sprint_Aktif": "Sprint 3",
+      "Total_Sprint": 5,
+      "Tgl_Mulai": "2024-05-01",
+      "Repository": "github.com/ecommerce-redesign/frontend",
+      "KPI": {
+        "Code_Quality": 85,
+        "On_Time_Delivery": 92,
+        "Test_Coverage": 78
+      },
+      "Tim_Lead": "MHS001",
+      "Milestone": [
+        {
+          "Nama": "Design Phase",
+          "Status": "Completed",
+          "Tanggal": "2024-05-15"
+        },
+        {
+          "Nama": "Frontend Development",
+          "Status": "In Progress",
+          "Tanggal": "2024-07-15"
+        },
+        {
+          "Nama": "Testing & QA",
+          "Status": "Not Started",
+          "Tanggal": "2024-08-01"
+        }
+      ]
     },
     {
       "ID_Project": "PRJ002",
@@ -18,9 +50,13 @@
       "ID_Mitra": "MTR002",
       "ID_Mahasiswa": ["MHS002", "MHS006"],
       "Nama_Project": "Mobile App for Event Management",
-      "Tgl_Update_Project": "2024-05-20",
-      "Tgl_Rapat": "2024-05-15",
-      "Status": "Pengembangan"
+      "Tgl_Update_Project": "2024-06-25",
+      "Tgl_Rapat": "2024-07-05",
+      "Status": "Pengembangan",
+      "Deskripsi": "Aplikasi mobile untuk manajemen event dan konferensi dengan fitur registrasi, pembayaran, dan live streaming",
+      "Target_Selesai": "2024-09-01",
+      "Progres": 42,
+      "Prioritas": "Medium"
     },
     {
       "ID_Project": "PRJ003",
@@ -62,9 +98,13 @@
       "ID_Mitra": "MTR006",
       "ID_Mahasiswa": ["MHS001", "MHS002", "MHS003", "MHS004"],
       "Nama_Project": "Telemedicine Platform Prototype",
-      "Tgl_Update_Project": "2024-06-05",
-      "Tgl_Rapat": "2024-06-01",
-      "Status": "Pengembangan"
+      "Tgl_Update_Project": "2024-06-29",
+      "Tgl_Rapat": "2024-07-08",
+      "Status": "Pengembangan",
+      "Deskripsi": "Platform telemedicine dengan fitur konsultasi video, manajemen resep, dan integrasi dengan asuransi kesehatan",
+      "Target_Selesai": "2024-10-15",
+      "Progres": 35,
+      "Prioritas": "Tinggi"
     },
     {
       "ID_Project": "PRJ007",

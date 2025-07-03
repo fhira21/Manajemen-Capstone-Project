@@ -7,8 +7,70 @@
       "User": "MHS001",
       "Status": "Open",
       "Tgl_Buat": "2024-05-16",
-      "Tgl_Update": "2024-05-17",
-      "Label": "Bug"
+      "Tgl_Update": "2024-06-17",
+      "Label": "Bug",
+      "Prioritas": "High",
+      "Deskripsi": "UI tidak responsif pada perangkat mobile dengan resolusi rendah. Elemen tumpang tindih pada viewport < 360px.",
+      "Estimasi": "2 hari",
+      "Assignee": "MHS001",
+      "Progres": 60,
+      "Kompleksitas": "Medium",
+      "Sprint": "Sprint 2",
+      "Tags": ["Mobile", "UI", "Frontend"]
+    },
+    {
+      "ID_Issue": "ISS021",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Implement dark mode",
+      "User": "MHS005",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-10",
+      "Tgl_Update": "2024-06-20",
+      "Label": "Feature Request",
+      "Prioritas": "Medium",
+      "Deskripsi": "Implement dark mode theme across the application with user preference saving",
+      "Estimasi": "4 hari",
+      "Assignee": "MHS005",
+      "Progres": 25,
+      "Kompleksitas": "Medium",
+      "Sprint": "Sprint 3",
+      "Tags": ["UI", "Theme", "Frontend"]
+    },
+    {
+      "ID_Issue": "ISS022",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Optimize product image loading",
+      "User": "MHS009",
+      "Status": "Closed",
+      "Tgl_Buat": "2024-05-25",
+      "Tgl_Update": "2024-06-15",
+      "Label": "Improvement",
+      "Prioritas": "Medium",
+      "Deskripsi": "Implement lazy loading and image optimization to improve page load time",
+      "Estimasi": "3 hari",
+      "Assignee": "MHS009",
+      "Progres": 100,
+      "Kompleksitas": "Low",
+      "Sprint": "Sprint 2",
+      "Tags": ["Performance", "Frontend", "Images"]
+    },
+    {
+      "ID_Issue": "ISS023",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Add product filtering by category",
+      "User": "MHS001",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-18",
+      "Tgl_Update": "2024-06-30",
+      "Label": "Feature Request",
+      "Prioritas": "High",
+      "Deskripsi": "Add filtering functionality to product listing pages by category, price, and ratings",
+      "Estimasi": "5 hari",
+      "Assignee": "MHS001",
+      "Progres": 15,
+      "Kompleksitas": "High",
+      "Sprint": "Sprint 3",
+      "Tags": ["Filtering", "Frontend", "UX"]
     },
     {
       "ID_Issue": "ISS002",
@@ -37,8 +99,12 @@
       "User": "MTR001",
       "Status": "Open",
       "Tgl_Buat": "2024-05-18",
-      "Tgl_Update": "2024-05-19",
-      "Label": "Feature Request"
+      "Tgl_Update": "2024-06-25",
+      "Label": "Feature Request",
+      "Prioritas": "Medium",
+      "Deskripsi": "Tambahkan kategori produk baru 'Elektronik' dengan subkategori Smartphone, Laptop, dan Aksesoris",
+      "Estimasi": "3 hari",
+      "Assignee": "MHS005"
     },
     {
       "ID_Issue": "ISS005",
@@ -57,8 +123,12 @@
       "User": "MHS001",
       "Status": "Open",
       "Tgl_Buat": "2024-06-06",
-      "Tgl_Update": "2024-06-07",
-      "Label": "Bug"
+      "Tgl_Update": "2024-06-30",
+      "Label": "Bug",
+      "Prioritas": "Critical",
+      "Deskripsi": "Integrasi dengan payment gateway Midtrans gagal pada endpoint /checkout. Error 500 pada saat finalisasi pembayaran.",
+      "Estimasi": "1 hari",
+      "Assignee": "MHS001"
     },
     {
       "ID_Issue": "ISS007",
@@ -99,6 +169,111 @@
       "Tgl_Buat": "2024-06-26",
       "Tgl_Update": "2024-06-27",
       "Label": "Documentation"
+    },
+    {
+      "ID_Issue": "ISS011",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Implement secure checkout feature",
+      "User": "MHS005",
+      "Status": "Open",
+      "Tgl_Buat": "2024-05-19",
+      "Tgl_Update": "2024-05-20",
+      "Label": "Feature Request"
+    },
+    {
+      "ID_Issue": "ISS012",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Fix CSS styling on product cards",
+      "User": "MHS009",
+      "Status": "Closed",
+      "Tgl_Buat": "2024-05-21",
+      "Tgl_Update": "2024-06-22",
+      "Label": "Bug",
+      "Prioritas": "Medium",
+      "Deskripsi": "Styling produk cards tidak konsisten, overflow text pada title produk, dan masalah spacing pada harga.",
+      "Estimasi": "1 hari",
+      "Assignee": "MHS009",
+      "Solusi": "Fixed dengan menambahkan max-height dan text-overflow: ellipsis pada card title."
+    },
+    {
+      "ID_Issue": "ISS013",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Update API documentation for order endpoints",
+      "User": "MHS001",
+      "Status": "Closed",
+      "Tgl_Buat": "2024-05-23",
+      "Tgl_Update": "2024-05-24",
+      "Label": "Documentation"
+    },
+    {
+      "ID_Issue": "ISS014",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Fix search functionality in header",
+      "User": "MHS009",
+      "Status": "Open",
+      "Tgl_Buat": "2024-05-25",
+      "Tgl_Update": "2024-05-26",
+      "Label": "Bug"
+    },
+    {
+      "ID_Issue": "ISS015",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Optimize database queries for product listings",
+      "User": "MHS001",
+      "Status": "Open",
+      "Tgl_Buat": "2024-05-27",
+      "Tgl_Update": "2024-05-28",
+      "Label": "Performance"
+    },
+    {
+      "ID_Issue": "ISS016",
+      "ID_Project": "PRJ006",
+      "Judul_Issue": "Add user authentication module",
+      "User": "MHS001",
+      "Status": "Closed",
+      "Tgl_Buat": "2024-06-01",
+      "Tgl_Update": "2024-06-02",
+      "Label": "Feature Request"
+    },
+    {
+      "ID_Issue": "ISS017",
+      "ID_Project": "PRJ006",
+      "Judul_Issue": "Fix appointment scheduling logic",
+      "User": "MHS002",
+      "Status": "Closed",
+      "Tgl_Buat": "2024-06-03",
+      "Tgl_Update": "2024-06-04",
+      "Label": "Bug"
+    },
+    {
+      "ID_Issue": "ISS018",
+      "ID_Project": "PRJ006",
+      "Judul_Issue": "Implement video call feature",
+      "User": "MHS003",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-05",
+      "Tgl_Update": "2024-06-06",
+      "Label": "Feature Request"
+    },
+    {
+      "ID_Issue": "ISS019",
+      "ID_Project": "PRJ006",
+      "Judul_Issue": "Add prescription management module",
+      "User": "MHS004",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-08",
+      "Tgl_Update": "2024-06-09",
+      "Label": "Feature Request"
+    },
+    {
+      "ID_Issue": "ISS020",
+      "ID_Project": "PRJ006",
+      "Judul_Issue": "Create dashboard for doctors",
+      "User": "MHS004",
+      "Status": "Open",
+      "Tgl_Buat": "2024-06-10",
+      "Tgl_Update": "2024-06-11",
+      "Label": "Feature Request"
     }
   ]
 }
