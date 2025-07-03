@@ -1,7 +1,8 @@
-
-
-
 import { useState, useEffect } from 'react';
+
+
+import PageTitle from '../components/PageTitle';
+
 
 export default function Settings() {
     const [userRole, setUserRole] = useState(null);
@@ -28,11 +29,17 @@ export default function Settings() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center h-full bg-gray-100">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-                <h1 className="text-2xl font-bold mb-4 text-center">Settings</h1>
-                {renderContent()}
+        <>
+            <PageTitle
+                title="Settings"
+                description="Pengaturan untuk pengguna"
+            />
+            <div className="flex flex-col items-center justify-center h-full bg-gray-100">
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                    <h1 className="text-2xl font-bold mb-4 text-center">Settings</h1>
+                    {renderContent()}
+                </div>
             </div>
-        </div>
+        </>
     );
 }
