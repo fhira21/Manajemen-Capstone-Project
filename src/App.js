@@ -21,7 +21,6 @@ import Settings from './pages/setting';
 import LandingPage from './pages/LandingPage';
 import DashboardStudent from './pages/mahasiswa/DashboardStudent';
 import AddCurriculumVitae from './pages/mahasiswa/AddCurriculumVitae';
-import StudentPortofolio from './pages/mahasiswa/StudentPortofolio';
 import ProjectSelection from './pages/mahasiswa/ProjectSelection';
 
 // Halaman dosen
@@ -62,7 +61,6 @@ export default function App() {
             <Route index element={<DashboardStudent />} />
             <Route path="dashboard" element={<DashboardStudent />} />
             <Route path="add-curriculum-vitae" element={<AddCurriculumVitae />} />
-            <Route path="student-portofolio" element={<StudentPortofolio />} />
             <Route path="project-selection" element={<ProjectSelection />} />
             <Route path="settings" element={<Settings />} />
           </Route>
