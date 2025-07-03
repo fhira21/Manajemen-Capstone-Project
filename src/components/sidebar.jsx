@@ -13,7 +13,6 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
     const mahasiswaMenu = [
         { to: "dashboard", icon: "/assets/icons/icons8-home-100.png", label: "Dashboard" },
         { to: "add-curriculum-vitae", icon: "/assets/icons/icons8-cv-100.png", label: "Menambahkan CV" },
-        { to: "student-portofolio", icon: "/assets/icons/icons8-add-project-100.png", label: "Portofolio Mahasiswa" },
         { to: "project-selection", icon: "/assets/icons/icons8-project-management-100.png", label: "Pemilihan Proyek" },
     ];
     // Menu untuk Dosen
