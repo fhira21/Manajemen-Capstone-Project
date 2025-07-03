@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import PageTitle from "../../components/PageTitle";
 import { toast, ToastContainer } from "react-toastify";
@@ -237,7 +238,7 @@ export default function AddCurriculumVitae() {
                 }}
             />
 
-            <div className="w-full border h-max p-5 gap-6 rounded-xl shadow flex flex-col justify-start items-center">
+            <div className="overflow-y-auto w-full border h-full p-5 gap-10 rounded-xl shadow flex flex-col justify-start items-center">
                 <h1 className="w-full text-2xl font-bold">Menambahkan Curriculum Vitae (CV)</h1>
 
                 <form onSubmit={handleSubmit}
@@ -369,9 +370,9 @@ export default function AddCurriculumVitae() {
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex flex-col-reverse md:flex-row justify-start w-full md:w-[60%] gap-4 mt-4">
+                    <div className="flex flex-col-reverse md:flex-row justify-start w-full md:w-[60%] gap-4 mt-14">
                         <Button
-                            className="bg-gray-300 hover:bg-gray-600"  
+                            className="text-black bg-gray-300 hover:bg-gray-500 hover:text-white"  
                             onClick={handleOpenModal}
                             label="Hal Lain" 
                             type="button"
@@ -394,11 +395,15 @@ export default function AddCurriculumVitae() {
                     onClick={handleCloseModal}
                 >
                     <div 
-                        className="bg-white rounded-lg p-4 w-full max-w-2xl shadow-xl" 
+                        className=" overflow-y-auto flex items-center justify-center" 
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Modal Header */}
-                        <div className="flex justify-between items-center">
+
+                        <div className="overflow-y-auto flex items-center justify-start w-max h-[90vh] p-10">
+
+                        <div className=" overflow-y-auto w-max h-full  p-10 rounded-lg rounded bg-white flex flex-col items-center justify-start">
+                        <div className="w-full flex justify-between items-center">
                             <h2 className="text-lg font-semibold">Informasi Tambahan CV <span className="text-red-500">*</span></h2>
                             <button 
                                 onClick={handleCloseModal}
@@ -489,7 +494,7 @@ export default function AddCurriculumVitae() {
                         </div>
                     
                         {/* Modal Footer */}
-                        <div className="flex flex-col gap-2 items-center mt-4">
+                        <div className="flex w-full  flex-col gap-2 items-center mt-4">
                             <Button
                                 className="bg-secondary w-full"
                                 onClick={handleSaveAdditionalInfo} 
@@ -503,6 +508,8 @@ export default function AddCurriculumVitae() {
                                 type="button"
                             />
                         </div>
+                    </div>
+                    </div>
                     </div>
                 </div>
             )}
