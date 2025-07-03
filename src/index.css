@@ -11,9 +11,9 @@ body {
   /* ...other styles... */
 }
 
-* {
+/* * {
      border: 1px solid purple;
-}
+} */
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
