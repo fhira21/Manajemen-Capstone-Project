@@ -3,91 +3,101 @@
     {
       "ID_CV": "CV001",
       "Link_Penghubung": "https://linkedin.com/in/alice",
+      "Ringkasan_Profil": "Mahasiswa Teknik Informatika yang berpengalaman dalam pengembangan web dengan fokus pada teknologi modern. Memiliki ketertarikan pada desain UI/UX dan pengembangan aplikasi berbasis React. Selama masa studi, aktif mengikuti berbagai proyek pengembangan perangkat lunak baik secara individu maupun tim, serta terbiasa menggunakan metodologi Agile. Memiliki kemampuan komunikasi yang baik dan mampu bekerja di bawah tekanan untuk menyelesaikan proyek tepat waktu. Berkomitmen untuk terus belajar dan mengikuti perkembangan teknologi terbaru di bidang web development.",
       "Pengalaman_Project": "Created a web application for task management.",
       "Pengalaman_Organisasi": "Secretary of Student Council.",
       "Pengalaman_Pelatihan": "Attended 'Full Stack Web Development' bootcamp.",
-      "Bidang": "Web Development",
+      "Bidang": "Web Development, UI/UX Design, Software Engineering",
       "Keterampilan": "React, Node.js, MongoDB"
     },
     {
       "ID_CV": "CV002",
       "Link_Penghubung": "https://github.com/dianaprince",
+      "Ringkasan_Profil": "Pengembang aplikasi mobile dengan pengalaman dalam Flutter dan Firebase. Memiliki ketertarikan dalam pengembangan aplikasi yang berfokus pada kesehatan dan kebugaran. Berpengalaman dalam merancang dan mengimplementasikan fitur-fitur aplikasi yang user-friendly serta melakukan pengujian aplikasi secara menyeluruh. Aktif mengikuti komunitas pengembang mobile dan sering berbagi pengetahuan melalui seminar dan workshop. Selalu berusaha untuk meningkatkan kualitas aplikasi melalui feedback pengguna dan pembaruan teknologi.",
       "Pengalaman_Project": "Developed a mobile app for fitness tracking.",
       "Pengalaman_Organisasi": "Head of Public Relations for IT Club.",
       "Pengalaman_Pelatihan": "Completed 'Mobile App Design' course.",
-      "Bidang": "Mobile Development",
+      "Bidang": "Mobile Development, Web Development, UI/UX Design",
       "Keterampilan": "Flutter, Dart, Firebase"
     },
     {
       "ID_CV": "CV003",
       "Link_Penghubung": "https://gitlab.com/frankenstein",
+      "Ringkasan_Profil": "Data scientist dengan kemampuan analisis data dan visualisasi menggunakan Python. Berminat pada pengembangan sistem berbasis kecerdasan buatan dan machine learning. Memiliki pengalaman dalam mengolah data besar, membangun model prediktif, serta melakukan evaluasi performa model. Terbiasa bekerja dengan tim multidisiplin dan mampu menjelaskan hasil analisis secara jelas kepada pihak non-teknis. Selalu mengikuti perkembangan terbaru di bidang data science dan aktif dalam komunitas data.",
       "Pengalaman_Project": "Built a data visualization dashboard.",
       "Pengalaman_Organisasi": "Treasurer of Robotics Club.",
       "Pengalaman_Pelatihan": "Certified in 'Data Science with Python'.",
-      "Bidang": "Data Science",
+      "Bidang": "Data Science, Artificial Intelligence, Machine Learning",
       "Keterampilan": "Python, Pandas, Matplotlib"
     },
     {
       "ID_CV": "CV004",
       "Link_Penghubung": "https://linkedin.com/in/harrypotter",
+      "Ringkasan_Profil": "Game developer dengan pengalaman dalam Unity dan pemodelan 3D. Fokus pada pengembangan game dengan gameplay inovatif dan pengalaman pengguna yang menarik. Mampu merancang konsep game dari tahap awal hingga implementasi akhir, serta melakukan pengujian untuk memastikan kualitas produk. Aktif berpartisipasi dalam kompetisi game development dan sering berkolaborasi dengan desainer grafis serta musisi untuk menciptakan game yang imersif. Selalu berusaha menghadirkan pengalaman bermain yang unik dan menyenangkan.",
       "Pengalaman_Project": "Designed and implemented a game using Unity.",
       "Pengalaman_Organisasi": "Member of Game Development Community.",
       "Pengalaman_Pelatihan": "Participated in 'Game Design Fundamentals' workshop.",
-      "Bidang": "Game Development",
+      "Bidang": "Game Development, 3D Modeling, UI/UX Design",
       "Keterampilan": "Unity, C#, Blender"
     },
     {
       "ID_CV": "CV005",
       "Link_Penghubung": "https://github.com/iriswest",
+      "Ringkasan_Profil": "Front-end developer dengan fokus pada desain responsif dan pengalaman pengguna. Memiliki ketertarikan dalam pengembangan website e-commerce dan aplikasi web modern. Berpengalaman dalam mengimplementasikan desain antarmuka yang menarik dan mudah digunakan, serta mengoptimalkan performa website untuk berbagai perangkat. Aktif mengikuti tren terbaru di bidang front-end development dan sering melakukan eksperimen dengan teknologi baru. Memiliki kemampuan kolaborasi yang baik dalam tim lintas fungsi.",
       "Pengalaman_Project": "Created a responsive e-commerce website.",
       "Pengalaman_Organisasi": "Publicity Chair for Photography Club.",
       "Pengalaman_Pelatihan": "Finished 'Front-End Web Development' specialization.",
-      "Bidang": "Web Development",
+      "Bidang": "Web Development, UI/UX Design, E-Commerce",
       "Keterampilan": "HTML, CSS, JavaScript, React"
     },
     {
       "ID_CV": "CV006",
       "Link_Penghubung": "https://gitlab.com/jacksparrow",
+      "Ringkasan_Profil": "Spesialis keamanan siber dengan keahlian dalam pengembangan sistem autentikasi yang aman. Tertarik dalam bidang keamanan jaringan dan kriptografi. Berpengalaman dalam melakukan audit keamanan, mengidentifikasi kerentanan sistem, serta memberikan solusi untuk meningkatkan perlindungan data. Aktif mengikuti pelatihan dan sertifikasi di bidang cybersecurity, serta berkontribusi dalam komunitas keamanan siber. Selalu berupaya menjaga integritas dan kerahasiaan data dalam setiap proyek yang dikerjakan.",
       "Pengalaman_Project": "Developed a secure authentication system.",
       "Pengalaman_Organisasi": "Security Lead for Cyber Security Club.",
       "Pengalaman_Pelatihan": "Completed 'Cybersecurity Basics' certification.",
-      "Bidang": "Cybersecurity",
+      "Bidang": "Cybersecurity, Network Security, Cryptography",
       "Keterampilan": "Network Security, Cryptography, Linux"
     },
     {
       "ID_CV": "CV007",
       "Link_Penghubung": "https://linkedin.com/in/katnisseverdeen",
+      "Ringkasan_Profil": "Peneliti bidang AI dengan fokus pada deep learning dan NLP. Memiliki pengalaman dalam pengembangan model machine learning untuk analisis sentimen dan pemrosesan bahasa alami. Terbiasa melakukan riset, eksperimen, dan publikasi ilmiah di bidang kecerdasan buatan. Aktif berkolaborasi dengan tim peneliti lain dan mengikuti konferensi internasional untuk memperluas wawasan. Berkomitmen untuk mengembangkan solusi AI yang dapat memberikan dampak positif bagi masyarakat.",
       "Pengalaman_Project": "Implemented a machine learning model for sentiment analysis.",
       "Pengalaman_Organisasi": "Research Assistant at AI Lab.",
       "Pengalaman_Pelatihan": "Attended 'Deep Learning Specialization'.",
-      "Bidang": "Artificial Intelligence",
+      "Bidang": "Artificial Intelligence, Machine Learning, Natural Language Processing",
       "Keterampilan": "TensorFlow, Keras, Python"
     },
     {
       "ID_CV": "CV008",
       "Link_Penghubung": "https://github.com/lukeskywalker",
+      "Ringkasan_Profil": "Pengembang blockchain dengan pengalaman dalam smart contracts dan decentralized applications. Berminat dalam teknologi blockchain untuk sistem voting dan tata kelola digital. Berpengalaman dalam merancang dan mengimplementasikan solusi berbasis blockchain yang aman dan transparan. Aktif mengikuti perkembangan ekosistem blockchain global dan sering terlibat dalam proyek open source. Memiliki kemampuan analisis yang kuat dalam menilai keamanan dan efisiensi sistem terdesentralisasi.",
       "Pengalaman_Project": "Built a blockchain-based voting system.",
       "Pengalaman_Organisasi": "Blockchain Enthusiast Community Member.",
       "Pengalaman_Pelatihan": "Certified in 'Blockchain Development'.",
-      "Bidang": "Blockchain",
+      "Bidang": "Blockchain, Smart Contracts, Decentralized Applications",
       "Keterampilan": "Solidity, Ethereum, Web3.js"
     },
     {
       "ID_CV": "CV009",
       "Link_Penghubung": "https://gitlab.com/mulan",
+      "Ringkasan_Profil": "UI/UX Designer dengan fokus pada pengalaman pengguna yang intuitif dan estetika visual yang menarik. Memiliki keahlian dalam prototyping dan wireframing untuk aplikasi mobile. Berpengalaman dalam melakukan riset pengguna, mengembangkan konsep desain, serta menguji usability aplikasi. Aktif berpartisipasi dalam berbagai proyek desain dan sering berkolaborasi dengan developer untuk memastikan implementasi desain berjalan optimal. Selalu berusaha menciptakan solusi desain yang inovatif dan efektif.",
       "Pengalaman_Project": "Designed a UI/UX for a mobile application.",
       "Pengalaman_Organisasi": "Creative Director for Design Club.",
       "Pengalaman_Pelatihan": "Completed 'UI/UX Design Masterclass'.",
-      "Bidang": "UI/UX Design",
+      "Bidang": "UI/UX Design, Mobile Design, Prototyping",
       "Keterampilan": "Figma, Sketch, Adobe XD"
     },
     {
       "ID_CV": "CV010",
       "Link_Penghubung": "https://linkedin.com/in/neoanderson",
+      "Ringkasan_Profil": "Solutions architect dengan keahlian dalam layanan cloud computing dan pengembangan infrastruktur skala besar. Fokus pada pengembangan solusi yang skalabel, aman, dan cost-effective. Berpengalaman dalam merancang arsitektur sistem yang handal serta mengelola migrasi data ke cloud. Aktif memberikan pelatihan dan konsultasi terkait cloud computing kepada berbagai organisasi. Selalu mengikuti perkembangan teknologi cloud terbaru dan berkomitmen untuk memberikan solusi terbaik bagi klien.",
       "Pengalaman_Project": "Developed a cloud-based data backup solution.",
       "Pengalaman_Organisasi": "Cloud Computing Interest Group Leader.",
       "Pengalaman_Pelatihan": "AWS Certified Solutions Architect.",
-      "Bidang": "Cloud Computing",
+      "Bidang": "Cloud Computing, Infrastructure, Security",
       "Keterampilan": "AWS, Azure, Google Cloud"
     }
   ]

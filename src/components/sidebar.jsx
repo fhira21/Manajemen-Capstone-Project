@@ -12,10 +12,9 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
     // Menu untuk Mahasiswa
     const mahasiswaMenu = [
         { to: "dashboard", icon: "/assets/icons/icons8-home-100.png", label: "Dashboard" },
-        { to: "add-curriculum-vitae", icon: "/assets/icons/icons8-cv-100.png", label: "Menambahkan CV" },
-        { to: "student-portofolio", icon: "/assets/icons/icons8-add-project-100.png", label: "Portofolio Mahasiswa" },
+        { to: "curriculum-vitae", icon: "/assets/icons/icons8-cv-100.png", label: "Curriculum Vitae" },
         { to: "project-selection", icon: "/assets/icons/icons8-project-management-100.png", label: "Pemilihan Proyek" },
-        { to: "manage-account-student", icon: "/assets/icons/icons8-manage-account-100.png", label: "Kelola Akun" }
+        { to: "settings", icon: "/assets/icons/icons8-setting-100.png", label: "Pengaturan" },
     ];
     // Menu untuk Dosen
     const dosenMenu = [
@@ -24,7 +23,6 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
         { to: "student-data", icon: "/assets/icons/icons8-student-datar-90.png", label: "Data Mahasiswa" },
         { to: "student-list-register", icon: "/assets/icons/icons8-list-student-register-64.png", label: "Mahasiswa Pendaftar " },
         { to: "progres-project", icon: "/assets/icons/icons8-graph-progress-100.png", label: "Progress Proyek " },
-        { to: "manage-account-lecturer", icon: "/assets/icons/icons8-manage-account-100.png", label: "Kelola Akun" }
     ];
 
     // Menu untuk Mitra
@@ -33,7 +31,6 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
         { to: "submit-new-project", icon: "/assets/icons/icons8-project-management-100.png", label: "Mengajukan Proyek Baru" },
         { to: "student-list-register", icon: "/assets/icons/icons8-list-student-register-64.png", label: "Mahasiswa Pendaftar " },
         { to: "project-selection", icon: "/assets/icons/icons8-list-view-select-proyek-96.png", label: "Pemilihan Proyek" },
-        { to: "manage-account-partner", icon: "/assets/icons/icons8-manage-account-100.png", label: "Kelola Akun" },
     ];
 
     // Pilih menu berdasarkan role
@@ -52,11 +49,8 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             menuItems = [];
     }
 
-    // Menu yang sama untuk semua role (setting dan logout)
-    const commonMenu = [
-        { to: "setting", icon: "/assets/icons/icons8-setting-100.png", label: "Pengaturan" },
-        { to: "logout", icon: "/assets/icons/icons8-log-out-100.png", label: "Keluar" }
-    ];
+
+
 
     // Handle menu item click
     const handleItemClick = (item) => {
@@ -83,7 +77,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             <div className={`flex  items-center w-full ${isOpen ? 'p-2 justify-end' : 'justify-center'} `}>
                 <button 
                 onClick={toggleSidebar}
-                className={`hidden md:flex hover:bg-secondary rounded-md transition-colors ${isOpen ? 'p-2' : 'p-2'}`}
+                className={`hidden md:flex hover:bg-secondary/20      rounded transition-colors ${isOpen ? 'p-2' : 'p-2'}`}
                 aria-label={isOpen ? "Collapse sidebar" : "Expand sidebar"}>
                 {isOpen ? (
                     <img 
@@ -126,17 +120,19 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
 
             {/* Navigation menu - bottom items (fixed at bottom) */}
             <ul className="w-full flex flex-col gap-2  p-2">
-            {/* Setting Link */}
-            <li className="w-full rounded">
-                <NavLink to="setting" className={({isActive}) => 
-                `flex items-center gap-2 text-white ${
-                    isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
-                } ${!isOpen && 'md:justify-center'}`
-                }>
-                <img src="/assets/icons/icons8-setting-100.png" alt="Pengaturan Icon" className="w-6 h-6" />
-                {isOpen && <span>Pengaturan</span>}
-                </NavLink>
-            </li>
+            {/* Setting Link - only show for non-Mahasiswa roles */}
+            {role !== 'Mahasiswa' && (
+              <li className="w-full rounded">
+                  <NavLink to="settings" className={({isActive}) => 
+                  `flex items-center gap-2 text-white ${
+                      isActive ? 'bg-secondary font-bold p-2 rounded' : 'hover:bg-secondary p-2 rounded'
+                  } ${!isOpen && 'md:justify-center'}`
+                  }>
+                  <img src="/assets/icons/icons8-setting-100.png" alt="Pengaturan Icon" className="w-6 h-6" />
+                  {isOpen && <span>Pengaturan</span>}
+                  </NavLink>
+              </li>
+            )}
             
             {/* Logout Button */}
             <li className="w-full rounded">

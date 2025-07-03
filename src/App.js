@@ -11,27 +11,26 @@ import DashboardDosen from './pages/dosen/dashboardLecturer';
 import DashboardMitra from './pages/mitra/dashboardPartner';
 import Unauthorized from './pages/Unauthorized';
 
+
+
+// Halaman umum
+import Settings from './pages/setting';
+
+
 // Halaman mahasiswa
 import LandingPage from './pages/LandingPage';
 import DashboardStudent from './pages/mahasiswa/DashboardStudent';
-import AddCurriculumVitae from './pages/mahasiswa/AddCurriculumVitae';
-import StudentPortofolio from './pages/mahasiswa/StudentPortofolio';
+import CurriculumVitae from './pages/mahasiswa/CurriculumVitae';
 import ProjectSelection from './pages/mahasiswa/ProjectSelection';
-import ManageAccountStudent from './pages/mahasiswa/ManageAccountStudent';
-import SettingStudent from './pages/mahasiswa/SettingStudent';
 
 // Halaman dosen
 import ProposalPartner from './pages/dosen/ProposalPartner';
 import StudentData from './pages/dosen/StudentData';
 import ListStudentRegister from './pages/ListStudentRegister';
 import ProgresProject from './pages/dosen/ProgresProject';
-import ManageAccountLecturer from './pages/dosen/ManageAccountLecturer';
-import SettingLecturer from './pages/dosen/SettingLecturer';
 
 // Halaman mitra
 import SubmitNewProject from './pages/mitra/SubmitNewProject';
-import ManageAccountStudentPartner from './pages/mitra/ManageAccountStudentPartner';
-import SettingPartner from './pages/mitra/SettingPartner';
 
 export default function App() {
   return (
@@ -61,11 +60,9 @@ export default function App() {
           }>
             <Route index element={<DashboardStudent />} />
             <Route path="dashboard" element={<DashboardStudent />} />
-            <Route path="add-curriculum-vitae" element={<AddCurriculumVitae />} />
-            <Route path="student-portofolio" element={<StudentPortofolio />} />
+            <Route path="curriculum-vitae" element={<CurriculumVitae />} />
             <Route path="project-selection" element={<ProjectSelection />} />
-            <Route path="manage-account-student" element={<ManageAccountStudent />} />
-            <Route path="setting" element={<SettingStudent />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
 
           {/* Lecturer routes */}
@@ -80,8 +77,7 @@ export default function App() {
             <Route path="student-data" element={<StudentData />} />
             <Route path="student-list-register" element={<ListStudentRegister />} />
             <Route path="progres-project" element={<ProgresProject />} />
-            <Route path="manage-account-lecturer" element={<ManageAccountLecturer />} />
-            <Route path="setting" element={<SettingLecturer />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
 
           {/* Partner routes */}
@@ -95,8 +91,7 @@ export default function App() {
             <Route path="submit-new-project" element={<SubmitNewProject />} />
             <Route path="student-list-register" element={<ListStudentRegister />} />
             <Route path="project-selection" element={<ProjectSelection />} />
-            <Route path="manage-account-partner" element={<ManageAccountStudentPartner />} />
-            <Route path="setting" element={<SettingPartner />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
 
           {/* 404 */}

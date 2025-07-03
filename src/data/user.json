@@ -62,13 +62,6 @@
       "Email": "grace.h@example.com",
       "Password": "hashedpassword9",
       "Role": "Mitra"
-    },
-    {
-      "ID_User": "USR010",
-      "Username": "henryg",
-      "Email": "henry.g@example.com",
-      "Password": "hashedpassword10",
-      "Role": "Dosen"
     }
   ]
 }
