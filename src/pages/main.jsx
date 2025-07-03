@@ -13,8 +13,6 @@ export default function Main({ role }) {
     const { user } = useAuth();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [notificationCount, setNotificationCount] = useState(2);
-    const [showProfileModal, setShowProfileModal] = useState(false);
-    const [isClosing, setIsClosing] = useState(false);
     
     // Get detailed user information
     const getUserDetails = () => {
@@ -38,33 +36,6 @@ export default function Main({ role }) {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    // Smooth modal closing animation
-    const closeModal = () => {
-        setIsClosing(true);
-        setTimeout(() => {
-            setShowProfileModal(false);
-            setIsClosing(false);
-        }, 200);
-    };
-
-    // Close modal with ESC key and prevent body scroll
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        };
-
-        if (showProfileModal) {
-            document.addEventListener('keydown', handleKeyDown);
-            document.body.style.overflow = 'hidden';
-        }
-
-        return () => {
-            document.removeEventListener('keydown', handleKeyDown);
-            document.body.style.overflow = 'auto';
-        };
-    }, [showProfileModal]);
 
     return (
         <div className="flex h-svh  relative bg-white">
@@ -199,68 +170,6 @@ export default function Main({ role }) {
                     onClick={toggleSidebar}
                     aria-hidden="true"
                 ></div>
-            )}
-
-            {/* Profile Modal */}
-            {showProfileModal && (
-                <div 
-                    className={`fixed  inset-0 z-50 flex items-center justify-center p-4 transition-opacity duration-200 ${
-                        isClosing ? 'opacity-0' : 'opacity-100'
-                    }`}
-                >
-                    {/* Overlay */}
-                    <div 
-                        className="absolute inset-0 bg-black backdrop-blur-sm bg-opacity-20 "
-                        onClick={closeModal}
-                        aria-hidden="true"
-                    />
-
-                    {/* Modal Content */}
-                    <div className="relative z-10">
-                        {/* Close Button */}
-                        <button 
-                            onClick={closeModal}
-                            className="absolute -top-12 -right-2 text-white hover:text-gray-300 focus:outline-none"
-                            aria-label="Close profile"
-                        >
-                        </button>
-
-                        {/* Profile Image */}
-                        <div className="relative group">
-                            <div className="w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden border-4  shadow-xl">
-                                {userDetails?.Foto_Profile ? (
-                                    <img 
-                                        src={userDetails.Foto_Profile} 
-                                        alt="Profile" 
-                                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-                                    />
-                                ) : (
-                                    <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-white text-8xl">
-                                        {user?.name?.charAt(0)?.toUpperCase() || "U"}
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Hover effect */}
-                            <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-secondary transition-all duration-300 pointer-events-none" />
-                        </div>
-                        
-
-                        {/* User profile */}
-                        <div className=" p-2 text-center ">
-                            <div className="font-bold text-black">
-                                {userDetails ? (
-                                    userDetails.Nama || 
-                                    userDetails.Nama_Perusahaan || 
-                                    user.name
-                                ) : (
-                                    user?.name || "User"
-                                )}
-                            </div>
-                            <div className="text-md text-black font-bold">{role}</div>
-                        </div>
-                    </div>
-                </div>
             )}
         </div>
     );
