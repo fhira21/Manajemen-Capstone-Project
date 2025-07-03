@@ -600,54 +600,10 @@ export default function Dashboard() {
               </div>
             </div>
             
-            {/* Filter Button */}
-            <button
-              className={`p-1.5 rounded-lg flex items-center gap-1 ${
-                filtersExpanded ? 'bg-primary/10 text-primary' : 'bg-gray-100 text-gray-600'
-              }`}
-              onClick={() => setFiltersExpanded(!filtersExpanded)}
-            >
-              <FiFilter className="w-4 h-4" />
-              <span className="text-sm font-medium hidden md:inline">Filter</span>
-            </button>
+
           </div>
         </div>
         
-        {/* Expanded Filters Section */}
-        {filtersExpanded && (
-          <div className="w-full bg-white rounded-lg shadow p-4 grid grid-cols-1 md:grid-cols-3 gap-4 animate-slideDown">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Prioritas</label>
-              <div className="flex flex-wrap gap-2">
-                <button className="px-3 py-1 text-sm rounded-full bg-red-100 text-red-800">Tinggi</button>
-                <button className="px-3 py-1 text-sm rounded-full bg-yellow-100 text-yellow-800">Sedang</button>
-                <button className="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">Rendah</button>
-              </div>
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Label</label>
-              <div className="flex flex-wrap gap-2">
-                <button className="px-3 py-1 text-sm rounded-full bg-red-100 text-red-800">Bug</button>
-                <button className="px-3 py-1 text-sm rounded-full bg-green-100 text-green-800">Fitur</button>
-                <button className="px-3 py-1 text-sm rounded-full bg-blue-100 text-blue-800">Peningkatan</button>
-              </div>
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Penanggung Jawab</label>
-              <select 
-                className="w-full px-3 py-1.5 border border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 text-sm"
-                defaultValue="all"
-              >
-                <option value="all">Semua Penanggung Jawab</option>
-                {topContributors?.map(contributor => (
-                  <option key={contributor.id} value={contributor.id}>{contributor.name}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-        )}
         
         {/* Dashboard Content */}
         {selectedProject ? (
@@ -787,50 +743,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                   
-                  {/* Priority Distribution Card */}
-                  <div className="bg-white rounded-lg shadow p-4 flex flex-col">
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-gray-500 text-sm font-medium">Distribusi Prioritas</h3>
-                    </div>
-                    
-                    <div className="flex items-center justify-center flex-1">
-                      <div className="w-32 h-32">
-                        <Pie 
-                          data={{
-                            labels: ['Tinggi', 'Sedang', 'Rendah'],
-                            datasets: [{
-                              data: [
-                                issueStats.byPriority?.high || 0, 
-                                issueStats.byPriority?.medium || 0, 
-                                issueStats.byPriority?.low || 0
-                              ],
-                              backgroundColor: [
-                                'rgba(239, 68, 68, 0.7)',
-                                'rgba(245, 158, 11, 0.7)',
-                                'rgba(59, 130, 246, 0.7)'
-                              ],
-                              borderWidth: 1,
-                            }]
-                          }}
-                          options={{
-                            responsive: true,
-                            maintainAspectRatio: true,
-                            plugins: {
-                              legend: { 
-                                position: 'bottom',
-                                labels: {
-                                  boxWidth: 8,
-                                  usePointStyle: true,
-                                  pointStyle: 'circle',
-                                  font: { size: 10 }
-                                }
-                              },
-                            }
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
+
                   
                   {/* Team Members Card */}
                   <div className="bg-white rounded-lg shadow p-4 flex flex-col">
@@ -930,124 +843,12 @@ export default function Dashboard() {
                       </div>
                     </div>
                     
-                    <h3 className="text-sm font-medium text-gray-500 mb-2">Tonggak Kemajuan</h3>
-                    <div className="relative">
-                      <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-gray-200"></div>
-                      <div className="space-y-3 ml-6">
-                        {projectDetails?.Milestone?.map((milestone, index) => (
-                          <div key={index} className="relative">
-                            <div className={`absolute -left-6 mt-1 w-4 h-4 rounded-full border-2 border-white ${                                    milestone.Status === 'Completed' ? 'bg-green-500' :
-                              milestone.Status === 'In Progress' ? 'bg-blue-500' : 'bg-gray-300'
-                            }`}></div>
-                            <div className="flex flex-col">
-                              <div className="flex justify-between">
-                                <h4 className="text-sm font-medium">
-                                  {milestone.Nama}
-                                </h4>
-                                <span className={`text-xs px-2 py-0.5 rounded-full ${
-                                  milestone.Status === 'Completed' ? 'bg-green-100 text-green-800' :
-                                  milestone.Status === 'In Progress' ? 'bg-blue-100 text-blue-800' :
-                                  'bg-gray-100 text-gray-800'
-                                }`}>
-                                  {milestone.Status}
-                                </span>
-                              </div>
-                              <p className="text-xs text-gray-500">Target: {formatDate(milestone.Tanggal)}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+
                   </div>
                   
-                  {/* Commit Activity By Type Chart - Moved up for better visibility */}
-                  <div className="bg-white rounded-lg shadow p-4">
-                    <h2 className="text-lg font-bold text-gray-800 mb-2">Aktivitas Commit</h2>
-                    <div className="text-xs text-gray-500 mb-4">
-                      Distribusi aktivitas berdasarkan jenis commit
-                    </div>
-                    <div className="h-[200px] flex items-center justify-center">
-                      <div className="w-40 h-40">
-                        <Doughnut 
-                          data={commitActivityData.byType || {
-                            labels: ['Fitur Baru', 'Perbaikan Bug', 'Peningkatan', 'Lainnya'],
-                            datasets: [{
-                              data: [4, 3, 2, 1],
-                              backgroundColor: [
-                                'rgba(59, 130, 246, 0.7)',
-                                'rgba(239, 68, 68, 0.7)',
-                                'rgba(16, 185, 129, 0.7)',
-                                'rgba(107, 114, 128, 0.7)',
-                              ],
-                              borderWidth: 1,
-                            }]
-                          }}
-                          options={{
-                            responsive: true,
-                            maintainAspectRatio: true,
-                            plugins: {
-                              legend: {
-                                position: 'bottom',
-                                labels: {
-                                  boxWidth: 12,
-                                  font: { size: 10 }
-                                }
-                              }
-                            }
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
 
-                  {/* Task Completion Trend */}
-                  <div className="bg-white rounded-lg shadow p-4">
-                    <h2 className="text-lg font-bold text-gray-800 mb-4">Tren Penyelesaian Tugas</h2>
-                    <div className="h-64">
-                      <Line 
-                        data={{
-                          labels: taskCompletionTrend.map(item => item.display || item.week),
-                          datasets: [{
-                            label: 'Tugas Selesai',
-                            data: taskCompletionTrend.map(item => item.completed),
-                            fill: true,
-                            backgroundColor: 'rgba(79, 70, 229, 0.1)',
-                            borderColor: 'rgba(79, 70, 229, 1)',
-                            tension: 0.4,
-                            pointBackgroundColor: 'white',
-                            pointBorderColor: 'rgba(79, 70, 229, 1)',
-                            pointBorderWidth: 2,
-                          }]
-                        }}
-                        options={{
-                          responsive: true,
-                          maintainAspectRatio: false,
-                          scales: {
-                            y: {
-                              beginAtZero: true,
-                              grid: {
-                                drawBorder: false,
-                                color: 'rgba(0, 0, 0, 0.05)',
-                              },
-                              ticks: {
-                                precision: 0,
-                              }
-                            },
-                            x: {
-                              grid: {
-                                display: false,
-                              }
-                            }
-                          },
-                          plugins: {
-                            legend: {
-                              display: false,
-                            }
-                          }
-                        }}
-                      />
-                    </div>
-                  </div>
+
+
                 </div>
                 
                 {/* Contributors and Activity */}
