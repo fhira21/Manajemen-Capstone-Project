@@ -1258,28 +1258,28 @@ export default function Dashboard() {
                   <div className="bg-white rounded-lg shadow p-3 sm:p-4">
                     <h2 className="text-base sm:text-lg font-bold text-gray-800 mb-3 sm:mb-4">Metrik Aktivitas</h2>
                     <div className="grid grid-cols-2 gap-2 sm:gap-4">
-                      <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+                      <div className="bg-secondary/10 p-2 sm:p-3 rounded-lg">
                         <div className="text-xs sm:text-sm text-gray-500 mb-0.5 sm:mb-1">Total Commit</div>
                         <div className="text-base sm:text-2xl font-bold text-gray-800">
                           {recentCommits.length}
                         </div>
                       </div>
                       
-                      <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+                      <div className="bg-purple-200 p-2 sm:p-3 rounded-lg">
                         <div className="text-xs sm:text-sm text-gray-500 mb-0.5 sm:mb-1">Kontributor</div>
                         <div className="text-base sm:text-2xl font-bold text-gray-800">
                           {topContributors.length}
                         </div>
                       </div>
                       
-                      <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+                      <div className="bg-green-200 p-2 sm:p-3 rounded-lg">
                         <div className="text-xs sm:text-sm text-gray-500 mb-0.5 sm:mb-1">Baris Ditambahkan</div>
                         <div className="text-base sm:text-2xl font-bold text-green-600">
                           +{recentCommits.reduce((acc, commit) => acc + (commit.LinesAdded || 0), 0)}
                         </div>
                       </div>
                       
-                      <div className="bg-gray-50 p-2 sm:p-3 rounded-lg">
+                      <div className="bg-red-200 p-2 sm:p-3 rounded-lg">
                         <div className="text-xs sm:text-sm text-gray-500 mb-0.5 sm:mb-1">Baris Dihapus</div>
                         <div className="text-base sm:text-2xl font-bold text-red-600">
                           -{recentCommits.reduce((acc, commit) => acc + (commit.LinesRemoved || 0), 0)}

@@ -99,6 +99,206 @@
       "Pengalaman_Pelatihan": "AWS Certified Solutions Architect.",
       "Bidang": "Cloud Computing, Infrastructure, Security",
       "Keterampilan": "AWS, Azure, Google Cloud"
+    },
+    {
+      "ID_CV": "CV011",
+      "Link_Penghubung": "https://github.com/oliverqueen",
+      "Ringkasan_Profil": "Full-stack developer dengan pengalaman dalam MERN stack dan pengembangan API RESTful. Tertarik pada pengembangan aplikasi web yang performa tinggi dan aman. Berpengalaman dalam membangun server-side logic, database management, dan integrasi front-end. Aktif berkontribusi pada proyek open-source dan selalu mengikuti praktik terbaik dalam pengembangan perangkat lunak. Memiliki kemampuan problem-solving yang kuat dan detail-oriented.",
+      "Pengalaman_Project": "Built a full-stack e-commerce platform.",
+      "Pengalaman_Organisasi": "Lead Developer for University Hackathon.",
+      "Pengalaman_Pelatihan": "Completed 'MERN Stack Development' course.",
+      "Bidang": "Full-Stack Development, Web Development, API Development",
+      "Keterampilan": "React, Node.js, Express.js, MongoDB"
+    },
+    {
+      "ID_CV": "CV012",
+      "Link_Penghubung": "https://linkedin.com/in/peterparker",
+      "Ringkasan_Profil": "Software Tester dengan fokus pada pengujian otomatis dan manual. Memiliki ketertarikan pada Quality Assurance (QA) dan peningkatan kualitas perangkat lunak. Berpengalaman dalam merancang test case, melakukan pengujian fungsional dan non-fungsional, serta membuat laporan bug yang detail. Mampu bekerja secara mandiri maupun tim untuk memastikan produk bebas dari cacat. Senantiasa belajar metodologi pengujian terbaru untuk memastikan kualitas produk.",
+      "Pengalaman_Project": "Performed QA testing for a banking application.",
+      "Pengalaman_Organisasi": "Member of Software Testing Guild.",
+      "Pengalaman_Pelatihan": "Certified in 'ISTQB Foundation Level'.",
+      "Bidang": "Software Testing, Quality Assurance, Test Automation",
+      "Keterampilan": "Selenium, JUnit, Jira"
+    },
+    {
+      "ID_CV": "CV013",
+      "Link_Penghubung": "https://github.com/quinnfabray",
+      "Ringkasan_Profil": "Network Engineer dengan keahlian dalam konfigurasi jaringan dan keamanan. Tertarik pada arsitektur jaringan skala besar dan optimasi performa. Berpengalaman dalam merancang, mengimplementasikan, dan memelihara infrastruktur jaringan, serta melakukan troubleshooting. Aktif dalam pelatihan Cisco dan Juniper. Mampu mengelola proyek jaringan yang kompleks dengan memperhatikan aspek keamanan dan skalabilitas.",
+      "Pengalaman_Project": "Designed and deployed a campus-wide Wi-Fi network.",
+      "Pengalaman_Organisasi": "President of Network Club.",
+      "Pengalaman_Pelatihan": "Cisco Certified Network Associate (CCNA).",
+      "Bidang": "Network Engineering, Network Security, System Administration",
+      "Keterampilan": "Cisco, Juniper, Linux, Network Protocols"
+    },
+    {
+      "ID_CV": "CV014",
+      "Link_Penghubung": "https://linkedin.com/in/rachelgreen",
+      "Ringkasan_Profil": "Cloud Engineer dengan pengalaman dalam AWS, Azure, dan otomatisasi infrastruktur. Fokus pada implementasi solusi cloud yang efisien dan skalabel. Berpengalaman dalam deployment aplikasi ke cloud, manajemen container, dan CI/CD pipeline. Aktif dalam komunitas DevOps dan selalu mengikuti perkembangan teknologi cloud. Mampu merancang arsitektur cloud yang resilient dan cost-effective.",
+      "Pengalaman_Project": "Migrated on-premise applications to AWS cloud.",
+      "Pengalaman_Organisasi": "DevOps Enthusiast Group Member.",
+      "Pengalaman_Pelatihan": "Azure Solutions Architect Expert.",
+      "Bidang": "Cloud Computing, DevOps, Infrastructure as Code",
+      "Keterampilan": "AWS, Azure, Docker, Kubernetes, Terraform"
+    },
+    {
+      "ID_CV": "CV015",
+      "Link_Penghubung": "https://github.com/samwisegamgee",
+      "Ringkasan_Profil": "Mobile App UI/UX Designer dengan fokus pada pengalaman pengguna Android. Memiliki keahlian dalam membuat desain yang intuitif dan menarik secara visual. Berpengalaman dalam wireframing, prototyping, dan user testing untuk aplikasi mobile. Aktif mengikuti tren desain terbaru dan berkolaborasi erat dengan tim developer. Selalu berusaha menciptakan antarmuka yang mudah digunakan dan menyenangkan bagi pengguna.",
+      "Pengalaman_Project": "Designed the UI/UX for a food delivery app (Android).",
+      "Pengalaman_Organisasi": "Vice President of Mobile Design Club.",
+      "Pengalaman_Pelatihan": "Google Material Design certification.",
+      "Bidang": "UI/UX Design, Mobile Design, Android Design",
+      "Keterampilan": "Figma, Sketch, Adobe Photoshop, Android Studio"
+    },
+    {
+      "ID_CV": "CV016",
+      "Link_Penghubung": "https://gitlab.com/tinaturner",
+      "Ringkasan_Profil": "Back-end Developer dengan keahlian dalam Python, Django, dan pengembangan API. Tertarik pada sistem terdistribusi dan skalabilitas. Berpengalaman dalam membangun RESTful APIs, mengelola database, dan mengoptimalkan performa server. Aktif berkontribusi pada proyek open source dan selalu mencari cara untuk meningkatkan efisiensi kode. Memiliki pemahaman mendalam tentang arsitektur perangkat lunak dan desain database.",
+      "Pengalaman_Project": "Developed a scalable API for a financial application.",
+      "Pengalaman_Organisasi": "Backend Development Study Group Lead.",
+      "Pengalaman_Pelatihan": "Completed 'Advanced Python for Backend' course.",
+      "Bidang": "Backend Development, API Development, Database Management",
+      "Keterampilan": "Python, Django, PostgreSQL, REST API"
+    },
+    {
+      "ID_CV": "CV017",
+      "Link_Penghubung": "https://linkedin.com/in/uma-thurman",
+      "Ringkasan_Profil": "DevOps Engineer dengan fokus pada otomatisasi deployment dan manajemen infrastruktur. Berpengalaman dalam membangun CI/CD pipelines, mengelola container (Docker, Kubernetes), dan monitoring sistem. Aktif dalam menerapkan praktik DevOps untuk mempercepat siklus pengembangan perangkat lunak. Memiliki kemampuan scripting yang kuat dan terbiasa dengan berbagai tools DevOps.",
+      "Pengalaman_Project": "Automated deployment pipeline for a microservices application.",
+      "Pengalaman_Organisasi": "Open Source Contribution Lead.",
+      "Pengalaman_Pelatihan": "Certified Kubernetes Administrator (CKA).",
+      "Bidang": "DevOps, CI/CD, Containerization, Cloud Infrastructure",
+      "Keterampilan": "Docker, Kubernetes, Jenkins, GitLab CI, Ansible"
+    },
+    {
+      "ID_CV": "CV018",
+      "Link_Penghubung": "https://github.com/voldemort",
+      "Ringkasan_Profil": "AI Ethicist dengan fokus pada bias dan fairness dalam model machine learning. Tertarik pada dampak sosial dari kecerdasan buatan. Berpengalaman dalam menganalisis bias data, mengembangkan metrik fairness, dan menyusun pedoman etis untuk pengembangan AI. Aktif dalam riset dan diskusi tentang AI yang bertanggung jawab. Mampu mengidentifikasi dan memitigasi risiko etis dalam sistem AI.",
+      "Pengalaman_Project": "Researched and mitigated bias in a facial recognition algorithm.",
+      "Pengalaman_Organisasi": "AI Ethics Think Tank Member.",
+      "Pengalaman_Pelatihan": "Workshop on 'Responsible AI Development'.",
+      "Bidang": "Artificial Intelligence, Ethics, Machine Learning, Data Science",
+      "Keterampilan": "Bias Detection, Fairness Metrics, Ethical AI Principles"
+    },
+    {
+      "ID_CV": "CV019",
+      "Link_Penghubung": "https://gitlab.com/walterwhite",
+      "Ringkasan_Profil": "Embedded Systems Engineer dengan keahlian dalam mikrokontroler dan pemrograman C/C++. Fokus pada pengembangan perangkat keras dan perangkat lunak untuk sistem tertanam. Berpengalaman dalam merancang sirkuit, firmware development, dan debugging hardware. Aktif dalam proyek-proyek IoT dan otomasi. Mampu mengoptimalkan kinerja sistem tertanam untuk efisiensi energi dan sumber daya.",
+      "Pengalaman_Project": "Developed firmware for a smart home sensor.",
+      "Pengalaman_Organisasi": "IoT Research Group Member.",
+      "Pengalaman_Pelatihan": "Course in 'Advanced Embedded C++'.",
+      "Bidang": "Embedded Systems, IoT, Hardware Development, Firmware",
+      "Keterampilan": "C/C++, Microcontrollers (Arduino, ESP32), PCB Design"
+    },
+    {
+      "ID_CV": "CV020",
+      "Link_Penghubung": "https://linkedin.com/in/xena-warrior-princess",
+      "Ringkasan_Profil": "Cybersecurity Analyst dengan fokus pada deteksi intrusi dan respons insiden. Memiliki keahlian dalam analisis forensik digital dan manajemen kerentanan. Berpengalaman dalam memonitor jaringan, mengidentifikasi ancaman siber, dan mengembangkan strategi pertahanan. Aktif mengikuti tren serangan siber terbaru dan pelatihan Offensive Security. Mampu memberikan rekomendasi keamanan yang proaktif untuk melindungi aset digital.",
+      "Pengalaman_Project": "Conducted penetration testing for a corporate network.",
+      "Pengalaman_Organisasi": "Cybersecurity Capture The Flag Team Lead.",
+      "Pengalaman_Pelatihan": "Certified Ethical Hacker (CEH).",
+      "Bidang": "Cybersecurity, Penetration Testing, Incident Response, Digital Forensics",
+      "Keterampilan": "Kali Linux, Wireshark, Metasploit, SIEM Tools"
+    },
+    {
+      "ID_CV": "CV021",
+      "Link_Penghubung": "https://github.com/yodashi",
+      "Ringkasan_Profil": "Machine Learning Engineer dengan fokus pada Computer Vision dan pengembangan model untuk pengenalan gambar. Berpengalaman dalam membangun dan melatih jaringan saraf tiruan (CNN), serta mengimplementasikan solusi pengenalan objek. Aktif dalam riset terbaru di bidang Computer Vision dan selalu mengoptimalkan model untuk performa terbaik. Memiliki kemampuan implementasi yang kuat dan terbiasa dengan berbagai framework deep learning.",
+      "Pengalaman_Project": "Developed an object detection system for autonomous vehicles.",
+      "Pengalaman_Organisasi": "Computer Vision Research Group.",
+      "Pengalaman_Pelatihan": "Deep Learning for Computer Vision Specialization.",
+      "Bidang": "Machine Learning, Computer Vision, Deep Learning, Image Processing",
+      "Keterampilan": "PyTorch, OpenCV, Keras, TensorFlow"
+    },
+    {
+      "ID_CV": "CV022",
+      "Link_Penghubung": "https://linkedin.com/in/zelda",
+      "Ringkasan_Profil": "Front-end Developer dengan keahlian dalam Vue.js dan desain antarmuka interaktif. Fokus pada menciptakan pengalaman pengguna yang mulus dan menarik. Berpengalaman dalam membangun Single Page Applications (SPA), mengoptimalkan performa rendering, dan memastikan kompatibilitas browser. Aktif dalam komunitas Vue.js dan selalu mencoba teknik-teknik baru untuk peningkatan UI/UX. Mampu mengubah desain statis menjadi antarmuka yang dinamis dan responsif.",
+      "Pengalaman_Project": "Developed a dashboard UI using Vue.js for a data analytics platform.",
+      "Pengalaman_Organisasi": "Vue.js Community Contributor.",
+      "Pengalaman_Pelatihan": "Vue.js Mastery Course.",
+      "Bidang": "Web Development, Frontend Development, UI/UX Design",
+      "Keterampilan": "Vue.js, JavaScript, HTML, CSS, Nuxt.js"
+    },
+    {
+      "ID_CV": "CV023",
+      "Link_Penghubung": "https://github.com/arthurpendragon",
+      "Ringkasan_Profil": "Database Administrator (DBA) dengan pengalaman dalam SQL Server dan optimasi database. Fokus pada kinerja, keamanan, dan ketersediaan database. Berpengalaman dalam desain skema database, tuning query, backup dan recovery, serta replikasi. Mampu mengatasi masalah database yang kompleks dan memastikan integritas data. Selalu mengikuti praktik terbaik dalam manajemen database.",
+      "Pengalaman_Project": "Optimized database performance for a large-scale e-commerce system.",
+      "Pengalaman_Organisasi": "Database Management Study Group.",
+      "Pengalaman_Pelatihan": "Microsoft Certified: Azure Database Administrator Associate.",
+      "Bidang": "Database Administration, Data Management, Performance Tuning",
+      "Keterampilan": "SQL Server, MySQL, PostgreSQL, Database Optimization"
+    },
+    {
+      "ID_CV": "CV024",
+      "Link_Penghubung": "https://linkedin.com/in/belle-french",
+      "Ringkasan_Profil": "Technical Writer dengan kemampuan mendokumentasikan perangkat lunak dan API. Fokus pada kejelasan, akurasi, dan kemudahan penggunaan dokumentasi. Berpengalaman dalam menulis user manuals, API documentation, dan developer guides. Mampu menerjemahkan konsep teknis yang kompleks menjadi bahasa yang mudah dipahami. Bekerja sama erat dengan tim engineering untuk memastikan dokumentasi terkini dan relevan.",
+      "Pengalaman_Project": "Wrote comprehensive API documentation for a payment gateway.",
+      "Pengalaman_Organisasi": "Documentation SIG (Special Interest Group) Member.",
+      "Pengalaman_Pelatihan": "Technical Writing Certification.",
+      "Bidang": "Technical Writing, Documentation, API Documentation",
+      "Keterampilan": "Markdown, Swagger/OpenAPI, Confluence, LaTeX"
+    },
+    {
+      "ID_CV": "CV025",
+      "Link_Penghubung": "https://github.com/clarkkent",
+      "Ringkasan_Profil": "System Administrator dengan pengalaman dalam Linux server management dan virtualisasi. Fokus pada uptime sistem, keamanan, dan skalabilitas. Berpengalaman dalam instalasi, konfigurasi, dan pemeliharaan server, serta monitoring kinerja. Mampu merespons insiden sistem dengan cepat dan efektif. Selalu mencari cara untuk mengotomatisasi tugas-tugas administratif.",
+      "Pengalaman_Project": "Managed and maintained a fleet of Linux web servers.",
+      "Pengalaman_Organisasi": "Linux User Group President.",
+      "Pengalaman_Pelatihan": "Red Hat Certified System Administrator (RHCSA).",
+      "Bidang": "System Administration, Linux, Virtualization, Server Management",
+      "Keterampilan": "Linux (Ubuntu, CentOS), Bash Scripting, VMware, VirtualBox"
+    },
+    {
+      "ID_CV": "CV026",
+      "Link_Penghubung": "https://linkedin.com/in/daenerys-targaryen",
+      "Ringkasan_Profil": "Software Architect dengan keahlian dalam perancangan sistem terdistribusi dan microservices. Fokus pada scalable, maintainable, dan performa tinggi. Berpengalaman dalam memilih teknologi yang tepat, mendefinisikan arsitektur sistem, dan memberikan panduan teknis kepada tim pengembangan. Memiliki pemahaman mendalam tentang pola desain perangkat lunak dan prinsip-prinsip SOLID. Mampu menerjemahkan kebutuhan bisnis menjadi solusi teknis yang solid.",
+      "Pengalaman_Project": "Designed the microservices architecture for a new streaming service.",
+      "Pengalaman_Organisasi": "Architecture Review Board Member.",
+      "Pengalaman_Pelatihan": "Domain-Driven Design Workshop.",
+      "Bidang": "Software Architecture, Distributed Systems, Microservices, System Design",
+      "Keterampilan": "UML, Architectural Patterns, Cloud Native, GoF Design Patterns"
+    },
+    {
+      "ID_CV": "CV027",
+      "Link_Penghubung": "https://github.com/ethanhunt",
+      "Ringkasan_Profil": "Peneliti Keamanan Jaringan dengan fokus pada zero-day exploits dan analisis malware. Berpengalaman dalam reverse engineering, fuzzing, dan pengembangan tools keamanan. Aktif dalam komunitas riset keamanan dan sering mempublikasikan temuan. Mampu mengidentifikasi kerentanan yang belum diketahui dan mengembangkan proof-of-concept exploit.",
+      "Pengalaman_Project": "Discovered and reported a vulnerability in a popular web server.",
+      "Pengalaman_Organisasi": "Cyber Threat Intelligence Group.",
+      "Pengalaman_Pelatihan": "Offensive Security Certified Professional (OSCP).",
+      "Bidang": "Network Security, Exploit Development, Malware Analysis, Reverse Engineering",
+      "Keterampilan": "Assembly, C/C++, Python (for scripting), Ghidra, IDA Pro"
+    },
+    {
+      "ID_CV": "CV028",
+      "Link_Penghubung": "https://linkedin.com/in/fiona-shrek",
+      "Ringkasan_Profil": "UX Researcher dengan fokus pada user-centered design dan pengujian kegunaan. Berpengalaman dalam melakukan wawancara pengguna, survei, dan usability testing untuk mengidentifikasi kebutuhan dan masalah pengguna. Mampu menerjemahkan temuan riset menjadi actionable insights untuk tim desain dan pengembangan. Selalu mengadvokasi pengguna dalam setiap tahap pengembangan produk.",
+      "Pengalaman_Project": "Conducted usability testing for a new mobile banking app.",
+      "Pengalaman_Organisasi": "User Experience Research Collective.",
+      "Pengalaman_Pelatihan": "Certified UX Researcher.",
+      "Bidang": "UX Research, Usability Testing, User Interview, Data Analysis",
+      "Keterampilan": "User Interviews, Surveys, A/B Testing, Figma (for prototyping support)"
+    },
+    {
+      "ID_CV": "CV029",
+      "Link_Penghubung": "https://github.com/gandalf",
+      "Ringkasan_Profil": "Big Data Engineer dengan keahlian dalam Apache Spark, Hadoop, dan pipeline data skala besar. Fokus pada pemrosesan data, ETL, dan pembangunan data warehouse. Berpengalaman dalam merancang dan mengimplementasikan solusi data yang skalabel dan efisien. Aktif dalam komunitas Big Data dan selalu mencari teknologi terbaru untuk optimasi data. Mampu menangani volume data yang sangat besar dan kompleks.",
+      "Pengalaman_Project": "Built a real-time data processing pipeline using Apache Kafka and Spark.",
+      "Pengalaman_Organisasi": "Big Data Enthusiasts Group.",
+      "Pengalaman_Pelatihan": "Cloudera Certified Developer for Apache Spark and Hadoop.",
+      "Bidang": "Big Data, Data Engineering, ETL, Data Warehousing",
+      "Keterampilan": "Apache Spark, Hadoop, Kafka, SQL, Python (for data processing)"
+    },
+    {
+      "ID_CV": "CV030",
+      "Link_Penghubung": "https://linkedin.com/in/hermionegranger",
+      "Ringkasan_Profil": "Natural Language Processing (NLP) Engineer dengan fokus pada pemahaman bahasa alami dan generasi teks. Berpengalaman dalam membangun model NLP untuk klasifikasi teks, terjemahan mesin, dan chatbot. Aktif dalam riset NLP terbaru dan selalu mencari cara untuk meningkatkan akurasi dan efisiensi model. Mampu mengimplementasikan solusi NLP dari konsep hingga produksi.",
+      "Pengalaman_Project": "Developed a conversational AI chatbot for customer service.",
+      "Pengalaman_Organisasi": "NLP Research Lab Member.",
+      "Pengalaman_Pelatihan": "Natural Language Processing Specialization (Coursera).",
+      "Bidang": "Natural Language Processing, Deep Learning, AI, Text Mining",
+      "Keterampilan": "Python, spaCy, NLTK, Hugging Face Transformers, PyTorch"
     }
   ]
 }
