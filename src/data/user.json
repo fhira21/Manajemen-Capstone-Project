@@ -62,6 +62,328 @@
       "Email": "grace.h@example.com",
       "Password": "hashedpassword9",
       "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR010",
+      "Username": "henryg",
+      "Email": "henry.g@example.com",
+      "Password": "hashedpassword10",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR011",
+      "Username": "harryp",
+      "Email": "harry.p@example.com",
+      "Password": "hashedpassword11",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR012",
+      "Username": "oliviaw",
+      "Email": "olivia.w@example.com",
+      "Password": "hashedpassword12",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR013",
+      "Username": "irisw",
+      "Email": "iris.w@example.com",
+      "Password": "hashedpassword13",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR014",
+      "Username": "peterp",
+      "Email": "peter.p@example.com",
+      "Password": "hashedpassword14",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR015",
+      "Username": "jacksp",
+      "Email": "jack.sp@example.com",
+      "Password": "hashedpassword15",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR016",
+      "Username": "quinnf",
+      "Email": "quinn.f@example.com",
+      "Password": "hashedpassword16",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR017",
+      "Username": "katnisse",
+      "Email": "katniss.e@example.com",
+      "Password": "hashedpassword17",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR018",
+      "Username": "rachelgr",
+      "Email": "rachel.gr@example.com",
+      "Password": "hashedpassword18",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR019",
+      "Username": "lukesky",
+      "Email": "luke.sky@example.com",
+      "Password": "hashedpassword19",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR020",
+      "Username": "samwiseg",
+      "Email": "samwise.g@example.com",
+      "Password": "hashedpassword20",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR021",
+      "Username": "mulan",
+      "Email": "mulan@example.com",
+      "Password": "hashedpassword21",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR022",
+      "Username": "tinaf",
+      "Email": "tina.f@example.com",
+      "Password": "hashedpassword22",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR023",
+      "Username": "neoanderson",
+      "Email": "neo.anderson@example.com",
+      "Password": "hashedpassword23",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR024",
+      "Username": "innovateit",
+      "Email": "contact@innovateit.com",
+      "Password": "hashedpassword24",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR025",
+      "Username": "digitalpro",
+      "Email": "info@digitalpro.com",
+      "Password": "hashedpassword25",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR026",
+      "Username": "healthtech",
+      "Email": "support@healthtech.com",
+      "Password": "hashedpassword26",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR027",
+      "Username": "edutechsol",
+      "Email": "contact@edutechsol.com",
+      "Password": "hashedpassword27",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR028",
+      "Username": "greenenergy",
+      "Email": "info@greenenergy.com",
+      "Password": "hashedpassword28",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR029",
+      "Username": "fintechinn",
+      "Email": "support@fintechinn.com",
+      "Password": "hashedpassword29",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR030",
+      "Username": "logisticmast",
+      "Email": "contact@logisticmast.com",
+      "Password": "hashedpassword30",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR031",
+      "Username": "adamj",
+      "Email": "adam.j@example.com",
+      "Password": "hashedpassword31",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR032",
+      "Username": "sarahc",
+      "Email": "sarah.c@example.com",
+      "Password": "hashedpassword32",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR033",
+      "Username": "michaels",
+      "Email": "michael.s@example.com",
+      "Password": "hashedpassword33",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR034",
+      "Username": "laurac",
+      "Email": "laura.c@example.com",
+      "Password": "hashedpassword34",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR035",
+      "Username": "brucew",
+      "Email": "bruce.w@example.com",
+      "Password": "hashedpassword35",
+      "Role": "Dosen"
+    },
+    {
+      "ID_User": "USR036",
+      "Username": "oliverq",
+      "Email": "oliver.q@example.com",
+      "Password": "hashedpassword36",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR037",
+      "Username": "peterp_student",
+      "Email": "peterp.student@example.com",
+      "Password": "hashedpassword37",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR038",
+      "Username": "quinnf_student",
+      "Email": "quinnf.student@example.com",
+      "Password": "hashedpassword38",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR039",
+      "Username": "rachel_s",
+      "Email": "rachel.s@example.com",
+      "Password": "hashedpassword39",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR040",
+      "Username": "samg_student",
+      "Email": "samg.student@example.com",
+      "Password": "hashedpassword40",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR041",
+      "Username": "tinat_student",
+      "Email": "tinat.student@example.com",
+      "Password": "hashedpassword41",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR042",
+      "Username": "umath",
+      "Email": "uma.th@example.com",
+      "Password": "hashedpassword42",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR043",
+      "Username": "voldemort_student",
+      "Email": "voldemort.student@example.com",
+      "Password": "hashedpassword43",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR044",
+      "Username": "walterw",
+      "Email": "walter.w@example.com",
+      "Password": "hashedpassword44",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR045",
+      "Username": "xena_student",
+      "Email": "xena.student@example.com",
+      "Password": "hashedpassword45",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR046",
+      "Username": "yodashi",
+      "Email": "yoda.shi@example.com",
+      "Password": "hashedpassword46",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR047",
+      "Username": "zeldastudent",
+      "Email": "zelda.student@example.com",
+      "Password": "hashedpassword47",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR048",
+      "Username": "arthurp",
+      "Email": "arthur.p@example.com",
+      "Password": "hashedpassword48",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR049",
+      "Username": "bellef",
+      "Email": "belle.f@example.com",
+      "Password": "hashedpassword49",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR050",
+      "Username": "clarkk",
+      "Email": "clark.k@example.com",
+      "Password": "hashedpassword50",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR051",
+      "Username": "cybersecureco",
+      "Email": "admin@cybersecureco.com",
+      "Password": "hashedpassword51",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR052",
+      "Username": "gamedevstudios",
+      "Email": "admin@gamedevstudios.com",
+      "Password": "hashedpassword52",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR053",
+      "Username": "airesearch",
+      "Email": "admin@airesearch.com",
+      "Password": "hashedpassword53",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR054",
+      "Username": "elearninnovations",
+      "Email": "admin@elearninnovations.com",
+      "Password": "hashedpassword54",
+      "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR055",
+      "Username": "smartcitytech",
+      "Email": "admin@smartcitytech.com",
+      "Password": "hashedpassword55",
+      "Role": "Mitra"
     }
   ]
 }
