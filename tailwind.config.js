@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     extend: {
       screens: {
+        'xxs': '380px',
         'xs': '480px',
       },
       colors: {
@@ -14,6 +15,10 @@ module.exports = {
         // accent: '#EF4444', // 
         // background: '#F3F4F6', // 
         // text: '#111827', // 
+      },
+      fontSize: {
+        '2xs': '0.625rem', // 10px
+        '3xs': '0.5rem',   // 8px
       },
     },
   },
