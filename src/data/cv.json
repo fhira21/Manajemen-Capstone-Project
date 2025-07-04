@@ -299,6 +299,26 @@
       "Pengalaman_Pelatihan": "Natural Language Processing Specialization (Coursera).",
       "Bidang": "Natural Language Processing, Deep Learning, AI, Text Mining",
       "Keterampilan": "Python, spaCy, NLTK, Hugging Face Transformers, PyTorch"
+    },
+    {
+      "ID_CV": "CV100",
+      "Link_Penghubung": "https://linkedin.com/in/newstudent",
+      "Ringkasan_Profil": "Mahasiswa Informatika dengan minat pada pengembangan web dan AI. Aktif dalam organisasi kampus dan proyek open source.",
+      "Pengalaman_Project": "Developed a web-based inventory management system.",
+      "Pengalaman_Organisasi": "Member of IT Student Association.",
+      "Pengalaman_Pelatihan": "Completed 'React for Beginners' course.",
+      "Bidang": "Web Development, Artificial Intelligence",
+      "Keterampilan": "React, Python, JavaScript"
+    },
+    {
+      "ID_CV": "CV101",
+      "Link_Penghubung": "https://github.com/newstudent2",
+      "Ringkasan_Profil": "Mobile developer passionate about Flutter and cross-platform apps. Loves hackathons and tech meetups.",
+      "Pengalaman_Project": "Built a mobile app for event scheduling.",
+      "Pengalaman_Organisasi": "Treasurer of Mobile Dev Club.",
+      "Pengalaman_Pelatihan": "Attended 'Flutter Bootcamp'.",
+      "Bidang": "Mobile Development, UI/UX",
+      "Keterampilan": "Flutter, Dart, Firebase"
     }
   ]
 }

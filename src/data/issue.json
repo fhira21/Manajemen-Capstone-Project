@@ -766,6 +766,42 @@
       "Deskripsi": "Integrate an AI model to predict future energy consumption based on historical data.",
       "Estimasi": "2 hari",
       "Assignee": "MHS009"
+    },
+    {
+      "ID_Issue": "ISS100",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Add multi-language support",
+      "User": "MHS001",
+      "Status": "Open",
+      "Tgl_Buat": "2024-07-04",
+      "Tgl_Update": "2024-07-04",
+      "Label": "Feature Request",
+      "Prioritas": "Medium",
+      "Deskripsi": "Implement multi-language support for the website.",
+      "Estimasi": "5 hari",
+      "Assignee": "MHS005",
+      "Progres": 0,
+      "Kompleksitas": "Medium",
+      "Sprint": "Sprint 5",
+      "Tags": ["i18n", "Frontend"]
+    },
+    {
+      "ID_Issue": "ISS101",
+      "ID_Project": "PRJ001",
+      "Judul_Issue": "Improve accessibility for visually impaired users",
+      "User": "MHS009",
+      "Status": "Open",
+      "Tgl_Buat": "2024-07-04",
+      "Tgl_Update": "2024-07-04",
+      "Label": "Improvement",
+      "Prioritas": "High",
+      "Deskripsi": "Enhance accessibility features for screen readers and keyboard navigation.",
+      "Estimasi": "3 hari",
+      "Assignee": "MHS001",
+      "Progres": 10,
+      "Kompleksitas": "High",
+      "Sprint": "Sprint 5",
+      "Tags": ["Accessibility", "Frontend"]
     }
   ]
 }

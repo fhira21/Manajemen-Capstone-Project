@@ -391,6 +391,20 @@
       "Proyek": "Website Direktori UMKM Lokal",
       "Tanggal Daftar": "2025-07-26",
       "Status": "Disetujui"
+    },
+    {
+      "ID": "STU100",
+      "Nama": "Rina Suryani",
+      "Proyek": "Aplikasi Monitoring Kesehatan",
+      "Tanggal Daftar": "2025-07-04",
+      "Status": "Disetujui"
+    },
+    {
+      "ID": "STU101",
+      "Nama": "Dewi Lestari",
+      "Proyek": "Sistem Informasi Akademik",
+      "Tanggal Daftar": "2025-07-04",
+      "Status": "Menunggu"
     }
   ]
 }

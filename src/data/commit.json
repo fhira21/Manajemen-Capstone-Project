@@ -882,6 +882,57 @@
       "Complexity": "Medium",
       "Impact": "Medium",
       "CommitType": "Enhancement"
+    },
+    {
+      "ID_Commit": "CMT100",
+      "ID_Project": "PRJ001",
+      "Judul_Commit": "Add advanced search bar",
+      "User": "MHS001",
+      "Status": "Done",
+      "Tgl_Commit": "2024-07-04",
+      "Catatan": "Implemented advanced search with filters and suggestions.",
+      "Branch": "feature/advanced-search",
+      "FilesChanged": 7,
+      "LinesAdded": 210,
+      "LinesRemoved": 30,
+      "Related_Issue": "ISS050",
+      "Complexity": "High",
+      "Impact": "High",
+      "CommitType": "Feature"
+    },
+    {
+      "ID_Commit": "CMT101",
+      "ID_Project": "PRJ001",
+      "Judul_Commit": "Improve checkout process",
+      "User": "MHS005",
+      "Status": "Done",
+      "Tgl_Commit": "2024-07-04",
+      "Catatan": "Refactored checkout logic for better maintainability.",
+      "Branch": "refactor/checkout-process",
+      "FilesChanged": 5,
+      "LinesAdded": 120,
+      "LinesRemoved": 40,
+      "Related_Issue": "ISS024",
+      "Complexity": "Medium",
+      "Impact": "Medium",
+      "CommitType": "Refactor"
+    },
+    {
+      "ID_Commit": "CMT102",
+      "ID_Project": "PRJ001",
+      "Judul_Commit": "Add product review system",
+      "User": "MHS009",
+      "Status": "Done",
+      "Tgl_Commit": "2024-07-04",
+      "Catatan": "Users can now leave reviews and ratings for products.",
+      "Branch": "feature/product-reviews",
+      "FilesChanged": 6,
+      "LinesAdded": 180,
+      "LinesRemoved": 20,
+      "Related_Issue": "ISS043",
+      "Complexity": "Medium",
+      "Impact": "High",
+      "CommitType": "Feature"
     }
   ]
 }

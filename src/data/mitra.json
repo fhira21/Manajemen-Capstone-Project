@@ -104,6 +104,20 @@
       "Nama_Perusahaan": "Smart City Tech",
       "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
       "No_Telepon": "021-1111222"
+    },
+    {
+      "ID_Mitra": "MTR100",
+      "ID_User": "USR100",
+      "Nama_Perusahaan": "NextGen Web Solutions",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-1111100"
+    },
+    {
+      "ID_Mitra": "MTR101",
+      "ID_User": "USR101",
+      "Nama_Perusahaan": "AI Future Labs",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-1111101"
     }
   ]
 }

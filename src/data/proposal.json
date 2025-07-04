@@ -359,6 +359,30 @@
       "Informasi_Tambahan": "Interest in building automation, energy efficiency, and sensor integration.",
       "status": "Revisi",
       "tanggal": "06 Agustus 2025"
+    },
+    {
+      "ID_Proposal": "PRP100",
+      "ID_Mitra": "MTR100",
+      "Judul_Project": "AI Chatbot for Customer Service",
+      "Kategori_Project": ["Pengembangan", "AI", "Chatbot", "Customer Service"],
+      "Deskripsi_Masalah": "Customer service response time is slow due to high volume of inquiries.",
+      "Goals": "Automate responses to common questions and reduce workload for support staff.",
+      "Jumlah_orang": 3,
+      "Informasi_Tambahan": "Looking for students with experience in NLP and chatbot frameworks.",
+      "status": "Disetujui",
+      "tanggal": "04 Juli 2025"
+    },
+    {
+      "ID_Proposal": "PRP101",
+      "ID_Mitra": "MTR101",
+      "Judul_Project": "Mobile App for Smart Home Control",
+      "Kategori_Project": ["Pengembangan", "Mobile", "IoT", "Smart Home"],
+      "Deskripsi_Masalah": "Users need a unified app to control all smart home devices.",
+      "Goals": "Develop a mobile app for seamless smart home device integration.",
+      "Jumlah_orang": 4,
+      "Informasi_Tambahan": "Experience with IoT protocols and mobile development required.",
+      "status": "Menunggu",
+      "tanggal": "04 Juli 2025"
     }
   ]
 }

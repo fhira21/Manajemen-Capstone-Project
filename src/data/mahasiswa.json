@@ -274,6 +274,28 @@
       "No_Telepon": "082929292929",
       "Alamat": "Jl. Meranti No. 210",
       "ID_CV": "CV025"
+    },
+    {
+      "ID_Mahasiswa": "MHS100",
+      "ID_User": "USR100",
+      "Nama": "Sari Dewi",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022100",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "081700000100",
+      "Alamat": "Jl. Mawar Indah No. 100",
+      "ID_CV": "CV100"
+    },
+    {
+      "ID_Mahasiswa": "MHS101",
+      "ID_User": "USR101",
+      "Nama": "Bambang Setiawan",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022101",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "081700000101",
+      "Alamat": "Jl. Melati Indah No. 101",
+      "ID_CV": "CV101"
     }
   ]
 }

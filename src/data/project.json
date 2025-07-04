@@ -397,6 +397,135 @@
       "Target_Selesai": "2025-03-01",
       "Progres": 8,
       "Prioritas": "Medium"
+    },
+    {
+      "ID_Project": "PRJ026",
+      "ID_Dosen": "DSN001",
+      "ID_Proposal": "PRP001",
+      "ID_Mitra": "MTR001",
+      "ID_Mahasiswa": ["MHS001", "MHS005", "MHS009"],
+      "Nama_Project": "Website Redesign for E-commerce (Copy 1)",
+      "Tgl_Update_Project": "2024-07-04",
+      "Tgl_Rapat": "2024-07-15",
+      "Status": "Pengembangan",
+      "Deskripsi": "Redesign e-commerce website untuk meningkatkan pengalaman pengguna dan meningkatkan konversi penjualan",
+      "Target_Selesai": "2024-08-20",
+      "Progres": 70,
+      "Prioritas": "Tinggi",
+      "Teknologi": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+      "Sprint_Aktif": "Sprint 4",
+      "Total_Sprint": 5,
+      "Tgl_Mulai": "2024-05-01",
+      "Repository": "github.com/ecommerce-redesign/frontend",
+      "KPI": {
+        "Code_Quality": 88,
+        "On_Time_Delivery": 95,
+        "Test_Coverage": 80
+      },
+      "Tim_Lead": "MHS001",
+      "Milestone": [
+        {
+          "Nama": "Design Phase",
+          "Status": "Completed",
+          "Tanggal": "2024-05-15"
+        },
+        {
+          "Nama": "Frontend Development",
+          "Status": "In Progress",
+          "Tanggal": "2024-07-15"
+        },
+        {
+          "Nama": "Testing & QA",
+          "Status": "Not Started",
+          "Tanggal": "2024-08-10"
+        }
+      ]
+    },
+    {
+      "ID_Project": "PRJ027",
+      "ID_Dosen": "DSN001",
+      "ID_Proposal": "PRP001",
+      "ID_Mitra": "MTR001",
+      "ID_Mahasiswa": ["MHS001", "MHS005", "MHS009"],
+      "Nama_Project": "Website Redesign for E-commerce (Copy 2)",
+      "Tgl_Update_Project": "2024-07-04",
+      "Tgl_Rapat": "2024-07-20",
+      "Status": "Pengembangan",
+      "Deskripsi": "Redesign e-commerce website untuk meningkatkan pengalaman pengguna dan meningkatkan konversi penjualan",
+      "Target_Selesai": "2024-08-25",
+      "Progres": 75,
+      "Prioritas": "Tinggi",
+      "Teknologi": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+      "Sprint_Aktif": "Sprint 5",
+      "Total_Sprint": 5,
+      "Tgl_Mulai": "2024-05-01",
+      "Repository": "github.com/ecommerce-redesign/frontend",
+      "KPI": {
+        "Code_Quality": 90,
+        "On_Time_Delivery": 97,
+        "Test_Coverage": 85
+      },
+      "Tim_Lead": "MHS001",
+      "Milestone": [
+        {
+          "Nama": "Design Phase",
+          "Status": "Completed",
+          "Tanggal": "2024-05-15"
+        },
+        {
+          "Nama": "Frontend Development",
+          "Status": "In Progress",
+          "Tanggal": "2024-07-15"
+        },
+        {
+          "Nama": "Testing & QA",
+          "Status": "Not Started",
+          "Tanggal": "2024-08-15"
+        }
+      ]
+    },
+    {
+      "ID_Project": "PRJ028",
+      "ID_Dosen": "DSN001",
+      "ID_Proposal": "PRP001",
+      "ID_Mitra": "MTR001",
+      "ID_Mahasiswa": ["MHS001", "MHS005", "MHS009"],
+      "Nama_Project": "Website Redesign for E-commerce (Copy 3)",
+      "Tgl_Update_Project": "2024-07-04",
+      "Tgl_Rapat": "2024-07-25",
+      "Status": "Pengembangan",
+      "Deskripsi": "Redesign e-commerce website untuk meningkatkan pengalaman pengguna dan meningkatkan konversi penjualan",
+      "Target_Selesai": "2024-08-30",
+      "Progres": 80,
+      "Prioritas": "Tinggi",
+      "Teknologi": ["React", "Node.js", "MongoDB", "TailwindCSS"],
+      "Sprint_Aktif": "Sprint 5",
+      "Total_Sprint": 5,
+      "Tgl_Mulai": "2024-05-01",
+      "Repository": "github.com/ecommerce-redesign/frontend",
+      "KPI": {
+        "Code_Quality": 92,
+        "On_Time_Delivery": 99,
+        "Test_Coverage": 90
+      },
+      "Tim_Lead": "MHS001",
+      "Milestone": [
+        {
+          "Nama": "Design Phase",
+          "Status": "Completed",
+          "Tanggal": "2024-05-15"
+        },
+        {
+          "Nama": "Frontend Development",
+          "Status": "In Progress",
+          "Tanggal": "2024-07-15"
+        },
+        {
+          "Nama": "Testing & QA",
+          "Status": "Not Started",
+          "Tanggal": "2024-08-20"
+        }
+      ]
     }
   ]
 }

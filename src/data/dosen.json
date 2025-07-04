@@ -104,6 +104,20 @@
       "Nama": "Bruce Wayne",
       "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "4756102938"
+    },
+    {
+      "ID_Dosen": "DSN100",
+      "ID_User": "USR100",
+      "Nama": "Dr. Siti Aminah",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "1002003001"
+    },
+    {
+      "ID_Dosen": "DSN101",
+      "ID_User": "USR101",
+      "Nama": "Prof. Budi Santoso",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "1002003002"
     }
   ]
 }

@@ -384,6 +384,20 @@
       "Email": "admin@smartcitytech.com",
       "Password": "hashedpassword55",
       "Role": "Mitra"
+    },
+    {
+      "ID_User": "USR100",
+      "Username": "sari100",
+      "Email": "sari100@example.com",
+      "Password": "hashedpassword100",
+      "Role": "Mahasiswa"
+    },
+    {
+      "ID_User": "USR101",
+      "Username": "bambang101",
+      "Email": "bambang101@example.com",
+      "Password": "hashedpassword101",
+      "Role": "Mahasiswa"
     }
   ]
 }
