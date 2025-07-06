@@ -29,6 +29,7 @@ import ProgresProject from './pages/dosen/ProgresProject';
 
 // Halaman mitra
 import SubmitNewProject from './pages/mitra/SubmitNewProject';
+import DetailPelamar from "./pages/mitra/DetailPelamar";
 
 export default function App() {
   return (
@@ -90,6 +91,7 @@ export default function App() {
             <Route path="student-list-register" element={<ListStudentRegister />} />
             <Route path="project-selection" element={<ProjectSelection />} />
             <Route path="settings" element={<Settings />} />
+            <Route path="detail-pelamar" element={<DetailPelamar />} />
           </Route>
 
           {/* 404 */}

@@ -194,6 +194,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
     { to: "submit-new-project", icon: "/assets/icons/icons8-project-management-100.png", label: "Mengajukan Proyek Baru" },
     { to: "student-list-register", icon: "/assets/icons/icons8-list-student-register-64.png", label: "Mahasiswa Pendaftar" },
     { to: "project-selection", icon: "/assets/icons/icons8-list-view-select-proyek-96.png", label: "Pemilihan Proyek" },
+     { to: "detail-pelamar", icon: "/assets/icons/bank.png", label: "Detail Pelamar" },
   ];
 
   // Pilih menu berdasarkan role

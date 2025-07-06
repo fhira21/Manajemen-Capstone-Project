@@ -1,0 +1,23 @@
+[
+  {
+    "project": "Aplikasi Kasir UMKM",
+    "pelamar": [
+      { "id": 1, "nama": "Bayu", "nim": "2340849001", "gender": "L", "email": "bayu@gmail.com" },
+      { "id": 2, "nama": "zalva", "nim": "2340849002", "gender": "P", "email": "zalva@gmail.com" }
+    ]
+  },
+  {
+    "project": "Desain UI Layanan Baca",
+    "pelamar": [
+      { "id": 3, "nama": "Hendrik", "nim": "2340849665", "gender": "L", "email": "haha@gmail.com" },
+      { "id": 4, "nama": "fendhy", "nim": "2340849668", "gender": "P", "email": "wawawa@gmail.com" },
+      { "id": 5, "nama": "Bigmi", "nim": "2340849663", "gender": "P", "email": "cacacac@gmail.com" }
+    ]
+  },
+  {
+    "project": "Sistem Aplikasi Donasi Sosial Digital",
+    "pelamar": [
+      { "id": 6, "nama": "Alex", "nim": "2340849666", "gender": "L", "email": "alexr@gmail.com" }
+    ]
+  }
+]
