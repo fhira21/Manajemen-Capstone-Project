@@ -6,8 +6,7 @@ export default function ListStudentRegister() {
   const [filter, setFilter] = useState("");
   const [pendaftar, setPendaftar] = useState(PENDAFTAR.PENDFTAR);
   const [selectedpendaftar, setselectedpendaftar] = useState(null);
-  const [reviewStatus, setReviewStatus] = useState("");
-
+  
   const handleStatusOnlySubmit = () => {
     const updated = pendaftar.map((p) =>
       p.ID_PENDAFTAR === selectedpendaftar.ID_PENDAFTAR
@@ -88,7 +87,6 @@ export default function ListStudentRegister() {
                       <button
                         onClick={() => {
                           setselectedpendaftar(p);
-                          setReviewStatus(p.Status);
                         }}
                         className={`px-2 py-1 rounded text-xs font-semibold ${
                           statusStyles[p.Status] || ""
