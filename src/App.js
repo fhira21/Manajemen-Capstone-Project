@@ -29,6 +29,8 @@ import ProgresProject from './pages/dosen/ProgresProject';
 
 // Halaman mitra
 import SubmitNewProject from './pages/mitra/SubmitNewProject';
+import FormPengajuanProjek from './pages/mitra/FormPengajuanProjek';
+import DetailProyek from './pages/mitra/DetailProyek';
 
 export default function App() {
   return (
@@ -78,7 +80,7 @@ export default function App() {
             <Route path="settings" element={<Settings />} />
           </Route>
 
-          {/* Partner routes */}
+          {/* Partner routes Mitra*/}
           <Route path="/partner" element={
             <ProtectedRoute allowedRoles={['Mitra']}>
               <Main role="Mitra" />
@@ -87,6 +89,8 @@ export default function App() {
             <Route index element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="submit-new-project" element={<SubmitNewProject />} />
+            <Route path="form-pengajuan-projek" element={<FormPengajuanProjek />} />
+            <Route path="detail-proyek/:projectId" element={<DetailProyek />} />
             <Route path="student-list-register" element={<ListStudentRegister />} />
             <Route path="project-selection" element={<ProjectSelection />} />
             <Route path="settings" element={<Settings />} />
