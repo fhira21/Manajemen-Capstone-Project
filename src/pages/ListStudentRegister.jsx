@@ -3,14 +3,13 @@ import { useState } from "react";
 import PENDAFTAR from "../data/Pendaftar(dosen).json";
 
 export default function ListStudentRegister() {
-  const [jomblo, kasihpacar] = useState("");
-  const [Pendaftar, setPendaftar] = useState(PENDAFTAR.PENDFTAR);
   const [filter, setFilter] = useState("");
+  const [pendaftar, setPendaftar] = useState(PENDAFTAR.PENDFTAR);
   const [selectedpendaftar, setselectedpendaftar] = useState(null);
   const [reviewStatus, setReviewStatus] = useState("");
 
   const handleStatusOnlySubmit = () => {
-    const updated = Pendaftar.map((p) =>
+    const updated = pendaftar.map((p) =>
       p.ID_PENDAFTAR === selectedpendaftar.ID_PENDAFTAR
         ? { ...p, Status: selectedpendaftar.Status }
         : p
@@ -20,17 +19,11 @@ export default function ListStudentRegister() {
   };
 
   const filtered = filter
-    ? Pendaftar.filter((p) => p.Status === filter)
-    : Pendaftar;
+    ? pendaftar.filter((p) => p.Status === filter)
+    : pendaftar;
 
   const handleClick = (status) => {
-    if (filter === status) {
-      kasihpacar("");
-      setFilter("");
-    } else {
-      kasihpacar(status);
-      setFilter(status);
-    }
+    setFilter((prev) => (prev === status ? "" : status));
   };
 
   const statusStyles = {
@@ -52,7 +45,7 @@ export default function ListStudentRegister() {
           <div className="flex justify-start gap-2 text-[#4F4F4F] mt-10">
             <div
               className={`py-2 px-2 rounded-2xl shadow-xl ${
-                jomblo === "Disetujui"
+                filter === "Disetujui"
                   ? "bg-[#70E947] text-white"
                   : "hover:bg-[#70E947]"
               }`}
@@ -62,7 +55,7 @@ export default function ListStudentRegister() {
             </div>
             <div
               className={`py-2 px-2 rounded-2xl shadow-xl ${
-                jomblo === "Menunggu"
+                filter === "Menunggu"
                   ? "bg-[#E4C900] text-white"
                   : "hover:bg-[#E4C900]"
               }`}
