@@ -1,74 +1,94 @@
 {
-    "PENDFTAR": [
-        {
-            "ID": "STU001",
-            "Nama": "Andi Pratama",
-            "Proyek": "Sistem Informasi Perpustakaan",
-            "Tanggal Daftar": "2025-06-01",
-            "Status": "Disetujui"
-        },
-        {
-            "ID": "STU002",
-            "Nama": "Budi Santoso",
-            "Proyek": "Aplikasi Manajemen Tugas",
-            "Tanggal Daftar": "2025-06-02",
-            "Status": "Menunggu"
-        },
-        {
-            "ID": "STU003",
-            "Nama": "Citra Dewi",
-            "Proyek": "Website E-Learning",
-            "Tanggal Daftar": "2025-06-03",
-            "Status": "Menunggu"
-        },
-        {
-            "ID": "STU004",
-            "Nama": "Dedi Supriyadi",
-            "Proyek": "Aplikasi Kasir UMKM",
-            "Tanggal Daftar": "2025-06-04",
-            "Status": "Disetujui"
-        },
-        {
-            "ID": "STU005",
-            "Nama": "Eka Lestari",
-            "Proyek": "Sistem Informasi Akademik",
-            "Tanggal Daftar": "2025-06-05",
-            "Status": "Disetujui"
-        },
-        {
-            "ID": "STU006",
-            "Nama": "Farhan Ramadhan",
-            "Proyek": "Platform Booking Lapangan",
-            "Tanggal Daftar": "2025-06-06",
-            "Status": "Menunggu"
-        },
-        {
-            "ID": "STU007",
-            "Nama": "Gita Nuraini",
-            "Proyek": "Monitoring Keuangan Pribadi",
-            "Tanggal Daftar": "2025-06-07",
-            "Status": "Disetujui"
-        },
-        {
-            "ID": "STU008",
-            "Nama": "Hadi Wibowo",
-            "Proyek": "Aplikasi Inventaris Sekolah",
-            "Tanggal Daftar": "2025-06-08",
-            "Status": "Menunggu"
-        },
-        {
-            "ID": "STU009",
-            "Nama": "Indah Permatasari",
-            "Proyek": "Sistem Informasi Kegiatan Kampus",
-            "Tanggal Daftar": "2025-06-09",
-            "Status": "Menunggu"
-        },
-        {
-            "ID": "STU010",
-            "Nama": "Joko Haryanto",
-            "Proyek": "Aplikasi Absensi Karyawan",
-            "Tanggal Daftar": "2025-06-10",
-            "Status": "Disetujui"
-        }
-    ]
+  "PENDFTAR": [
+    {
+      "ID": "STU001",
+      "ID_Mahasiswa": "MHS001",
+      "Nama": "Alice Wonderland",
+      "Proyek": "Website Redesign for E-commerce",
+      "ID_Proposal": "PRP001",
+      "Tanggal Daftar": "2025-06-01",
+      "Status": "Disetujui"
+    },
+    {
+      "ID": "STU002",
+      "ID_Mahasiswa": "MHS002",
+      "Nama": "Diana Prince",
+      "Proyek": "Cloud-based Data Backup System",
+      "ID_Proposal": "PRP004",
+      "Tanggal Daftar": "2025-06-02",
+      "Status": "Menunggu"
+    },
+    {
+      "ID": "STU003",
+      "ID_Mahasiswa": "MHS003",
+      "Nama": "Frankenstein",
+      "Proyek": "Educational Gamification Module",
+      "ID_Proposal": "PRP007",
+      "Tanggal Daftar": "2025-06-03",
+      "Status": "Menunggu"
+    },
+    {
+      "ID": "STU004",
+      "ID_Mahasiswa": "MHS004",
+      "Nama": "Harry Potter",
+      "Proyek": "Supply Chain Optimization with Blockchain",
+      "ID_Proposal": "PRP010",
+      "Tanggal Daftar": "2025-06-04",
+      "Status": "Disetujui"
+    },
+    {
+      "ID": "STU005",
+      "ID_Mahasiswa": "MHS005",
+      "Nama": "Iris West",
+      "Proyek": "Website Redesign for E-commerce",
+      "ID_Proposal": "PRP001",
+      "Tanggal Daftar": "2025-06-05",
+      "Status": "Disetujui"
+    },
+    {
+      "ID": "STU006",
+      "ID_Mahasiswa": "MHS006",
+      "Nama": "Jack Sparrow",
+      "Proyek": "Cloud-based Data Backup System",
+      "ID_Proposal": "PRP004",
+      "Tanggal Daftar": "2025-06-06",
+      "Status": "Menunggu"
+    },
+    {
+      "ID": "STU007",
+      "ID_Mahasiswa": "MHS007",
+      "Nama": "Katniss Everdeen",
+      "Proyek": "Educational Gamification Module",
+      "ID_Proposal": "PRP007",
+      "Tanggal Daftar": "2025-06-07",
+      "Status": "Disetujui"
+    },
+    {
+      "ID": "STU008",
+      "ID_Mahasiswa": "MHS008",
+      "Nama": "Luke Skywalker",
+      "Proyek": "Supply Chain Optimization with Blockchain",
+      "ID_Proposal": "PRP010",
+      "Tanggal Daftar": "2025-06-08",
+      "Status": "Menunggu"
+    },
+    {
+      "ID": "STU009",
+      "ID_Mahasiswa": "MHS009",
+      "Nama": "Mulan",
+      "Proyek": "Website Redesign for E-commerce",
+      "ID_Proposal": "PRP001",
+      "Tanggal Daftar": "2025-06-09",
+      "Status": "Menunggu"
+    },
+    {
+      "ID": "STU010",
+      "ID_Mahasiswa": "MHS010",
+      "Nama": "Neo Anderson",
+      "Proyek": "Educational Gamification Module",
+      "ID_Proposal": "PRP007",
+      "Tanggal Daftar": "2025-06-10",
+      "Status": "Disetujui"
+    }
+  ]
 }
