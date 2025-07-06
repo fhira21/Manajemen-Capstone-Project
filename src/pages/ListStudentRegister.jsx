@@ -11,7 +11,9 @@ export default function ListStudentRegister() {
 
   const handleStatusOnlySubmit = () => {
     const updated = Pendaftar.map((p) =>
-      p.ID === selectedpendaftar.ID ? { ...p, Status: reviewStatus } : p
+      p.ID_PENDAFTAR === selectedpendaftar.ID_PENDAFTAR
+        ? { ...p, Status: selectedpendaftar.Status }
+        : p
     );
     setPendaftar(updated);
     setselectedpendaftar(null);
@@ -82,7 +84,7 @@ export default function ListStudentRegister() {
               </thead>
               <tbody>
                 {filtered.map((p, idx) => (
-                  <tr key={p.ID} className="hover:bg-gray-50">
+                  <tr key={p.ID_PENDAFTAR} className="hover:bg-gray-50">
                     <td className="p-2 text-center">{idx + 1}</td>
                     <td className="p-2 break-words max-w-xs">{p.Nama}</td>
                     <td className="p-2 break-words max-w-xs">{p.Proyek}</td>
@@ -91,7 +93,7 @@ export default function ListStudentRegister() {
                     </td>
                     <td className="p-2 text-center">
                       <button
-                      onClick={() => {
+                        onClick={() => {
                           setselectedpendaftar(p);
                           setReviewStatus(p.Status);
                         }}
@@ -136,8 +138,13 @@ export default function ListStudentRegister() {
 
               <div className="mt-4 flex justify-end gap-2">
                 <select
-                  value={reviewStatus}
-                  onChange={(e) => setReviewStatus(e.target.value)}
+                  value={selectedpendaftar.Status}
+                  onChange={(e) =>
+                    setselectedpendaftar({
+                      ...selectedpendaftar,
+                      Status: e.target.value,
+                    })
+                  }
                   className="border rounded px-4 py-1 text-sm"
                 >
                   <option value="Menunggu">Menunggu</option>
