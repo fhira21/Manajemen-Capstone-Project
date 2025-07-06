@@ -31,6 +31,7 @@ export default function ProjectCard({ project }) {
     // Arahkan ke halaman detail dengan ID proyek yang sesuai
     navigate(`/partner/detail-proyek/${project.id}`);
   };
+  
 
   return (
     <div className="bg-white p-4 rounded-lg border border-gray-200 mb-4 flex justify-between items-center">
