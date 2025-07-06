@@ -3,32 +3,27 @@ import { useState } from "react";
 import PENDAFTAR from "../data/Pendaftar(dosen).json";
 
 export default function ListStudentRegister() {
-  const [jomblo, kasihpacar] = useState("");
-  const [Pendaftar, setPendaftar] = useState(PENDAFTAR.PENDFTAR);
   const [filter, setFilter] = useState("");
+  const [pendaftar, setPendaftar] = useState(PENDAFTAR.PENDFTAR);
   const [selectedpendaftar, setselectedpendaftar] = useState(null);
   const [reviewStatus, setReviewStatus] = useState("");
 
   const handleStatusOnlySubmit = () => {
-    const updated = Pendaftar.map((p) =>
-      p.ID === selectedpendaftar.ID ? { ...p, Status: reviewStatus } : p
+    const updated = pendaftar.map((p) =>
+      p.ID_PENDAFTAR === selectedpendaftar.ID_PENDAFTAR
+        ? { ...p, Status: selectedpendaftar.Status }
+        : p
     );
     setPendaftar(updated);
     setselectedpendaftar(null);
   };
 
   const filtered = filter
-    ? Pendaftar.filter((p) => p.Status === filter)
-    : Pendaftar;
+    ? pendaftar.filter((p) => p.Status === filter)
+    : pendaftar;
 
   const handleClick = (status) => {
-    if (filter === status) {
-      kasihpacar("");
-      setFilter("");
-    } else {
-      kasihpacar(status);
-      setFilter(status);
-    }
+    setFilter((prev) => (prev === status ? "" : status));
   };
 
   const statusStyles = {
@@ -50,7 +45,7 @@ export default function ListStudentRegister() {
           <div className="flex justify-start gap-2 text-[#4F4F4F] mt-10">
             <div
               className={`py-2 px-2 rounded-2xl shadow-xl ${
-                jomblo === "Disetujui"
+                filter === "Disetujui"
                   ? "bg-[#70E947] text-white"
                   : "hover:bg-[#70E947]"
               }`}
@@ -60,7 +55,7 @@ export default function ListStudentRegister() {
             </div>
             <div
               className={`py-2 px-2 rounded-2xl shadow-xl ${
-                jomblo === "Menunggu"
+                filter === "Menunggu"
                   ? "bg-[#E4C900] text-white"
                   : "hover:bg-[#E4C900]"
               }`}
@@ -82,7 +77,7 @@ export default function ListStudentRegister() {
               </thead>
               <tbody>
                 {filtered.map((p, idx) => (
-                  <tr key={p.ID} className="hover:bg-gray-50">
+                  <tr key={p.ID_PENDAFTAR} className="hover:bg-gray-50">
                     <td className="p-2 text-center">{idx + 1}</td>
                     <td className="p-2 break-words max-w-xs">{p.Nama}</td>
                     <td className="p-2 break-words max-w-xs">{p.Proyek}</td>
@@ -91,7 +86,7 @@ export default function ListStudentRegister() {
                     </td>
                     <td className="p-2 text-center">
                       <button
-                      onClick={() => {
+                        onClick={() => {
                           setselectedpendaftar(p);
                           setReviewStatus(p.Status);
                         }}
@@ -136,8 +131,13 @@ export default function ListStudentRegister() {
 
               <div className="mt-4 flex justify-end gap-2">
                 <select
-                  value={reviewStatus}
-                  onChange={(e) => setReviewStatus(e.target.value)}
+                  value={selectedpendaftar.Status}
+                  onChange={(e) =>
+                    setselectedpendaftar({
+                      ...selectedpendaftar,
+                      Status: e.target.value,
+                    })
+                  }
                   className="border rounded px-4 py-1 text-sm"
                 >
                   <option value="Menunggu">Menunggu</option>
