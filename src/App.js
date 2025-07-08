@@ -18,6 +18,9 @@ import Main from './pages/main';
 
 import Unauthorized from './pages/Unauthorized';
 
+// Public Pages
+import ProjectDetail from './pages/ProjectDetail';
+
 
 
 // Halaman umum
@@ -44,8 +47,7 @@ import ProposalPartner from './pages/dosen/ProposalPartner';
 
 import StudentData from './pages/dosen/StudentData';
 
-import ListStudentRegister from './pages/ListStudentRegister';
-
+import StudentListRegister from './pages/dosen/ListStudentRegister';
 import ProgresProject from './pages/dosen/ProgresProject';
 
 
@@ -112,6 +114,10 @@ return (
 
 <Route path="settings" element={<Settings />} />
 
+
+<Route path="project-detail/:id" element={<ProjectDetail />} />
+
+
 </Route>
 
 
@@ -128,9 +134,9 @@ return (
 
 <Route path="student-data" element={<StudentData />} />
 
-<Route path="student-list-register" element={<ListStudentRegister />} />
-
 <Route path="progres-project" element={<ProgresProject />} />
+
+<Route path="student-list-register" element={<StudentListRegister />} />
 
 <Route path="settings" element={<Settings />} />
 
@@ -143,10 +149,9 @@ return (
 <Route path="/partner" element={ <ProtectedRoute allowedRoles={['Mitra']}> <Main role="Mitra" /> </ProtectedRoute> }>
             <Route index element={<Dashboard />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="submit-new-project" element={<SubmitNewProject projects={projects} />} />
             <Route path="form-pengajuan-projek" element={<FormPengajuanProjek onAddProject={addProject} />} />
-            <Route path="detail-proyek/:projectId" element={<DetailProyek projects={projects} />} /> {/* Kirim juga projects ke detail */}
-            <Route path="student-list-register" element={<ListStudentRegister />} />
+            <Route path="detail-proyek/:projectId" element={<DetailProyek projects={projects} />} /> {/* For legacy support */}
+            <Route path="project-detail/:id" element={<ProjectDetail />} /> {/* New project detail route */}
             <Route path="project-selection" element={<ProjectSelection />} />
             <Route path="settings" element={<Settings />} />
           </Route>

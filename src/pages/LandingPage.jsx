@@ -18,10 +18,11 @@ export default function LandingPage() {
             title="Management Capstone"
             description="Welcome to the Management Capstone project. This is a platform designed to help you manage your projects effectively."
         />
-        <div className="flex p-2 flex-col items-center text-center gap-2 justify-center h-screen bg-primary text-white">
-            <h1 className="text-4xl font-black">Welcome to Management Capstone </h1>
+        <div className="flex p-2 flex-col items-center text-center gap-2 justify-center min-h-screen bg-primary text-white">
+            <h1 className="text-4xl font-black mt-10">Welcome to Management Capstone </h1>
             <h2 className="text-2xl w-[80%] font-semibold">Welcome to the Management Capstone project. This is a platform designed to help you manage your projects effectively.</h2>
-            <div className="flex items-center gap-2 justify-content-center">
+            
+            <div className="flex items-center gap-2 justify-content-center mt-4">
                 {userRole ? (
                     <NavLink 
                         to={

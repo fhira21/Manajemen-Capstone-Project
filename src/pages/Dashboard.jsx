@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Pie, Bar, Line, Doughnut } from "react-chartjs-2";
 import PageTitle from "../components/PageTitle";
 import { useAuth } from "../context/AuthContext";
+import { getCategoryColor } from "../utils/categoryColors";
 import { 
   Chart as ChartJS, 
   ArcElement, 
@@ -830,11 +831,18 @@ export default function Dashboard() {
                     <div className="mb-3 sm:mb-4">
                       <h3 className="text-xs sm:text-sm font-medium text-gray-500 mb-1 sm:mb-2">Teknologi</h3>
                       <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                        {projectDetails?.Teknologi?.map(tech => (
-                          <span key={tech} className="bg-gray-100 text-gray-800 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-2xs xs:text-xs">
-                            {tech}
-                          </span>
-                        ))}
+                        {projectDetails?.Teknologi?.map(tech => {
+                          const color = getCategoryColor(tech);
+                          return (
+                            <span
+                              key={tech}
+                              className="text-2xs xs:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded"
+                              style={{ backgroundColor: color, color: '#fff' }}
+                            >
+                              {tech}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
