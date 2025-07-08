@@ -1,6 +1,6 @@
-import PageTitle from "../components/PageTitle";
+import PageTitle from "../../components/PageTitle";
 import { useState } from "react";
-import PENDAFTAR from "../data/Pendaftar(dosen).json";
+import PENDAFTAR from "../../data/Pendaftar(dosen).json";
 
 export default function ListStudentRegister() {
   const [filter, setFilter] = useState("");

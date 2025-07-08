@@ -69,6 +69,55 @@
       "Nama_Perusahaan": "Logistics Master Inc.",
       "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
       "No_Telepon": "021-5050505"
+    },
+    {
+      "ID_Mitra": "MTR011",
+      "ID_User": "USR051",
+      "Nama_Perusahaan": "CyberSecure Co.",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-6060606"
+    },
+    {
+      "ID_Mitra": "MTR012",
+      "ID_User": "USR052",
+      "Nama_Perusahaan": "GameDev Studios",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-7070707"
+    },
+    {
+      "ID_Mitra": "MTR013",
+      "ID_User": "USR053",
+      "Nama_Perusahaan": "AI Research Institute",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-8080808"
+    },
+    {
+      "ID_Mitra": "MTR014",
+      "ID_User": "USR054",
+      "Nama_Perusahaan": "E-Learning Innovations",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-9090909"
+    },
+    {
+      "ID_Mitra": "MTR015",
+      "ID_User": "USR055",
+      "Nama_Perusahaan": "Smart City Tech",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-1111222"
+    },
+    {
+      "ID_Mitra": "MTR100",
+      "ID_User": "USR100",
+      "Nama_Perusahaan": "NextGen Web Solutions",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-1111100"
+    },
+    {
+      "ID_Mitra": "MTR101",
+      "ID_User": "USR101",
+      "Nama_Perusahaan": "AI Future Labs",
+      "Foto_Profile": "https://c.tenor.com/Q0SK7PBx31wAAAAd/tenor.gif",
+      "No_Telepon": "021-1111101"
     }
   ]
 }

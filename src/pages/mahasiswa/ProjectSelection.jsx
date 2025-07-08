@@ -1,106 +1,62 @@
 import PageTitle from "../../components/PageTitle";
-import PROJECT from '../../data/project.json';
 import PROPOSAL from '../../data/proposal.json';  
 import MITRA from '../../data/mitra.json';
-import USER from '../../data/user.json';
 import Button from "../../components/buttonPrimary";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getCategoryColor } from '../../utils/categoryColors';
 
 export default function ProjectSelection() {
     const [searchText, setSearchText] = useState("");
     const [filteredProposals, setFilteredProposals] = useState(PROPOSAL.PROPOSAL || []);
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [selectedTeamSize, setSelectedTeamSize] = useState("");
-    const [showDetails, setShowDetails] = useState(false);
-    const [selectedProject, setSelectedProject] = useState(null);
-    const [selectedMitra, setSelectedMitra] = useState(null);
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [selectedStatus, setSelectedStatus] = useState(""); // Added for Mitra status filtering
     const [appliedProjects, setAppliedProjects] = useState([]);
-
-    // Define colors for each letter A-Z
-    const categoryColors = {
-        A: "#FF6B6B", B: "#4ECDC4", C: "#FFD166", D: "#06D6A0", E: "#118AB2", 
-        F: "#073B4C", G: "#8338EC", H: "#3A86FF", I: "#FB5607", J: "#FFBE0B",
-        K: "#FF006E", L: "#8AC926", M: "#FFCC00", N: "#9B5DE5", O: "#F15BB5", 
-        P: "#00BBF9", Q: "#00F5D4", R: "#EF476F", S: "#FCA311", T: "#14213D",
-        U: "#E76F51", V: "#2A9D8F", W: "#E07A5F", X: "#81B29A", Y: "#F3D5B5", 
-        Z: "#D62828"
-    };
-
-    // Function to get color based on first letter
-    const getCategoryColor = (category) => {
-        const firstLetter = category.charAt(0).toUpperCase();
-        return categoryColors[firstLetter] || "#CCCCCC";
-    };
+    const [userRole, setUserRole] = useState(null);
+    const [mitraId, setMitraId] = useState(null);
   
     const inputClasses = 'w-full rounded h-10 p-2 border-2 focus:outline-none focus:ring-2 focus:ring-secondary';
 
     // Get all unique categories from proposals
     const allCategories = [...new Set(PROPOSAL.PROPOSAL?.flatMap(p => p.Kategori_Project || []))];
 
-    // Handle apply to project
-    const handleApplyProject = (projectId) => {
-        // Add project to applied projects
-        setAppliedProjects([...appliedProjects, projectId]);
-        
-        // Show success toast
-        toast.success('Lamaran berhasil terkirim!', {
-            position: "top-right",
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    };
-
-    // Check if project is already applied
-    const isProjectApplied = (projectId) => {
-        return appliedProjects.includes(projectId);
-    };
-
-    // Handle category selection (multiple)
-    const handleCategoryChange = (category) => {
-        if (selectedCategories.includes(category)) {
-            setSelectedCategories(selectedCategories.filter(c => c !== category));
-        } else {
-            setSelectedCategories([...selectedCategories, category]);
+    // Load applied projects from localStorage on component mount
+    useEffect(() => {
+        const savedAppliedProjects = localStorage.getItem('appliedProjects');
+        if (savedAppliedProjects) {
+            setAppliedProjects(JSON.parse(savedAppliedProjects));
         }
-    };
 
-    // Handle showing project details
-    const handleShowDetails = (project) => {
-        setSelectedProject(project);
-        
-        // Find related mitra data
-        const mitra = MITRA.MITRA.find(m => m.ID_Mitra === project.ID_Mitra);
-        setSelectedMitra(mitra);
-        
-        // Find related user data
-        if (mitra) {
-            const user = USER.USER.find(u => u.ID_User === mitra.ID_User);
-            setSelectedUser(user);
+        // Get user role from localStorage
+        const role = localStorage.getItem('userRole');
+        setUserRole(role);
+
+        // If user is a Mitra, get their ID
+        if (role === 'Mitra') {
+            const loggedInUser = JSON.parse(localStorage.getItem('user'));
+            if (loggedInUser) {
+                // Find the mitra associated with this user
+                const loggedInMitra = MITRA.MITRA.find(m => m.ID_User === loggedInUser.id);
+                if (loggedInMitra) {
+                    setMitraId(loggedInMitra.ID_Mitra);
+                }
+            }
         }
-        
-        setShowDetails(true);
-    };
+    }, []);
 
-    // Handle closing project details
-    const handleCloseDetails = () => {
-        setShowDetails(false);
-        setSelectedProject(null);
-        setSelectedMitra(null);
-        setSelectedUser(null);
-    };
-
-    // Filter proposals based on search text, categories, and team size
+    // Filter proposals based on search text, categories, team size, status, and user role
     useEffect(() => {
         if (!PROPOSAL.PROPOSAL) return;
 
         let filtered = [...PROPOSAL.PROPOSAL];
+
+        // If user is Mitra, only show their own projects
+        if (userRole === 'Mitra' && mitraId) {
+            filtered = filtered.filter(project => project.ID_Mitra === mitraId);
+        }
         
         if (searchText) {
             filtered = filtered.filter(project => 
@@ -129,8 +85,13 @@ export default function ProjectSelection() {
             });
         }
         
+        // Filter by status (only for Mitra)
+        if (selectedStatus && userRole === 'Mitra') {
+            filtered = filtered.filter(project => project.status === selectedStatus);
+        }
+        
         setFilteredProposals(filtered);
-    }, [searchText, selectedCategories, selectedTeamSize]);
+    }, [searchText, selectedCategories, selectedTeamSize, selectedStatus, userRole, mitraId]);
 
     // Toggle filter dropdown
     const toggleFilterDropdown = () => {
@@ -151,14 +112,89 @@ export default function ProjectSelection() {
     const resetFilters = () => {
         setSelectedCategories([]);
         setSelectedTeamSize("");
+        setSelectedStatus("");
         closeFilterDropdown();
     };
+
+    // Handle apply to project
+    const handleApplyProject = (projectId) => {
+        // Add project to applied projects
+        const updatedAppliedProjects = [...appliedProjects, projectId];
+        setAppliedProjects(updatedAppliedProjects);
+        
+        // Save to localStorage for persistence
+        localStorage.setItem('appliedProjects', JSON.stringify(updatedAppliedProjects));
+        
+        // Show success toast
+        toast.success('Lamaran berhasil terkirim!', {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
+
+    // Check if project is already applied
+    const isProjectApplied = (projectId) => {
+        return appliedProjects.includes(projectId);
+    };
+
+    // Handle category selection (multiple)
+    const handleCategoryChange = (category) => {
+        if (selectedCategories.includes(category)) {
+            setSelectedCategories(selectedCategories.filter(c => c !== category));
+        } else {
+            setSelectedCategories([...selectedCategories, category]);
+        }
+    };
+
+    // Handle showing project details - checks role before redirecting
+    const navigate = useNavigate();
+    
+    // Handle back button navigation
+    const handleBack = () => {
+        const userRole = localStorage.getItem('userRole');
+        if (userRole === 'Mahasiswa') {
+            navigate('/student/dashboard');
+        } else if (userRole === 'Mitra') {
+            navigate('/partner/dashboard');
+        } else {
+            navigate('/');
+        }
+    };
+    
+    const handleShowDetails = (project) => {
+        // Get user role from localStorage
+        const userRole = localStorage.getItem('userRole');
+        
+        if (userRole === 'Mahasiswa') {
+            // If user is a student, navigate to student's project detail page
+            navigate(`/student/project-detail/${project.ID_Proposal}`);
+        } else if (userRole === 'Mitra') {
+            // If user is a partner, navigate to partner's project detail page
+            navigate(`/partner/project-detail/${project.ID_Proposal}`);
+        } else {
+            // For other roles, show message that they can't access details
+            toast.info('Only students and partners can view full project details', {
+                position: "top-center",
+                autoClose: 3000
+            });
+        }
+    };
+
+
 
     return (
         <>
             <PageTitle 
-                title="Project Selection"
-                description="Select a project to view details, manage tasks, and collaborate with team members. This section allows you to efficiently navigate through your projects."
+                title={userRole === 'Mitra' ? "Your Projects" : "Project Selection"}
+                description={userRole === 'Mitra' 
+                    ? "Manage and monitor your submitted projects. View status updates and student applications for your projects."
+                    : "Select a project to view details, manage tasks, and collaborate with team members. This section allows you to efficiently navigate through available projects."
+                }
             />
             
             {/* Toast Container */}
@@ -175,22 +211,37 @@ export default function ProjectSelection() {
             />
         
             <div className="flex flex-col items-center h-full justify-start gap-4">
-                <div className="w-full gap-2 flex flex-col relative">
-                    <div className="flex gap-2 w-full">
-                        <input 
-                            type="text" 
-                            placeholder="Cari proyek..." 
-                            className={inputClasses}
-                            value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
-                        />              
-                        <button
-                            className="bg-secondary  w-10 h-10 items-center flex justify-center rounded-md  hover:bg-secondary/80 "
-                            onClick={toggleFilterDropdown}
-                        >
-                            <img src="/assets/icons/icons8-filter-100.png" alt="Filter Icon" className="w-5 h-5" />
-                        </button>
 
+                <div className="w-full gap-2 flex flex-col relative">
+                    <div className="flex flex-col md:flex-row gap-2 w-full">
+                        <div className="flex flex-1 gap-2">
+                            <input 
+                                type="text" 
+                                placeholder="Cari proyek..." 
+                                className={inputClasses}
+                                value={searchText}
+                                onChange={(e) => setSearchText(e.target.value)}
+                            />              
+                            <button
+                                className="bg-secondary w-10 h-10 items-center flex justify-center rounded-md hover:bg-secondary/80"
+                                onClick={toggleFilterDropdown}
+                            >
+                                <img src="/assets/icons/icons8-filter-100.png" alt="Filter Icon" className="w-5 h-5" />
+                            </button>
+                        </div>
+
+                        {/* Submit Proposal button next to filter on larger screens */}
+                        {userRole === 'Mitra' && (
+                            <button
+                                onClick={() => navigate('/partner/form-pengajuan-projek')}
+                                className="hidden md:flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-md hover:bg-secondary/80"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                Ajukan Proyek Baru
+                            </button>
+                        )}
                     </div>
 
                     {/* Filter dropdown */}
@@ -238,6 +289,23 @@ export default function ProjectSelection() {
                                 <option value="5+">5+ Anggota</option>
                             </select>
                         </div>
+                        
+                        {/* Status filter only for Mitra users */}
+                        {userRole === 'Mitra' && (
+                            <div className="mb-3">
+                                <label className="block text-sm font-medium mb-1">Status Proyek</label>
+                                <select 
+                                    className={inputClasses}
+                                    value={selectedStatus}
+                                    onChange={(e) => setSelectedStatus(e.target.value)}
+                                >
+                                    <option value="">Semua Status</option>
+                                    <option value="Menunggu">Menunggu</option>
+                                    <option value="Disetujui">Disetujui</option>
+                                    <option value="Ditolak">Ditolak</option>
+                                </select>
+                            </div>
+                        )}
                         <div className="flex justify-end gap-2 mt-2">
                             <button 
                                 className="px-3 py-1 text-sm border rounded hover:bg-gray-100"
@@ -250,7 +318,7 @@ export default function ProjectSelection() {
                         </div>
                     </div>
                     
-                    {(selectedCategories.length > 0 || selectedTeamSize) && (
+                    {(selectedCategories.length > 0 || selectedTeamSize || selectedStatus) && (
                         <div className="w-full flex flex-wrap gap-2 items-center">
                             <p>Filter: </p>
                             {selectedCategories.map((category, index) => (
@@ -290,125 +358,29 @@ export default function ProjectSelection() {
                                     </button>
                                 </span>
                             )}
+                            {selectedStatus && (
+                                <span 
+                                    className={`font-medium text-[0.6rem] p-1 border text-center rounded-xl ${
+                                        selectedStatus === "Menunggu" ? "bg-yellow-100 text-yellow-800" :
+                                        selectedStatus === "Disetujui" ? "bg-green-100 text-green-800" :
+                                        selectedStatus === "Ditolak" ? "bg-red-100 text-red-800" :
+                                        "bg-gray-100 text-gray-800"
+                                    }`}
+                                >
+                                    Status: {selectedStatus}
+                                    <button
+                                        className="text-white ml-1 bg-red-600 w-4 h-4 rounded-full"
+                                        onClick={() => setSelectedStatus("")}
+                                    >
+                                        ✕
+                                    </button>
+                                </span>
+                            )}
                         </div>
                     )}
                 </div>
 
-                {/* Enhanced modal detail proyek */}
-                <div className={`fixed inset-0 z-50 ${showDetails ? 'block' : 'hidden'} bg-black bg-opacity-50 flex items-center justify-center`}>
-                    <div className="bg-white w-4/5 max-w-4xl p-6 rounded-lg max-h-[90vh] overflow-y-auto">
-                        <div className="flex justify-between items-start mb-4">
-                            <div>
-                                <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                                    {selectedProject?.ID_Proposal}
-                                </span>
-                            </div>
-                            <button 
-                                className="text-white bg-red-600 rounded-full w-8 h-8 flex items-center justify-center hover:bg-red-400 transition-colors" 
-                                onClick={handleCloseDetails}
-                            >
-                                ✕
-                            </button>
-                        </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {/* Kolom utama */}
-                            <div className="md:col-span-2">
-                                <h1 className="text-2xl font-bold mb-2">{selectedProject?.Judul_Project}</h1>
-                                
-                                <div className="flex items-center gap-2 mb-6">
-                                    <div className="w-10 h-10 rounded-full overflow-hidden">
-                                        <img 
-                                            src={selectedMitra?.Foto_Profile || 'https://via.placeholder.com/40'} 
-                                            alt="Profile Mitra" 
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
-                                    <div>
-                                        <p className="font-medium">{selectedMitra?.Nama_Perusahaan || 'Nama Mitra'}</p>
-                                        <p className="text-sm text-gray-500">{selectedMitra?.No_Telepon || 'No. Telp Mitra'}</p>
-                                        {selectedUser?.Email && (
-                                            <p className="text-sm text-gray-500">{selectedUser?.Email}</p>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="mb-6">
-                                    <h2 className="text-lg font-semibold mb-2">Deskripsi Masalah</h2>
-                                    <p className="text-gray-700">{selectedProject?.Deskripsi_Masalah}</p>
-                                </div>
-
-                                <div className="mb-6">
-                                    <h2 className="text-lg font-semibold mb-2">Tujuan Proyek</h2>
-                                    <p className="text-gray-700">{selectedProject?.Goals}</p>
-                                </div>
-
-                                <div className="mb-6">
-                                    <h2 className="text-lg font-semibold mb-2">Informasi Tambahan</h2>
-                                    <p className="text-gray-700">{selectedProject?.Informasi_Tambahan}</p>
-                                </div>
-                            </div>
-
-                            {/* Kolom sidebar */}
-                            <div className="md:col-span-1">
-                                <div className="bg-gray-50 p-4 rounded-lg">
-                                    <h3 className="font-semibold mb-3">Detail Proyek</h3>
-                                    
-                                    <div className="space-y-4">
-                                        <div>
-                                            <p className="text-sm text-gray-500">Kategori</p>
-                                            <div className="flex flex-wrap gap-2 mt-1">
-                                                {selectedProject?.Kategori_Project?.map((kategori, index) => (
-                                                    <span 
-                                                        key={index} 
-                                                        className="px-2 py-1 text-xs rounded"
-                                                        style={{
-                                                            backgroundColor: `${getCategoryColor(kategori)}20`,
-                                                            color: getCategoryColor(kategori)
-                                                        }}
-                                                    >
-                                                        {kategori}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <p className="text-sm text-gray-500">Jumlah Anggota Dibutuhkan</p>
-                                            <p className="font-medium">{selectedProject?.Jumlah_orang} orang</p>
-                                        </div>
-
-                                        <div>
-                                            <p className="text-sm text-gray-500">Kontak Mitra</p>
-                                            <p className="font-medium">{selectedMitra?.No_Telepon || 'No. Telp Mitra'}</p>
-                                            {selectedUser?.Email && (
-                                                <p className="text-sm text-gray-600">{selectedUser?.Email}</p>
-                                            )}
-                                        </div>
-
-                                        <div className="pt-4 border-t">
-                                            {isProjectApplied(selectedProject?.ID_Proposal) ? (
-                                                <button
-                                                    className="font-normal text-sm bg-green-500 w-full text-white rounded-lg py-2 cursor-default"
-                                                    disabled
-                                                >
-                                                    Lamaran Terkirim ✓
-                                                </button>
-                                            ) : (
-                                                <button
-                                                    onClick={() => handleApplyProject(selectedProject?.ID_Proposal)}
-                                                    className="font-normal text-sm bg-secondary w-full text-white rounded-lg py-2 hover:bg-secondary/80 transition-colors"
-                                                >
-                                                    Ajukan Diri untuk Proyek Ini
-                                                </button>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <div className="scrollbar-primary h-full w-full overflow-y-auto">
                     <div className="scrollbar-primary h-full w-full overflow-y-auto">
@@ -417,11 +389,25 @@ export default function ProjectSelection() {
                                 filteredProposals.map((project) => (
                                     <div key={project.ID_Proposal} className="flex flex-col border-2 justify-around gap-5 items-center rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
                                         <div 
-                                            className="w-full flex items-center justify-center font-bold h-[90px] rounded-md"
+                                            className="w-full flex flex-col items-center justify-center font-bold h-[90px] rounded-md relative"
                                             style={{ 
                                                 backgroundColor: `${getCategoryColor(project.Judul_Project)}20` 
                                             }}
                                         >
+                                            {/* Status badge for Mitra view */}
+                                            {userRole === 'Mitra' && (
+                                                <span 
+                                                    className={`absolute top-2 right-2 px-2 py-1 text-xs rounded ${
+                                                        project.status === "Menunggu" ? "bg-yellow-100 text-yellow-800" :
+                                                        project.status === "Disetujui" ? "bg-green-100 text-green-800" :
+                                                        project.status === "Ditolak" ? "bg-red-100 text-red-800" :
+                                                        "bg-blue-100 text-blue-800"
+                                                    }`}
+                                                >
+                                                    {project.status || "Menunggu"}
+                                                </span>
+                                            )}
+                                            
                                             <p className="w-full text-center text-xs" 
                                                style={{ 
                                                    color: getCategoryColor(project.Judul_Project) 
@@ -449,6 +435,7 @@ export default function ProjectSelection() {
                                         <div className="w-full">
                                             <p className="h-min-[200px]">{project.Deskripsi_Masalah}</p> 
                                         </div>
+
                                         <div className="w-full">
                                             <Button
                                                 className='bg-secondary'
@@ -460,7 +447,12 @@ export default function ProjectSelection() {
                                 ))
                             ) : (
                                 <div className="col-span-3 flex flex-col justify-center items-center p-10 text-center">
-                                    <p className="text-gray-500 mb-2">Tidak ada proyek yang ditemukan.</p>
+                                    <p className="text-gray-500 mb-2">
+                                        {userRole === 'Mitra' 
+                                            ? "Anda belum memiliki proyek yang diajukan." 
+                                            : "Tidak ada proyek yang ditemukan."
+                                        }
+                                    </p>
                                     <div className="text-sm text-gray-400">
                                         {searchText && (
                                             <p>Pencarian: "{searchText}"</p>
@@ -474,7 +466,15 @@ export default function ProjectSelection() {
                                                 selectedTeamSize === "3-5" ? "3-5 orang" : "5+ orang"
                                             }</p>
                                         )}
-                                        <p className="mt-2">Coba menggunakan kata kunci lain atau mengatur ulang filter.</p>
+                                        {selectedStatus && (
+                                            <p>Status: {selectedStatus}</p>
+                                        )}
+                                        <p className="mt-2">
+                                            {userRole === 'Mitra' && !searchText && !selectedCategories.length && !selectedTeamSize && !selectedStatus
+                                                ? "Klik 'Ajukan Proyek Baru' untuk mengajukan proyek baru."
+                                                : "Coba menggunakan kata kunci lain atau mengatur ulang filter."
+                                            }
+                                        </p>
                                     </div>
                                 </div>
                             )}

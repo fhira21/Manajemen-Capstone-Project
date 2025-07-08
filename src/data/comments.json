@@ -1,0 +1,92 @@
+{
+  "COMMENTS": [
+    {
+      "ID_Comment": "COM001",
+      "ID_Proposal": "PRP001",
+      "ID_User": "USR002",
+      "User_Type": "Dosen",
+      "ID_Dosen": "DSN001",
+      "Nama": "Jane Doe",
+      "Comment": "Project ini cukup relevan dengan kurikulum. Pastikan ada dokumentasi yang baik untuk mahasiswa.",
+      "Tanggal": "2025-06-05",
+      "Status": "Active"
+    },
+    {
+      "ID_Comment": "COM002",
+      "ID_Proposal": "PRP001",
+      "ID_User": "USR004",
+      "User_Type": "Dosen",
+      "ID_Dosen": "DSN002",
+      "Nama": "Bob Marley",
+      "Comment": "Saya setuju dengan proposal ini. Scope project sudah sesuai untuk mahasiswa tingkat akhir.",
+      "Tanggal": "2025-06-06",
+      "Status": "Active"
+    },
+    {
+      "ID_Comment": "COM003",
+      "ID_Proposal": "PRP002",
+      "ID_User": "USR002",
+      "User_Type": "Dosen",
+      "ID_Dosen": "DSN001",
+      "Nama": "Jane Doe",
+      "Comment": "Ada beberapa poin yang perlu direvisi terutama pada bagian kompleksitas dan waktu pengerjaan.",
+      "Tanggal": "2025-06-07",
+      "Status": "Active"
+    },
+    {
+      "ID_Comment": "COM004",
+      "ID_Proposal": "PRP004",
+      "ID_User": "USR007",
+      "User_Type": "Dosen",
+      "ID_Dosen": "DSN003",
+      "Nama": "Evan Smith",
+      "Comment": "Proyek ini membutuhkan keahlian yang cukup tinggi di bidang cloud computing. Pastikan mahasiswa yang terpilih memiliki kemampuan yang sesuai.",
+      "Tanggal": "2025-06-10",
+      "Status": "Active"
+    },
+    {
+      "ID_Comment": "COM005",
+      "ID_Proposal": "PRP007",
+      "ID_User": "USR010",
+      "User_Type": "Dosen",
+      "ID_Dosen": "DSN004",
+      "Nama": "Henry Golding",
+      "Comment": "Ide gamifikasi untuk pendidikan sangat menarik. Saya rekomendasikan untuk menambahkan aspek evaluasi hasil belajar pada proyek ini.",
+      "Tanggal": "2025-06-12",
+      "Status": "Active"
+    },
+    {
+      "ID_Comment": "COM006",
+      "ID_Proposal": "PRP010",
+      "ID_User": "USR012",
+      "User_Type": "Dosen",
+      "ID_Dosen": "DSN005",
+      "Nama": "Olivia Wilson",
+      "Comment": "Implementasi blockchain untuk supply chain ini sangat relevan dengan perkembangan industri saat ini. Saya mendukung proposal ini.",
+      "Tanggal": "2025-06-15",
+      "Status": "Active"
+    },
+    {
+      "ID_Comment": "COM007",
+      "ID_Proposal": "PRP003",
+      "ID_User": "USR014",
+      "User_Type": "Dosen",
+      "ID_Dosen": "DSN006",
+      "Nama": "Peter Parker",
+      "Comment": "Perlu lebih detail mengenai metode machine learning yang akan digunakan dan dataset yang akan dianalisis.",
+      "Tanggal": "2025-06-18",
+      "Status": "Active"
+    },
+    {
+      "ID_Comment": "COM008",
+      "ID_Proposal": "PRP006",
+      "ID_User": "USR016",
+      "User_Type": "Dosen",
+      "ID_Dosen": "DSN007",
+      "Nama": "Quinn Fabray",
+      "Comment": "Telemedicine adalah topik yang sedang berkembang. Pastikan mahasiswa memahami aspek keamanan data pasien yang sangat penting.",
+      "Tanggal": "2025-06-20",
+      "Status": "Active"
+    }
+  ]
+}

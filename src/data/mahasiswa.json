@@ -109,6 +109,193 @@
       "No_Telepon": "081414141414",
       "Alamat": "Jl. Bakung No. 60",
       "ID_CV": "CV010"
+    },
+    {
+      "ID_Mahasiswa": "MHS011",
+      "ID_User": "USR036",
+      "Nama": "Oliver Queen",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022011",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "081515151515",
+      "Alamat": "Jl. Cendana No. 70",
+      "ID_CV": "CV011"
+    },
+    {
+      "ID_Mahasiswa": "MHS012",
+      "ID_User": "USR037",
+      "Nama": "Peter Parker",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022012",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "081616161616",
+      "Alamat": "Jl. Cemara No. 80",
+      "ID_CV": "CV012"
+    },
+    {
+      "ID_Mahasiswa": "MHS013",
+      "ID_User": "USR038",
+      "Nama": "Quinn Fabray",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022013",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "081717171717",
+      "Alamat": "Jl. Pinus No. 90",
+      "ID_CV": "CV013"
+    },
+    {
+      "ID_Mahasiswa": "MHS014",
+      "ID_User": "USR039",
+      "Nama": "Rachel Green",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022014",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "081818181818",
+      "Alamat": "Jl. Beringin No. 100",
+      "ID_CV": "CV014"
+    },
+    {
+      "ID_Mahasiswa": "MHS015",
+      "ID_User": "USR040",
+      "Nama": "Samwise Gamgee",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022015",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "081919191919",
+      "Alamat": "Jl. Akasia No. 110",
+      "ID_CV": "CV015"
+    },
+    {
+      "ID_Mahasiswa": "MHS016",
+      "ID_User": "USR041",
+      "Nama": "Tina Turner",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022016",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "082020202020",
+      "Alamat": "Jl. Bougenville No. 120",
+      "ID_CV": "CV016"
+    },
+    {
+      "ID_Mahasiswa": "MHS017",
+      "ID_User": "USR042",
+      "Nama": "Uma Thurman",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022017",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "082121212121",
+      "Alamat": "Jl. Tulip Raya No. 130",
+      "ID_CV": "CV017"
+    },
+    {
+      "ID_Mahasiswa": "MHS018",
+      "ID_User": "USR043",
+      "Nama": "Voldemort",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022018",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "082222222222",
+      "Alamat": "Jl. Angsana No. 140",
+      "ID_CV": "CV018"
+    },
+    {
+      "ID_Mahasiswa": "MHS019",
+      "ID_User": "USR044",
+      "Nama": "Walter White",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022019",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "082323232323",
+      "Alamat": "Jl. Kipas No. 150",
+      "ID_CV": "CV019"
+    },
+    {
+      "ID_Mahasiswa": "MHS020",
+      "ID_User": "USR045",
+      "Nama": "Xena Warrior Princess",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022020",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "082424242424",
+      "Alamat": "Jl. Sakura No. 160",
+      "ID_CV": "CV020"
+    },
+    {
+      "ID_Mahasiswa": "MHS021",
+      "ID_User": "USR046",
+      "Nama": "Yoda",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022021",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "082525252525",
+      "Alamat": "Jl. Bambu No. 170",
+      "ID_CV": "CV021"
+    },
+    {
+      "ID_Mahasiswa": "MHS022",
+      "ID_User": "USR047",
+      "Nama": "Zelda Fitzgerald",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022022",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "082626262626",
+      "Alamat": "Jl. Kenanga No. 180",
+      "ID_CV": "CV022"
+    },
+    {
+      "ID_Mahasiswa": "MHS023",
+      "ID_User": "USR048",
+      "Nama": "Arthur Pendragon",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022023",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "082727272727",
+      "Alamat": "Jl. Mahoni No. 190",
+      "ID_CV": "CV023"
+    },
+    {
+      "ID_Mahasiswa": "MHS024",
+      "ID_User": "USR049",
+      "Nama": "Belle French",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022024",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "082828282828",
+      "Alamat": "Jl. Damar No. 200",
+      "ID_CV": "CV024"
+    },
+    {
+      "ID_Mahasiswa": "MHS025",
+      "ID_User": "USR050",
+      "Nama": "Clark Kent",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022025",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "082929292929",
+      "Alamat": "Jl. Meranti No. 210",
+      "ID_CV": "CV025"
+    },
+    {
+      "ID_Mahasiswa": "MHS100",
+      "ID_User": "USR100",
+      "Nama": "Sari Dewi",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022100",
+      "Jenis_Kelamin": "Perempuan",
+      "No_Telepon": "081700000100",
+      "Alamat": "Jl. Mawar Indah No. 100",
+      "ID_CV": "CV100"
+    },
+    {
+      "ID_Mahasiswa": "MHS101",
+      "ID_User": "USR101",
+      "Nama": "Bambang Setiawan",
+      "Foto_Profile": "https://c.tenor.com/gm_mhpzK1wsAAAAC/tenor.gif",
+      "NIM": "2022101",
+      "Jenis_Kelamin": "Laki-laki",
+      "No_Telepon": "081700000101",
+      "Alamat": "Jl. Melati Indah No. 101",
+      "ID_CV": "CV101"
     }
   ]
 }

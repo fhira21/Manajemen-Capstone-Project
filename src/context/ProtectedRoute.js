@@ -15,6 +15,7 @@ export function ProtectedRoute({ children, allowedRoles }) {
   }
 
   if (allowedRoles && !allowedRoles.includes(user.role)) {
+    console.log('Authorization failed - User role:', user.role, 'Required roles:', allowedRoles);
     return <Navigate to="/unauthorized" replace />;
   }
 

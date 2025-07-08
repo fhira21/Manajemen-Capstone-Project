@@ -69,6 +69,55 @@
       "Nama": "Tina Fey",
       "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
       "NIP": "7890123456"
+    },
+    {
+      "ID_Dosen": "DSN011",
+      "ID_User": "USR031",
+      "Nama": "Adam Johnson",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "1029384756"
+    },
+    {
+      "ID_Dosen": "DSN012",
+      "ID_User": "USR032",
+      "Nama": "Sarah Connor",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "6574839201"
+    },
+    {
+      "ID_Dosen": "DSN013",
+      "ID_User": "USR033",
+      "Nama": "Michael Scott",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "2938475610"
+    },
+    {
+      "ID_Dosen": "DSN014",
+      "ID_User": "USR034",
+      "Nama": "Laura Croft",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "0192837465"
+    },
+    {
+      "ID_Dosen": "DSN015",
+      "ID_User": "USR035",
+      "Nama": "Bruce Wayne",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "4756102938"
+    },
+    {
+      "ID_Dosen": "DSN100",
+      "ID_User": "USR100",
+      "Nama": "Dr. Siti Aminah",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "1002003001"
+    },
+    {
+      "ID_Dosen": "DSN101",
+      "ID_User": "USR101",
+      "Nama": "Prof. Budi Santoso",
+      "Foto_Profile": "https://c.tenor.com/ENgTZmyhfCwAAAAC/tenor.gif",
+      "NIP": "1002003002"
     }
   ]
 }
