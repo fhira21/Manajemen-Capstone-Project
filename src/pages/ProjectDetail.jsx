@@ -25,6 +25,7 @@ export default function ProjectDetail() {
     const [unauthorized, setUnauthorized] = useState(false);
     const [isProjectOwner, setIsProjectOwner] = useState(false); // To check if the logged-in Mitra owns this project
     const [projectApplicants, setProjectApplicants] = useState([]);
+    const [statusFilter, setStatusFilter] = useState('Semua');
     const [projectComments, setProjectComments] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedApplicant, setSelectedApplicant] = useState(null);
@@ -239,6 +240,11 @@ export default function ProjectDetail() {
         );
     }
 
+    // Filter applicants by status
+    const filteredApplicants = statusFilter === 'Semua'
+        ? projectApplicants
+        : projectApplicants.filter(a => a.Status === statusFilter);
+
     return (
         <>
             <PageTitle 
@@ -347,7 +353,21 @@ export default function ProjectDetail() {
                         {isProjectOwner && (
                             <div className="mb-6 border-t pt-6">
                                 <h2 className="text-lg font-semibold mb-4">Daftar Pendaftar</h2>
-                                {projectApplicants.length > 0 ? (
+                                {/* Filter by Status */}
+                                <div className="mb-4 flex flex-wrap gap-2 items-center">
+                                    <label className="text-sm font-medium text-gray-700">Filter Status:</label>
+                                    <select
+                                        className="border rounded px-2 py-1 text-sm"
+                                        value={statusFilter}
+                                        onChange={e => setStatusFilter(e.target.value)}
+                                    >
+                                        <option value="Semua">Semua</option>
+                                        <option value="Menunggu">Menunggu</option>
+                                        <option value="Disetujui">Disetujui</option>
+                                        <option value="Ditolak">Ditolak</option>
+                                    </select>
+                                </div>
+                                {filteredApplicants.length > 0 ? (
                                     <div className="overflow-x-auto">
                                         <table className="min-w-full bg-white">
                                             <thead>
@@ -359,7 +379,7 @@ export default function ProjectDetail() {
                                                 </tr>
                                             </thead>
                                             <tbody className="divide-y divide-gray-200">
-                                                {projectApplicants.map((applicant) => (
+                                                {filteredApplicants.map((applicant) => (
                                                     <tr key={applicant.ID_PENDAFTAR}>
                                                         <td className="py-3 px-3">{applicant.Nama}</td>
                                                         <td className="py-3 px-3">{applicant["Tanggal Daftar"]}</td>
@@ -390,7 +410,7 @@ export default function ProjectDetail() {
                                         </table>
                                     </div>
                                 ) : (
-                                    <p className="text-gray-500 italic">Belum ada mahasiswa yang mendaftar.</p>
+                                    <p className="text-gray-500 italic">Belum ada mahasiswa yang mendaftar dengan status ini.</p>
                                 )}
                             </div>
                         )}

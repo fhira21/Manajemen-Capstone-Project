@@ -1,0 +1,7 @@
+
+=======================
+?? Merge Log - 2025-07-08 19:25:05
+=======================
+
+? [feature/ManajemenPendaftar] Merge sukses dan sudah dipush
+? [feature/MigrationLocalStorage] Merge GAGAL - Konflik, perlu diperiksa manual
