@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import PageTitle from '../../components/PageTitle';
 
@@ -43,7 +45,18 @@ export default function FormPengajuanProjek({ onAddProject }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddProject(formData);
-    navigate('/partner/submit-new-project');
+    toast.success('Proyek berhasil diajukan!', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    setTimeout(() => {
+      navigate('/partner/project-selection');
+    }, 1200);
   };
 
   // Handle back button navigation
@@ -53,6 +66,17 @@ export default function FormPengajuanProjek({ onAddProject }) {
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <PageTitle 
         title="Pengajuan Projek Baru"
         description="Isi formulir berikut untuk mengajukan proyek baru."

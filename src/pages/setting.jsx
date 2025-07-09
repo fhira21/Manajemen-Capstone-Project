@@ -321,20 +321,20 @@ export default function Settings() {
         <>
             <PageTitle title="Kelola Akun" description="Pengaturan untuk pengguna" />
             <div className="h-full  overflow-y-auto">
-                <div className="  h-full overflow-y-auto mx-auto rounded-xl shadow-xl border p-6 sm:p-8">
+                <div className="  h-full overflow-y-auto mx-auto rounded-xl border p-6 sm:p-8">
                     {/* Tabs Sticky Bar */}
                     <div
-                        className="w-full flex justify-center items-center p-1 bg-gray-100 rounded-xl mb-8"
-                        style={{position: 'sticky', top: 0, zIndex: 30, background: 'bg-gray-100', boxShadow: '0 2px 8px 0 rgba(0,0,0,0.03)'}}
+                        className="w-full flex justify-center items-center p-1 100 rounded-xl mb-8"
+                        style={{position: 'sticky', top: 0, zIndex: 30, background: 'bg-gray-100'}}
                     >
                         <div
-                            className="flex flex-wrap sm:inline-flex rounded-lg  overflow-hidden  w-full sm:w-auto"
+                            className="flex flex-wrap sm:inline-flex rounded-lg  overflow-hidden bg-gray-100 p-1  w-full sm:w-auto"
                         >
                     <button
                         onClick={() => setActiveTab('pribadi')}
                         className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none  ${
                             activeTab === 'pribadi'
-                                ? ' bg-white p-2 shadow-sm'
+                                ? ' bg-white p-0.5 shadow-sm rounded-md'
                                 : 'text-gray-600 hover:bg-gray-200'
                         }`}
                         style={{ borderRight: '1px solid #e5e7eb' }}
@@ -345,7 +345,7 @@ export default function Settings() {
                         onClick={() => setActiveTab('institusi')}
                         className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none  ${
                             activeTab === 'institusi'
-                                ? ' bg-white p-2 shadow-sm'
+                                ? ' bg-white p-0.5 shadow-sm rounded-md'
                                 : 'text-gray-600 hover:bg-gray-200'
                         }`}
                         style={{ borderRight: '1px solid #e5e7eb' }}
@@ -356,7 +356,7 @@ export default function Settings() {
                         onClick={() => setActiveTab('akun')}
                         className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none  ${
                             activeTab === 'akun'
-                                ? ' bg-white p-2 shadow-sm'
+                                ? ' bg-white p-0.5 shadow-sm rounded-md'
                                 : 'text-gray-600 hover:bg-gray-200'
                         }`}
                     >
