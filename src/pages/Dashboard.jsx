@@ -17,6 +17,8 @@ import {
   Filler,
   RadialLinearScale
 } from 'chart.js';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 // Import data files
 import projectData from "../data/project.json";
@@ -27,7 +29,7 @@ import dosenData from "../data/dosen.json";
 import mitraData from "../data/mitra.json";
 
 // Import icons
-import { FiGrid, FiList, FiFilter, FiCalendar, FiClock, FiCheckSquare, FiAlertCircle, FiClipboard, FiActivity, FiTrendingUp, FiUsers, FiCode, FiBriefcase, FiFlag } from "react-icons/fi";
+import { FiGrid, FiList, FiFilter, FiCalendar, FiClock, FiCheckSquare, FiAlertCircle, FiClipboard, FiActivity, FiTrendingUp, FiUsers, FiCode, FiBriefcase, FiFlag, FiDownload } from "react-icons/fi";
 
 // Register Chart.js components
 ChartJS.register(
@@ -542,6 +544,141 @@ export default function Dashboard() {
     }
   };
 
+  // Handler export PDF terstruktur dan rapi
+  const handleExportPDF = async () => {
+    const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+    // Cover & Halaman 1: Deskripsi Proyek, Mitra, Ringkasan, Statistik
+    doc.setFontSize(22);
+    doc.setFont(undefined, 'bold');
+    doc.text('Laporan Capstone', 105, 40, { align: 'center' });
+    doc.setFontSize(14);
+    doc.setFont(undefined, 'normal');
+    doc.text(`Tanggal Export: ${new Date().toLocaleDateString('id-ID')}`, 105, 50, { align: 'center' });
+    doc.setDrawColor(79, 70, 229);
+    doc.setLineWidth(1);
+    doc.line(40, 55, 170, 55);
+
+    // Deskripsi Proyek di awal
+    let y = 70;
+    doc.setFontSize(13);
+    doc.setFont(undefined, 'bold');
+    doc.text('Deskripsi Proyek:', 20, y);
+    y += 8;
+    doc.setFont(undefined, 'normal');
+    doc.setFontSize(12);
+    doc.text(`${projectDetails?.Deskripsi || '-'}`, 24, y, { maxWidth: 160 });
+    y += 14;
+
+    // Nama Mitra
+    doc.setFont(undefined, 'bold');
+    doc.text('Nama Mitra:', 20, y);
+    y += 8;
+    doc.setFont(undefined, 'normal');
+    doc.text(`${getUserName(projectDetails?.ID_Mitra)}`, 24, y);
+    y += 12;
+
+    // Dosen Pembimbing
+    doc.setFont(undefined, 'bold');
+    doc.text('Dosen Pembimbing:', 20, y);
+    y += 8;
+    doc.setFont(undefined, 'normal');
+    doc.text(`${getUserName(projectDetails?.ID_Dosen)}`, 24, y);
+    y += 12;
+
+    // Anggota Kelompok
+    doc.setFont(undefined, 'bold');
+    doc.text('Anggota Kelompok:', 20, y);
+    y += 8;
+    doc.setFont(undefined, 'normal');
+    (projectDetails?.ID_Mahasiswa || []).forEach(id => {
+      doc.text(`- ${getUserName(id)}`, 24, y);
+      y += 6;
+      if (y > 270) { doc.addPage(); y = 20; }
+    });
+
+    // Ringkasan Proyek
+    y += 8;
+    doc.setFont(undefined, 'bold');
+    doc.text('Ringkasan Proyek:', 20, y);
+    y += 8;
+    doc.setFont(undefined, 'normal');
+    doc.text(`Status: ${projectDetails?.Status || '-'}`, 24, y);
+    y += 6;
+    doc.text(`Progres: ${projectDetails?.Progres || 0}%`, 24, y);
+    y += 6;
+    doc.text(`Target Selesai: ${formatDate(projectDetails?.Target_Selesai)}`, 24, y);
+    y += 6;
+    doc.text(`Rekomendasi: ${projectDetails?.Progres > 80 ? 'Fokus pada penyelesaian akhir dan dokumentasi.' : 'Percepat penyelesaian issue prioritas tinggi.'}`, 24, y, { maxWidth: 160 });
+    y += 12;
+
+    // Statistik Masalah
+    doc.setFont(undefined, 'bold');
+    doc.text('Statistik Masalah:', 20, y);
+    y += 8;
+    doc.setFont(undefined, 'normal');
+    doc.text(`Total Issue: ${issueStats.total}`, 24, y);
+    y += 6;
+    doc.text(`Terbuka: ${issueStats.open} | Tertutup: ${issueStats.closed}`, 24, y);
+    y += 6;
+    doc.text(`Prioritas Tinggi: ${taskList.priorityCounts?.High || 0} | Sedang: ${taskList.priorityCounts?.Medium || 0} | Rendah: ${taskList.priorityCounts?.Low || 0}`, 24, y);
+    y += 6;
+    doc.text(`Rekomendasi: ${issueStats.open > 0 ? 'Segera selesaikan issue terbuka, terutama prioritas tinggi.' : 'Semua issue telah tertutup, proyek siap diselesaikan.'}`, 24, y, { maxWidth: 160 });
+    y += 12;
+
+    doc.addPage();
+
+    // Halaman 2: Hasil Keseluruhan Laporan
+    doc.setFontSize(16);
+    doc.setFont(undefined, 'bold');
+    doc.text('Hasil Keseluruhan Laporan', 105, 20, { align: 'center' });
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'normal');
+
+    // Daftar Issue
+    y = 30;
+    doc.setFont(undefined, 'bold');
+    doc.text('Daftar Issue', 20, y);
+    y += 6;
+    doc.setFont(undefined, 'normal');
+    (taskList.todo || []).concat(taskList.inProgress || [], taskList.done || []).forEach(issue => {
+      doc.text(
+        `Judul: ${issue.Judul_Issue}\nStatus: ${issue.Status} | Prioritas: ${issue.Prioritas} | Assignee: ${getUserName(issue.Assignee)} | Estimasi: ${issue.Estimasi}`,
+        20, y, { maxWidth: 170 }
+      );
+      y += 12;
+      if (y > 270) { doc.addPage(); y = 20; }
+    });
+
+    // Daftar Aktivitas Terbaru
+    y += 8;
+    doc.setFont(undefined, 'bold');
+    doc.text('Aktivitas Terbaru', 20, y);
+    y += 6;
+    doc.setFont(undefined, 'normal');
+    recentCommits.slice(0, 5).forEach(commit => {
+      doc.text(
+        `Judul: ${commit.Judul_Commit}\nTipe: ${commit.CommitType} | Kontributor: ${getUserName(commit.User)} | Tanggal: ${formatDate(commit.Tgl_Commit)}`,
+        20, y, { maxWidth: 170 }
+      );
+      y += 12;
+      if (y > 270) { doc.addPage(); y = 20; }
+    });
+
+    // Statistik Commit
+    y += 8;
+    doc.setFont(undefined, 'bold');
+    doc.text('Statistik Commit', 20, y);
+    y += 6;
+    doc.setFont(undefined, 'normal');
+    doc.text(
+      `Total Commit: ${recentCommits.length}\nBaris Ditambah: +${recentCommits.reduce((acc, c) => acc + (c.LinesAdded || 0), 0)}, Baris Dihapus: -${recentCommits.reduce((acc, c) => acc + (c.LinesRemoved || 0), 0)}`,
+      20, y, { maxWidth: 170 }
+    );
+
+    doc.save('dashboard-laporan.pdf');
+  };
+
   return (
     <>
       <PageTitle 
@@ -627,12 +764,22 @@ export default function Dashboard() {
                 <FiCalendar className="w-3 h-3 sm:w-4 sm:h-4 text-gray-500" />
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-        
-        
-        {/* Dashboard Content */}
+                  
+              <button
+                type="button"
+                className="bg-secondary hover:bg-secondary/80 text-white px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow hover:bg-primary-dark transition text-xs sm:text-sm font-semibold flex items-center gap-1"
+                onClick={handleExportPDF}
+              >
+                <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Export Laporan</span>
+              </button>
+
+                  </div>
+                </div>
+                </div>
+                
+                
+                {/* Dashboard Content */}
         
         {selectedProject ? (
           <>
