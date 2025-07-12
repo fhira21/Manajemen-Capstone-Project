@@ -130,9 +130,9 @@ export default function ProposalPartner() {
                     <td className="p-2 text-center bg-[#E5ECF6]">
                       <button
                         onClick={() => setSelectedProposal(p)}
-                        className="text-sm hover:underline"
+                        className="px-3 py-1 rounded bg-secondary hover:bg-blue-700 text-white text-sm"
                       >
-                        detail
+                        Detail
                       </button>
                     </td>
                   </tr>
