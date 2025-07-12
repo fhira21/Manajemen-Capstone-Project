@@ -28,7 +28,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
   const mitraMenu = [
     { to: "dashboard", icon: "/assets/icons/icons8-home-100.png", label: "Dashboard" },
     { to: "form-pengajuan-projek", icon: "/assets/icons/icons8-project-management-100.png", label: "Ajukan Proyek Baru" },
-    { to: "project-selection", icon: "/assets/icons/icons8-list-view-select-proyek-96.png", label: "Proyek" },
+    { to: "project-selection", icon: "/assets/icons/icons8-list-view-select-proyek-96.png", label: "Manajemen Proyek" },
 
   ];
 
