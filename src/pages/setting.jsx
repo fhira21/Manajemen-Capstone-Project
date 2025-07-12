@@ -13,16 +13,20 @@ export default function Settings() {
     const [loading, setLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
 
+    // State variables to control edit mode
+    const [isEditingPribadi, setIsEditingPribadi] = useState(false);
+    const [isEditingInstitusi, setIsEditingInstitusi] = useState(false);
+
     useEffect(() => {
         if (authLoading) return; // Wait for auth to complete
-        
+
         setLoading(true);
         setErrorMessage('');
-        
+
         // Get user info from auth context or localStorage
         let currentUserId;
         let role;
-        
+
         if (authUser) {
             currentUserId = authUser.id;
             role = authUser.role;
@@ -58,7 +62,7 @@ export default function Settings() {
                 alamat: '',
             }
         };
-        
+
         // If no user ID found, use default profile
         if (!currentUserId) {
             setUser({
@@ -76,10 +80,10 @@ export default function Settings() {
             setLoading(false);
             return;
         }
-        
+
         // Find the user data in the user.json file
         const userData = dataUser.USER.find(u => u.ID_User === currentUserId);
-        
+
         if (!userData) {
             console.error('User data not found for ID:', currentUserId);
             setErrorMessage('Data pengguna tidak ditemukan.');
@@ -171,7 +175,7 @@ export default function Settings() {
         } catch (error) {
             console.error('Error setting up user data:', error);
             setErrorMessage(`Terjadi kesalahan: ${error.message}`);
-            
+
             // Set default user data as fallback
             setUser({
                 ...defaultSettings,
@@ -186,15 +190,15 @@ export default function Settings() {
             setLoading(false);
         }
     }, [authUser, authLoading]);
-    
+
     // Helper function to get current date and time in the required format
     function getCurrentDateTimeString() {
         const now = new Date();
-        const options = { 
-            day: 'numeric', 
-            month: 'long', 
+        const options = {
+            day: 'numeric',
+            month: 'long',
             year: 'numeric',
-            hour: '2-digit', 
+            hour: '2-digit',
             minute: '2-digit'
         };
         return now.toLocaleDateString('id-ID', options) + ' WIB';
@@ -224,41 +228,71 @@ export default function Settings() {
     const [saveMessage, setSaveMessage] = useState({ type: '', text: '' });
 
     const handleSave = () => {
+        setSaveMessage({ type: '', text: '' }); // Clear previous messages
+
+        // Validation for Pribadi tab
+        if (activeTab === 'pribadi' && isEditingPribadi) {
+            if (user.nip && !/^\d+$/.test(user.nip)) {
+                setSaveMessage({ type: 'error', text: 'NIDN/NIP/NIM harus berupa angka.' });
+                return;
+            }
+            if (!user.email.includes('@')) {
+                setSaveMessage({ type: 'error', text: 'Email harus mengandung simbol "@".' });
+                return;
+            }
+        }
+
+        // Validation for Institusi tab (assuming NIP/NIM can be edited here too)
+        if (activeTab === 'institusi' && isEditingInstitusi) {
+            if (user.nip && !/^\d+$/.test(user.nip)) {
+                setSaveMessage({ type: 'error', text: 'NIDN/NIP/NIM harus berupa angka.' });
+                return;
+            }
+            if (user.institusi.noTelepon && !/^\d+$/.test(user.institusi.noTelepon)) {
+                setSaveMessage({ type: 'error', text: 'Nomor telepon harus berupa angka.' });
+                return;
+            }
+        }
+
         setIsSaving(true);
-        setSaveMessage({ type: '', text: '' });
-        
+
         // Simulate saving data
         setTimeout(() => {
             try {
                 // In a real app, this would send data to the server
                 // For now, just update local storage
                 const userToSave = { ...user };
-                
-                // Only update parts of localStorage that we can
+
                 if (localStorage.getItem('user')) {
                     const storedUser = JSON.parse(localStorage.getItem('user'));
-                    // Only update fields that are acceptable to change
-                    const updatedUser = { 
+                    const updatedUser = {
                         ...storedUser,
                         nama: user.nama,
                         email: user.email
                     };
                     localStorage.setItem('user', JSON.stringify(updatedUser));
                 }
-                
-                setSaveMessage({ 
-                    type: 'success', 
-                    text: 'Perubahan berhasil disimpan!' 
+
+                setSaveMessage({
+                    type: 'success',
+                    text: 'Perubahan berhasil disimpan!'
                 });
+                // After successful save, exit edit mode for the current active tab
+                if (activeTab === 'pribadi') {
+                    setIsEditingPribadi(false);
+                } else if (activeTab === 'institusi') {
+                    setIsEditingInstitusi(false);
+                }
+
             } catch (error) {
                 console.error('Error saving changes:', error);
-                setSaveMessage({ 
-                    type: 'error', 
-                    text: 'Gagal menyimpan perubahan. Silakan coba lagi.' 
+                setSaveMessage({
+                    type: 'error',
+                    text: 'Gagal menyimpan perubahan. Silakan coba lagi.'
                 });
             } finally {
                 setIsSaving(false);
-                
+
                 // Clear message after 5 seconds
                 setTimeout(() => {
                     setSaveMessage({ type: '', text: '' });
@@ -286,7 +320,7 @@ export default function Settings() {
             </>
         );
     }
-    
+
     if (errorMessage) {
         return (
             <>
@@ -301,7 +335,7 @@ export default function Settings() {
                             </div>
                             <h3 className="text-xl font-bold text-gray-900 mb-2">Terjadi Kesalahan</h3>
                             <p className="text-gray-600 mb-6">{errorMessage}</p>
-                            <button 
+                            <button
                                 onClick={() => window.location.reload()}
                                 className="inline-flex items-center justify-center bg-blue-600 text-white font-medium px-5 py-2.5 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors shadow-sm"
                             >
@@ -320,76 +354,76 @@ export default function Settings() {
     return (
         <>
             <PageTitle title="Kelola Akun" description="Pengaturan untuk pengguna" />
-            <div className="h-full  overflow-y-auto">
-                <div className="  h-full overflow-y-auto mx-auto rounded-xl border p-6 sm:p-8">
+            <div className="h-full overflow-y-auto">
+                <div className="h-full overflow-y-auto mx-auto rounded-xl border p-6 sm:p-8">
                     {/* Tabs Sticky Bar */}
                     <div
                         className="w-full flex justify-center items-center p-1 100 rounded-xl mb-8"
-                        style={{position: 'sticky', top: 0, zIndex: 30, background: 'bg-gray-100'}}
+                        style={{ position: 'sticky', top: 0, zIndex: 30, background: 'bg-gray-100' }}
                     >
                         <div
-                            className="flex flex-wrap sm:inline-flex rounded-lg  overflow-hidden bg-gray-100 p-1  w-full sm:w-auto"
+                            className="flex flex-wrap sm:inline-flex rounded-lg overflow-hidden bg-gray-100 p-1 w-full sm:w-auto"
                         >
-                    <button
-                        onClick={() => setActiveTab('pribadi')}
-                        className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none  ${
-                            activeTab === 'pribadi'
-                                ? ' bg-white p-0.5 shadow-sm rounded-md'
-                                : 'text-gray-600 hover:bg-gray-200'
-                        }`}
-                        style={{ borderRight: '1px solid #e5e7eb' }}
-                    >
-                        Informasi Pribadi
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('institusi')}
-                        className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none  ${
-                            activeTab === 'institusi'
-                                ? ' bg-white p-0.5 shadow-sm rounded-md'
-                                : 'text-gray-600 hover:bg-gray-200'
-                        }`}
-                        style={{ borderRight: '1px solid #e5e7eb' }}
-                    >
-                        Institusi
-                    </button>
-                    <button
-                        onClick={() => setActiveTab('akun')}
-                        className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none  ${
-                            activeTab === 'akun'
-                                ? ' bg-white p-0.5 shadow-sm rounded-md'
-                                : 'text-gray-600 hover:bg-gray-200'
-                        }`}
-                    >
-                        Pengaturan Akun
-                    </button>
-                </div>
-            </div>
+                            <button
+                                onClick={() => setActiveTab('pribadi')}
+                                className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none ${
+                                    activeTab === 'pribadi'
+                                        ? ' bg-white p-0.5 shadow-sm rounded-md'
+                                        : 'text-gray-600 hover:bg-gray-200'
+                                }`}
+                                style={{ borderRight: '1px solid #e5e7eb' }}
+                            >
+                                Informasi Pribadi
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('institusi')}
+                                className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none ${
+                                    activeTab === 'institusi'
+                                        ? ' bg-white p-0.5 shadow-sm rounded-md'
+                                        : 'text-gray-600 hover:bg-gray-200'
+                                }`}
+                                style={{ borderRight: '1px solid #e5e7eb' }}
+                            >
+                                Institusi
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('akun')}
+                                className={`px-6 py-2 text-sm font-semibold transition-colors duration-200 focus:outline-none ${
+                                    activeTab === 'akun'
+                                        ? ' bg-white p-0.5 shadow-sm rounded-md'
+                                        : 'text-gray-600 hover:bg-gray-200'
+                                }`}
+                            >
+                                Pengaturan Akun
+                            </button>
+                        </div>
+                    </div>
 
                     {activeTab === 'pribadi' && (
-                        <div className="flex justify-center items-center  flex-col md:flex-row transition-opacity duration-300 ease-in-out">
+                        <div className="flex justify-center items-center flex-col md:flex-row transition-opacity duration-300 ease-in-out">
                             <div className="flex flex-col items-center w-full md:w-1/3 mb-6 md:mb-0">
                                 <div className="relative group">
-                                <img 
-                                    src={user.foto} 
-                                    alt="Foto Profil" 
-                                    className="
-                                        w-32 h-32  // Default untuk mobile kecil
-                                        sm:w-40 sm:h-40  // 640px ke atas
-                                        md:w-48 md:h-48  // 768px ke atas
-                                        lg:w-52 lg:h-52  // 1024px ke atas
-                                        xl:w-56 xl:h-56  // 1280px ke atas
-                                        2xl:w-60 2xl:h-60  // 1536px ke atas
-                                        rounded-full 
-                                        object-cover 
-                                        border-2 
-                                        border-gray-200 
-                                        shadow-sm
-                                    " 
-                                    onError={(e) => {
-                                        e.target.onerror = null;
-                                        e.target.src = 'https://i.pravatar.cc/100';
-                                    }}
-                                />
+                                    <img
+                                        src={user.foto}
+                                        alt="Foto Profil"
+                                        className="
+                                            w-32 h-32
+                                            sm:w-40 sm:h-40
+                                            md:w-48 md:h-48
+                                            lg:w-52 lg:h-52
+                                            xl:w-56 xl:h-56
+                                            2xl:w-60 2xl:h-60
+                                            rounded-full
+                                            object-cover
+                                            border-2
+                                            border-gray-200
+                                            shadow-sm
+                                        "
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = 'https://i.pravatar.cc/100';
+                                        }}
+                                    />
                                     <div className="absolute inset-0 bg-black bg-opacity-40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                         <button className="text-white text-sm font-medium px-3 py-1">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
@@ -405,45 +439,48 @@ export default function Settings() {
                             <div className="w-full md:w-2/3">
                                 <div className="mb-5">
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                                    <input 
-                                        type="text" 
-                                        name="nama" 
-                                        value={user.nama} 
-                                        onChange={handleInputChange} 
-                                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                    <input
+                                        type="text"
+                                        name="nama"
+                                        value={user.nama}
+                                        onChange={handleInputChange}
+                                        className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                        disabled={!isEditingPribadi} // Disable based on state
                                     />
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">{user.role === 'Mahasiswa' ? 'NIM' : 'NIDN / NIP'}</label>
-                                        <input 
-                                            type="text" 
-                                            name="nip" 
-                                            value={user.nip} 
-                                            onChange={handleInputChange} 
-                                            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                        <input
+                                            type="text"
+                                            name="nip"
+                                            value={user.nip}
+                                            onChange={handleInputChange}
+                                            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                            disabled={!isEditingPribadi} // Disable based on state
                                         />
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                        <input 
-                                            type="email" 
-                                            name="email" 
-                                            value={user.email} 
-                                            onChange={handleInputChange} 
-                                            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={user.email}
+                                            onChange={handleInputChange}
+                                            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                            disabled={!isEditingPribadi} // Disable based on state
                                         />
                                     </div>
                                 </div>
                                 <div className="mb-5">
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
                                     <div className="relative">
-                                        <input 
-                                            type="text" 
-                                            name="role" 
-                                            value={user.role} 
-                                            disabled 
-                                            className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 text-gray-600" 
+                                        <input
+                                            type="text"
+                                            name="role"
+                                            value={user.role}
+                                            disabled
+                                            className="w-full border border-gray-200 rounded-md px-3 py-2 text-sm bg-gray-50 text-gray-600"
                                         />
                                         <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -454,37 +491,39 @@ export default function Settings() {
                                 </div>
                                 <div className="flex items-center mb-5">
                                     <label className="block text-sm font-medium text-gray-700 mr-3">Status</label>
-                                    <button 
+                                    <button
                                         type="button"
-                                        onClick={toggleAktif} 
+                                        onClick={toggleAktif}
                                         className={`relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${user.aktif ? 'bg-green-500' : 'bg-gray-400'}`}
                                         role="switch"
                                         aria-checked={user.aktif}
+                                        disabled={!isEditingPribadi} // Disable based on state
                                     >
-                                        <span 
-                                            aria-hidden="true" 
-                                            className={`pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200 ${user.aktif ? 'translate-x-5' : 'translate-x-0'}`} 
+                                        <span
+                                            aria-hidden="true"
+                                            className={`pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200 ${user.aktif ? 'translate-x-5' : 'translate-x-0'}`}
                                         />
                                     </button>
                                     <span className="ml-2 text-sm text-gray-700">{user.aktif ? 'Aktif' : 'Nonaktif'}</span>
                                 </div>
                                 <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0 mt-6">
-                                    <button 
+                                    <button
                                         type="button"
+                                        onClick={() => setIsEditingPribadi(!isEditingPribadi)} // Toggle edit mode
                                         className="flex items-center justify-center text-white bg-blue-600 hover:bg-blue-700 text-sm font-medium px-5 py-2.5 rounded-md transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
-                                        Edit Profil
+                                        {isEditingPribadi ? 'Batal Edit' : 'Edit Profil'}
                                     </button>
-                                    <button 
+                                    <button
                                         type="button"
-                                        onClick={handleSave} 
-                                        disabled={isSaving}
+                                        onClick={handleSave}
+                                        disabled={isSaving || !isEditingPribadi} // Disable if not editing or saving
                                         className={`flex items-center justify-center text-sm font-medium px-5 py-2.5 rounded-md transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-gray-300 ${
-                                            isSaving 
-                                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                                            isSaving || !isEditingPribadi
+                                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                                                 : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
                                         }`}
                                     >
@@ -497,11 +536,11 @@ export default function Settings() {
                                         {isSaving ? 'Menyimpan...' : 'Simpan Perubahan'}
                                     </button>
                                 </div>
-                                
+
                                 {saveMessage.text && (
                                     <div className={`mt-4 p-3 rounded-md shadow-sm ${
-                                        saveMessage.type === 'success' 
-                                            ? 'bg-green-50 border border-green-200 text-green-800' 
+                                        saveMessage.type === 'success'
+                                            ? 'bg-green-50 border border-green-200 text-green-800'
                                             : 'bg-red-50 border border-red-200 text-red-800'
                                     }`}>
                                         <div className="flex items-center">
@@ -518,7 +557,7 @@ export default function Settings() {
                                         </div>
                                     </div>
                                 )}
-                                
+
                                 <div className="mt-8 pt-6 border-t border-gray-200">
                                     <h3 className="text-sm font-medium text-gray-700 mb-3">Informasi Akun</h3>
                                     <div className="bg-gray-50 rounded-lg p-4 grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
@@ -544,39 +583,43 @@ export default function Settings() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5 transition-opacity duration-300 ease-in-out">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Nama Institusi</label>
-                                <input 
-                                    name="institusi" 
-                                    value={user.institusi.institusi} 
-                                    onChange={handleInstitusiChange} 
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                <input
+                                    name="institusi"
+                                    value={user.institusi.institusi}
+                                    onChange={handleInstitusiChange}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    disabled={!isEditingInstitusi} // Disable based on state
                                 />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">{user.role === 'Mahasiswa' ? 'NIM' : 'NIDN / NIP'}</label>
-                                <input 
-                                    name="nip" 
-                                    value={user.nip} 
-                                    onChange={handleInputChange} 
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                <input
+                                    name="nip"
+                                    value={user.nip}
+                                    onChange={handleInputChange}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    disabled={!isEditingInstitusi} // Disable based on state
                                 />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Fakultas</label>
-                                <input 
-                                    name="fakultas" 
-                                    value={user.institusi.fakultas} 
-                                    onChange={handleInstitusiChange} 
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                <input
+                                    name="fakultas"
+                                    value={user.institusi.fakultas}
+                                    onChange={handleInstitusiChange}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    disabled={!isEditingInstitusi} // Disable based on state
                                 />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Jabatan {user.role === 'Mitra' ? '' : 'Akademik'}</label>
                                 <div className="relative">
-                                    <select 
-                                        name="jabatan" 
-                                        value={user.institusi.jabatan} 
-                                        onChange={handleInstitusiChange} 
+                                    <select
+                                        name="jabatan"
+                                        value={user.institusi.jabatan}
+                                        onChange={handleInstitusiChange}
                                         className="block w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm appearance-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                        disabled={!isEditingInstitusi} // Disable based on state
                                     >
                                         <option value="">-- Pilih Jabatan --</option>
                                         {user.role === 'Dosen' ? (
@@ -608,21 +651,23 @@ export default function Settings() {
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Program Studi</label>
-                                <input 
-                                    name="prodi" 
-                                    value={user.institusi.prodi} 
-                                    onChange={handleInstitusiChange} 
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                <input
+                                    name="prodi"
+                                    value={user.institusi.prodi}
+                                    onChange={handleInstitusiChange}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    disabled={!isEditingInstitusi} // Disable based on state
                                 />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Status {user.role === 'Mitra' ? 'Perusahaan' : 'Pegawai'}</label>
                                 <div className="relative">
-                                    <select 
-                                        name="statusPegawai" 
-                                        value={user.institusi.statusPegawai} 
-                                        onChange={handleInstitusiChange} 
+                                    <select
+                                        name="statusPegawai"
+                                        value={user.institusi.statusPegawai}
+                                        onChange={handleInstitusiChange}
                                         className="block w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm appearance-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                        disabled={!isEditingInstitusi} // Disable based on state
                                     >
                                         <option value="">-- Pilih Status --</option>
                                         {user.role === 'Mitra' ? (
@@ -647,40 +692,43 @@ export default function Settings() {
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">{user.role === 'Mitra' ? 'Alamat Kantor' : 'Lokasi Kampus'}</label>
-                                <input 
-                                    name="lokasi" 
-                                    value={user.institusi.lokasi} 
-                                    onChange={handleInstitusiChange} 
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                <input
+                                    name="lokasi"
+                                    value={user.institusi.lokasi}
+                                    onChange={handleInstitusiChange}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    disabled={!isEditingInstitusi} // Disable based on state
                                 />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">No. Telepon</label>
-                                <input 
-                                    name="noTelepon" 
-                                    value={user.institusi.noTelepon} 
-                                    onChange={handleInstitusiChange} 
-                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                <input
+                                    name="noTelepon"
+                                    value={user.institusi.noTelepon}
+                                    onChange={handleInstitusiChange}
+                                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                                    disabled={!isEditingInstitusi} // Disable based on state
                                 />
                             </div>
                             <div className="col-span-2 mt-8 pt-6 border-t border-gray-200">
                                 <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0">
-                                    <button 
+                                    <button
                                         type="button"
+                                        onClick={() => setIsEditingInstitusi(!isEditingInstitusi)} // Toggle edit mode
                                         className="flex items-center justify-center text-white bg-blue-600 hover:bg-blue-700 text-sm font-medium px-5 py-2.5 rounded-md transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                         </svg>
-                                        Edit Informasi
+                                        {isEditingInstitusi ? 'Batal Edit' : 'Edit Informasi'}
                                     </button>
-                                    <button 
+                                    <button
                                         type="button"
-                                        onClick={handleSave} 
-                                        disabled={isSaving}
+                                        onClick={handleSave}
+                                        disabled={isSaving || !isEditingInstitusi} // Disable if not editing or saving
                                         className={`flex items-center justify-center text-sm font-medium px-5 py-2.5 rounded-md transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-gray-300 ${
-                                            isSaving 
-                                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                                            isSaving || !isEditingInstitusi
+                                                ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                                                 : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
                                         }`}
                                     >
@@ -693,11 +741,11 @@ export default function Settings() {
                                         {isSaving ? 'Menyimpan...' : 'Simpan Perubahan'}
                                     </button>
                                 </div>
-                                
+
                                 {saveMessage.text && (
                                     <div className={`mt-4 p-3 rounded-md shadow-sm ${
-                                        saveMessage.type === 'success' 
-                                            ? 'bg-green-50 border border-green-200 text-green-800' 
+                                        saveMessage.type === 'success'
+                                            ? 'bg-green-50 border border-green-200 text-green-800'
                                             : 'bg-red-50 border border-red-200 text-red-800'
                                     }`}>
                                         <div className="flex items-center">
@@ -714,7 +762,7 @@ export default function Settings() {
                                         </div>
                                     </div>
                                 )}
-                                
+
                                 {user.role === 'Dosen' && (
                                     <div className="mt-6 bg-blue-50 border border-blue-100 rounded-md p-3 text-sm text-blue-800">
                                         <div className="flex">
@@ -742,12 +790,12 @@ export default function Settings() {
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                                 </svg>
                                             </div>
-                                            <input 
-                                                type="text" 
-                                                name="username" 
-                                                value={user.username} 
+                                            <input
+                                                type="text"
+                                                name="username"
+                                                value={user.username}
                                                 onChange={handleInputChange}
-                                                className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                                className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                                             />
                                         </div>
                                     </div>
@@ -759,12 +807,12 @@ export default function Settings() {
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                                 </svg>
                                             </div>
-                                            <input 
-                                                type="email" 
-                                                name="email" 
-                                                value={user.email} 
-                                                onChange={handleInputChange} 
-                                                className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                value={user.email}
+                                                onChange={handleInputChange}
+                                                className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                                             />
                                         </div>
                                     </div>
@@ -782,10 +830,10 @@ export default function Settings() {
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                                 </svg>
                                             </div>
-                                            <input 
+                                            <input
                                                 type="password"
                                                 placeholder="Masukkan password lama"
-                                                className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                                className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                                             />
                                         </div>
                                     </div>
@@ -798,10 +846,10 @@ export default function Settings() {
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                                     </svg>
                                                 </div>
-                                                <input 
+                                                <input
                                                     type="password"
                                                     placeholder="Masukkan password baru"
-                                                    className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                                    className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                                                 />
                                             </div>
                                         </div>
@@ -813,17 +861,17 @@ export default function Settings() {
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                                     </svg>
                                                 </div>
-                                                <input 
+                                                <input
                                                     type="password"
                                                     placeholder="Konfirmasi password baru"
-                                                    className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all" 
+                                                    className="w-full border border-gray-300 rounded-md pl-10 px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                                                 />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="mb-8">
                                 <h3 className="text-md font-medium mb-4 text-gray-800 pb-2 border-b border-gray-200">Pengaturan Notifikasi</h3>
                                 <div className="bg-white rounded-md divide-y divide-gray-100">
@@ -832,7 +880,7 @@ export default function Settings() {
                                             <h4 className="text-sm font-medium text-gray-900">Email notifikasi</h4>
                                             <p className="text-xs text-gray-500">Dapatkan notifikasi melalui email</p>
                                         </div>
-                                        <button 
+                                        <button
                                             type="button"
                                             className="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                         >
@@ -844,7 +892,7 @@ export default function Settings() {
                                             <h4 className="text-sm font-medium text-gray-900">Notifikasi aplikasi</h4>
                                             <p className="text-xs text-gray-500">Dapatkan notifikasi langsung di aplikasi</p>
                                         </div>
-                                        <button 
+                                        <button
                                             type="button"
                                             className="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                         >
@@ -853,7 +901,7 @@ export default function Settings() {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="mb-8">
                                 <h3 className="text-md font-medium mb-4 text-gray-800 pb-2 border-b border-gray-200">Keamanan Akun</h3>
                                 <div className="bg-white rounded-md divide-y divide-gray-100">
@@ -862,7 +910,7 @@ export default function Settings() {
                                             <h4 className="text-sm font-medium text-gray-900">Verifikasi 2 langkah</h4>
                                             <p className="text-xs text-gray-500">Aktifkan verifikasi tambahan saat login</p>
                                         </div>
-                                        <button 
+                                        <button
                                             type="button"
                                             className="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
                                         >
@@ -874,7 +922,7 @@ export default function Settings() {
                                             <h4 className="text-sm font-medium text-gray-900">Notifikasi login perangkat baru</h4>
                                             <p className="text-xs text-gray-500">Dapatkan notifikasi jika ada login dari perangkat baru</p>
                                         </div>
-                                        <button 
+                                        <button
                                             type="button"
                                             className="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                         >
@@ -883,12 +931,12 @@ export default function Settings() {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0">
-                                <button 
-                                    type="button" 
+                                <button
+                                    type="button"
                                     onClick={handleSave}
-                                    disabled={isSaving}
+                                    disabled={isSaving} // Only disable if saving for this tab
                                     className={`flex items-center justify-center text-white bg-blue-600 hover:bg-blue-700 text-sm font-medium px-5 py-2.5 rounded-md transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-300 ${isSaving ? 'opacity-70 cursor-not-allowed' : ''}`}
                                 >
                                     {isSaving && (
@@ -899,7 +947,7 @@ export default function Settings() {
                                     )}
                                     {isSaving ? 'Menyimpan...' : 'Simpan Pengaturan'}
                                 </button>
-                                <button 
+                                <button
                                     type="button"
                                     className="flex items-center justify-center border border-red-500 text-red-500 hover:bg-red-50 text-sm font-medium px-5 py-2.5 rounded-md transition-colors focus:outline-none focus:ring-4 focus:ring-red-100"
                                 >
@@ -909,11 +957,11 @@ export default function Settings() {
                                     Reset Password
                                 </button>
                             </div>
-                            
+
                             {saveMessage.text && (
                                 <div className={`mt-4 p-3 rounded-md shadow-sm ${
-                                    saveMessage.type === 'success' 
-                                        ? 'bg-green-50 border border-green-200 text-green-800' 
+                                    saveMessage.type === 'success'
+                                        ? 'bg-green-50 border border-green-200 text-green-800'
                                         : 'bg-red-50 border border-red-200 text-red-800'
                                 }`}>
                                     <div className="flex items-center">
