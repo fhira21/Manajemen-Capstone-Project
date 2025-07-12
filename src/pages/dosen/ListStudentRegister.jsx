@@ -44,12 +44,11 @@ export default function ListStudentRegister() {
         ...mhs,
         ID_Proposal: selectedProposal.ID_Proposal,
         ID_PENDAFTAR: newId,
-        Status: "Disetujui", // langsung disetujui
+        Status: "Disetujui",
         "Tanggal Daftar": new Date().toISOString().split("T")[0],
       },
     ]);
 
-    // langsung ubah status verifikasi jadi Disetujui
     setStatusVerifikasi((prev) => ({
       ...prev,
       [newId]: "Disetujui",
@@ -72,54 +71,23 @@ export default function ListStudentRegister() {
           title="Detail Proposal"
           description={`Informasi detail dan daftar mahasiswa yang mendaftar untuk proyek "${selectedProposal.Judul_Project}".`}
         />
-        <div className="bg-white rounded-md shadow-md w-full p-6">
-          <h2 className="text-xl font-bold mb-4 text-gray-700">
-            Informasi Proposal
-          </h2>
-          <div className="grid grid-cols-2 gap-y-3 text-sm mb-6">
-            <div className="font-medium">Judul</div>
-            <div>{selectedProposal.Judul_Project}</div>
-
-            <div className="font-medium">Nama Mitra</div>
-            <div>{getNamaMitra(selectedProposal.ID_Mitra)}</div>
-
-            <div className="font-medium">Kategori</div>
-            <div>{selectedProposal.Kategori_Project.join(", ")}</div>
-
-            <div className="font-medium">Masalah</div>
-            <div>{selectedProposal.Deskripsi_Masalah}</div>
-
-            <div className="font-medium">Goals</div>
-            <div>{selectedProposal.Goals}</div>
-
-            <div className="font-medium">Jumlah Orang</div>
-            <div>{selectedProposal.Jumlah_orang}</div>
-
-            <div className="font-medium">Tanggal</div>
-            <div>{selectedProposal.tanggal}</div>
-
-            <div className="font-medium">Status</div>
-            <div>{selectedProposal.status}</div>
-          </div>
-
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-lg font-semibold text-gray-700">
+        <div className="bg-white rounded-md shadow-md w-full p-3 sm:p-4">
+          <div className="flex justify-between items-center mb-3">
+            <h3 className="text-sm font-semibold text-gray-700">
               Mahasiswa Pendaftar
             </h3>
             <button
               onClick={handleTambahMahasiswa}
-              className="px-3 py-1 text-sm rounded bg-green-600 hover:bg-green-700 text-white"
+              className="px-2 py-1 text-xs rounded bg-green-600 hover:bg-green-700 text-white"
             >
-              Tambah Mahasiswa
+              Tambah
             </button>
           </div>
 
           {showTambah && (
-            <div className="border p-4 mb-4 rounded bg-gray-50">
-              <h4 className="text-md font-semibold mb-2">
-                Pilih Mahasiswa untuk Ditambahkan
-              </h4>
-              <ul className="grid grid-cols-2 gap-2 max-h-64 overflow-auto">
+            <div className="border p-2 sm:p-3 mb-4 rounded bg-gray-50">
+              <h4 className="text-xs font-semibold mb-2">Pilih Mahasiswa</h4>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-64 overflow-auto text-xs">
                 {MAHASISWA.MAHASISWA.map((mhs) => (
                   <li
                     key={mhs.ID_Mahasiswa}
@@ -133,7 +101,7 @@ export default function ListStudentRegister() {
                       disabled={pendaftarProposal.some(
                         (p) => p.ID_Mahasiswa === mhs.ID_Mahasiswa
                       )}
-                      className={`px-2 py-1 rounded text-sm text-white ${
+                      className={`px-2 py-1 rounded text-xs text-white ${
                         pendaftarProposal.some(
                           (p) => p.ID_Mahasiswa === mhs.ID_Mahasiswa
                         )
@@ -150,58 +118,52 @@ export default function ListStudentRegister() {
           )}
 
           {pendaftarProposal.length > 0 ? (
-            <table className="min-w-full text-sm border mt-2">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="p-2 border">No</th>
-                  <th className="p-2 border">Nama</th>
-                  <th className="p-2 border">Tanggal Daftar</th>
-                  <th className="p-2 border">Status</th>
-                  <th className="p-2 border">Verifikasi</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pendaftarProposal.map((mhs, index) => {
-                  const currentStatus =
-                    statusVerifikasi[mhs.ID_PENDAFTAR] || mhs.Status;
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+              {pendaftarProposal.map((mhs, index) => {
+                const currentStatus =
+                  statusVerifikasi[mhs.ID_PENDAFTAR] || mhs.Status;
 
-                  return (
-                    <tr key={mhs.ID_PENDAFTAR}>
-                      <td className="p-2 border text-center">{index + 1}</td>
-                      <td className="p-2 border">{mhs.Nama}</td>
-                      <td className="p-2 border">{mhs["Tanggal Daftar"]}</td>
-                      <td className="p-2 border">{mhs.Status}</td>
-                      <td className="p-2 border text-center">
-                        <button
-                          onClick={() => toggleStatus(mhs.ID_PENDAFTAR)}
-                          className={`px-2 py-1 rounded text-white text-xs ${
-                            currentStatus === "Disetujui"
-                              ? "bg-blue-600 hover:bg-blue-700"
-                              : currentStatus === "Ditolak"
-                              ? "bg-red-600 hover:bg-red-700"
-                              : "bg-gray-400 hover:bg-gray-500"
-                          }`}
-                        >
-                          {currentStatus}
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+                return (
+                  <div
+                    key={mhs.ID_PENDAFTAR}
+                    className="border rounded p-3 text-xs shadow"
+                  >
+                    <p className="font-semibold mb-1">
+                      #{index + 1} - {mhs.Nama}
+                    </p>
+                    <p className="text-gray-600">
+                      Tanggal: {mhs["Tanggal Daftar"]}
+                    </p>
+                    <p className="text-gray-600">Status: {mhs.Status}</p>
+                    <p className="mt-2">Verifikasi:</p>
+                    <button
+                      onClick={() => toggleStatus(mhs.ID_PENDAFTAR)}
+                      className={`px-2 py-1 rounded text-white mt-1 ${
+                        currentStatus === "Disetujui"
+                          ? "bg-blue-600 hover:bg-blue-700"
+                          : currentStatus === "Ditolak"
+                          ? "bg-red-600 hover:bg-red-700"
+                          : "bg-gray-400 hover:bg-gray-500"
+                      }`}
+                    >
+                      {currentStatus}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
           ) : (
-            <p className="text-sm text-gray-600">
+            <p className="text-xs text-gray-600">
               Belum ada mahasiswa yang mendaftar.
             </p>
           )}
 
-          <div className="mt-6">
+          <div className="mt-5">
             <button
               onClick={() => setSelectedProposal(null)}
-              className="px-4 py-2 bg-secondary hover:bg-secondary/80 text-white rounded text-sm"
+              className="px-3 py-1 bg-secondary hover:bg-secondary/80 text-white rounded text-xs"
             >
-              Kembali ke Daftar Proposal
+              Kembali
             </button>
           </div>
         </div>
@@ -209,20 +171,44 @@ export default function ListStudentRegister() {
     );
   }
 
-  // Halaman utama daftar proposal
   return (
     <>
       <PageTitle
         title="Daftar Proposal Diterima"
-        description="Daftar semua proposal yang telah disetujui untuk dikerjakan mahasiswa."
+        description="Proposal yang telah disetujui untuk dikerjakan."
       />
       <div className="h-full overflow-auto px-4 py-6">
-        <div className="bg-white rounded-md shadow-md w-full p-6">
-          <h1 className="text-2xl font-bold text-[#4F4F4F]">
+        <div className="bg-white rounded-md shadow-md w-full p-3 sm:p-4">
+          <h1 className="text-lg font-bold text-[#4F4F4F] mb-3">
             Proposal Diterima
           </h1>
-          <div className="my-5">
-            <table className="min-w-full text-sm border-collapse">
+          <div className="grid gap-3 md:hidden">
+            {acceptedProposals.map((p, idx) => (
+              <div
+                key={p.ID_Proposal}
+                className="bg-[#E5ECF6] p-3 rounded shadow text-xs space-y-2"
+              >
+                <p className="font-semibold text-gray-600">No: {idx + 1}</p>
+                <p className="font-bold">{getNamaMitra(p.ID_Mitra)}</p>
+                <p className="font-bold">{p.Judul_Project}</p>
+                <p className="text-gray-600">Tanggal: {p.tanggal}</p>
+                <p>
+                  <span className="bg-blue-600 text-white px-2 py-1 rounded inline-block">
+                    {p.status}
+                  </span>
+                </p>
+                <button
+                  onClick={() => setSelectedProposal(p)}
+                  className="px-3 py-1 rounded bg-secondary hover:bg-blue-700 text-white text-xs"
+                >
+                  Detail
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <div className="hidden md:block overflow-x-auto">
+            <table className="min-w-full text-xs border-collapse">
               <thead>
                 <tr className="text-[#424242] text-left">
                   <th className="p-2 text-center">No</th>
@@ -246,7 +232,7 @@ export default function ListStudentRegister() {
                     <td className="p-2 text-center">
                       <button
                         onClick={() => setSelectedProposal(p)}
-                        className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-sm"
+                        className="px-3 py-1 rounded bg-blue-600 hover:bg-blue-700 text-white text-xs"
                       >
                         Detail
                       </button>

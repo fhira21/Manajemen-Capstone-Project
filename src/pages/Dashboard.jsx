@@ -18,8 +18,6 @@ import {
   RadialLinearScale
 } from 'chart.js';
 import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
-
 // Import data files
 import projectData from "../data/project.json";
 import issueData from "../data/issue.json";

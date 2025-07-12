@@ -76,7 +76,7 @@ export default function ProposalPartner() {
         description="Evaluasi & bimbing proyek capstone mahasiswa"
       />
       <div className="h-full overflow-auto px-4 py-6">
-        <div className="bg-white rounded-md shadow-md w-full p-6">
+        <div className="bg-white rounded-md shadow-md w-full max-w-6xl mx-auto p-4 sm:p-6">
           <h1 className="text-2xl font-bold text-[#4F4F4F]">Proposal Mitra</h1>
           <div className="mt-6 flex items-center gap-2 mb-6">
             <label className="text-sm font-semibold">Status</label>
@@ -92,7 +92,8 @@ export default function ProposalPartner() {
             </select>
           </div>
 
-          <div className="overflow-x-auto">
+          {/* Table for desktop */}
+          <div className="hidden lg:block overflow-x-auto">
             <table className="min-w-full text-sm border-collapse">
               <thead>
                 <tr className="text-[#424242] text-left">
@@ -108,11 +109,11 @@ export default function ProposalPartner() {
                 {filtered.map((p, idx) => (
                   <tr key={p.ID_Proposal} className="hover:bg-gray-50">
                     <td className="p-2 text-center">{idx + 1}</td>
-                    <td className="p-2 bg-[#E5ECF6]">
+                    <td className="p-2 bg-[#E5ECF6] font-semibold">
                       {getMitra(p.ID_Mitra)?.Nama_Perusahaan ||
                         "Tidak Diketahui"}
                     </td>
-                    <td className="p-2 bg-[#E5ECF6] break-words max-w-xs">
+                    <td className="p-2 bg-[#E5ECF6] break-words max-w-xs font-semibold">
                       {p.Judul_Project}
                     </td>
                     <td className="p-2 text-center bg-[#E5ECF6]">
@@ -141,91 +142,131 @@ export default function ProposalPartner() {
             </table>
           </div>
 
-          {selectedProposal && (
-            <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
-              <div className="bg-white w-full max-w-lg rounded-lg shadow-lg p-6 relative">
+          {/* Responsive grid for mobile */}
+          <div className="grid gap-4 lg:hidden">
+            {filtered.map((p, idx) => (
+              <div
+                key={p.ID_Proposal}
+                className="bg-[#E5ECF6] p-4 rounded shadow text-sm text-gray-800"
+              >
+                <p className="font-medium text-gray-600">No: {idx + 1}</p>
+
+                <p className="mt-1">
+                  <span className="font-semibold">Nama Mitra:</span>{" "}
+                  {getMitra(p.ID_Mitra)?.Nama_Perusahaan || "Tidak Diketahui"}
+                </p>
+
+                <p className="mt-1">
+                  <span className="font-semibold">Judul:</span>{" "}
+                  {p.Judul_Project}
+                </p>
+
+                <p className="mt-1">
+                  <span
+                    className={`inline-block px-2 py-1 mt-1 rounded text-xs font-semibold ${
+                      statusStyles[p.status] || ""
+                    }`}
+                  >
+                    {p.status}
+                  </span>
+                </p>
+
+                <p className="mt-1 text-gray-600">
+                  <span className="font-medium">Tanggal:</span> {p.tanggal}
+                </p>
+
                 <button
-                  className="absolute top-2 right-2 text-gray-600 hover:text-black text-xl font-bold"
+                  onClick={() => setSelectedProposal(p)}
+                  className="mt-3 w-full py-2 rounded bg-secondary hover:bg-blue-700 text-white text-sm font-semibold"
+                >
+                  Detail
+                </button>
+              </div>
+            ))}
+          </div>
+
+          {selectedProposal && (
+            <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50 px-4">
+              <div className="bg-white w-[95%] max-w-2xl md:max-w-xl rounded-lg shadow-lg p-4 sm:p-6 relative max-h-[90vh] overflow-y-auto">
+                <button
+                  className="absolute top-3 right-3 text-gray-500 hover:text-black text-2xl"
                   onClick={() => setSelectedProposal(null)}
                 >
                   ×
                 </button>
 
-                <h2 className="text-lg font-bold mb-4">Detail Proposal</h2>
+                <h2 className="text-lg font-bold mb-4 text-center">
+                  Detail Proposal
+                </h2>
 
                 <div className="flex items-center gap-4 mb-6">
                   <img
                     src={getMitra(selectedProposal.ID_Mitra)?.Foto_Profile}
                     alt="Foto Mitra"
-                    className="w-14 h-14 rounded-full object-cover"
+                    className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-bold text-sm">
+                    <p className="font-semibold text-sm">
                       {getMitra(selectedProposal.ID_Mitra)?.Nama_Perusahaan}
                     </p>
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-gray-500">
                       {getMitra(selectedProposal.ID_Mitra)?.No_Telepon}
                     </p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-y-3 text-sm">
-                  <div className="font-semibold text-[#4F4F4F]">Judul</div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 text-sm text-gray-700">
+                  <div className="font-medium">Judul</div>
                   <div>{selectedProposal.Judul_Project}</div>
 
-                  <div className="font-semibold text-[#4F4F4F]">Kategori</div>
+                  <div className="font-medium">Kategori</div>
                   <div>{selectedProposal.Kategori_Project.join(", ")}</div>
 
-                  <div className="font-semibold text-[#4F4F4F]">
-                    Deskripsi Masalah
-                  </div>
+                  <div className="font-medium">Deskripsi Masalah</div>
                   <div>{selectedProposal.Deskripsi_Masalah}</div>
 
-                  <div className="font-semibold text-[#4F4F4F]">Goals</div>
+                  <div className="font-medium">Goals</div>
                   <div>{selectedProposal.Goals}</div>
 
-                  <div className="font-semibold text-[#4F4F4F]">
-                    Jumlah Orang
-                  </div>
+                  <div className="font-medium">Jumlah Orang</div>
                   <div>{selectedProposal.Jumlah_orang}</div>
 
-                  <div className="font-semibold text-[#4F4F4F]">
-                    Informasi Tambahan
-                  </div>
+                  <div className="font-medium">Informasi Tambahan</div>
                   <div>{selectedProposal.Informasi_Tambahan}</div>
 
-                  <div className="font-semibold text-[#4F4F4F]">Status</div>
+                  <div className="font-medium">Status</div>
                   <div>{selectedProposal.status}</div>
 
-                  <div className="font-semibold text-[#4F4F4F]">
-                    Tanggal Masuk
-                  </div>
+                  <div className="font-medium">Tanggal Masuk</div>
                   <div>{selectedProposal.tanggal}</div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="mt-6 space-y-2">
+                <form
+                  onSubmit={handleSubmit}
+                  className="mt-6 space-y-3 text-sm"
+                >
                   <textarea
                     placeholder="Komentar"
                     value={komentar}
                     onChange={(e) => setKomentar(e.target.value)}
-                    className="w-full border rounded p-2 text-sm"
+                    className="w-full border rounded p-2 text-sm resize-none"
                     rows={3}
                   />
-                  <div className="flex justify-between items-center gap-2">
+                  <div className="flex flex-col sm:flex-row justify-between gap-2">
                     <select
                       value={reviewStatus}
                       onChange={(e) => setReviewStatus(e.target.value)}
-                      className="border rounded px-5 py-2 text-sm"
+                      className="border rounded px-4 py-2 text-sm w-full sm:w-auto"
                     >
                       <option value="Revisi">Revisi</option>
                       <option value="Menunggu">Menunggu</option>
                       <option value="Disetujui">Disetujui</option>
                     </select>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-1 justify-end">
                       <button
                         type="submit"
                         disabled={komentar.trim() === ""}
-                        className={`px-3 py-2 rounded text-white ${
+                        className={`px-4 py-2 rounded text-white text-sm w-full sm:w-auto ${
                           komentar.trim() === ""
                             ? "bg-gray-400 cursor-not-allowed"
                             : "bg-blue-600 hover:bg-blue-700"
@@ -236,7 +277,7 @@ export default function ProposalPartner() {
                       <button
                         type="button"
                         onClick={handleStatusOnlySubmit}
-                        className="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded"
+                        className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded text-sm w-full sm:w-auto"
                       >
                         Submit
                       </button>
@@ -246,17 +287,17 @@ export default function ProposalPartner() {
               </div>
             </div>
           )}
+
+          {showSuccess && (
+            <div className="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded shadow-lg z-[9999] transition-opacity duration-300 text-sm space-y-1">
+              <p>
+                <strong>Komentar : </strong> {lastKomentar}
+              </p>
+              <p>Komentar anda telah dikirim</p>
+            </div>
+          )}
         </div>
       </div>
-
-      {showSuccess && (
-        <div className="fixed bottom-6 right-6 bg-green-500 text-white px-4 py-3 rounded shadow-lg z-[9999] transition-opacity duration-300 text-sm space-y-1">
-          <p>
-            <strong>Komentar : </strong> {lastKomentar}
-          </p>
-          <p>Komentar anda telah dikirim</p>
-        </div>
-      )}
     </>
   );
 }
