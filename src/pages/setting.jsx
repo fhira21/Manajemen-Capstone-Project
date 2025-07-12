@@ -450,15 +450,47 @@ export default function Settings() {
                                 </div>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">{user.role === 'Mahasiswa' ? 'NIM' : 'NIDN / NIP'}</label>
-                                        <input
-                                            type="text"
-                                            name="nip"
-                                            value={user.nip}
-                                            onChange={handleInputChange}
-                                            className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                                            disabled={!isEditingPribadi} // Disable based on state
-                                        />
+                                        {user.role === 'Mahasiswa' && (
+  <>
+    <label className="block text-sm font-medium text-gray-700 mb-1">NIM</label>
+    <input
+      type="text"
+      name="nim"
+      value={user.nim}
+      onChange={handleInputChange}
+      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+      disabled={!isEditingPribadi}
+    />
+  </>
+)}
+
+{user.role === 'Dosen' && (
+  <>
+    <label className="block text-sm font-medium text-gray-700 mb-1">NIP</label>
+    <input
+      type="text"
+      name="nip"
+      value={user.nip}
+      onChange={handleInputChange}
+      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+      disabled={!isEditingPribadi}
+    />
+  </>
+)}
+
+{user.role === 'Mitra' && (
+  <>
+    <label className="block text-sm font-medium text-gray-700 mb-1">No Telepon</label>
+    <input
+      type="text"
+      name="no_telepon"
+      value={user.No_Telepon}
+      onChange={handleInputChange}
+      className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm shadow-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+      disabled={!isEditingPribadi}
+    />
+  </>
+)}
                                     </div>
                                     <div>
                                         <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
