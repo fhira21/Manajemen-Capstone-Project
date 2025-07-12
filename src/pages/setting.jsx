@@ -359,7 +359,7 @@ export default function Settings() {
                     {/* Tabs Sticky Bar */}
                     <div
                         className="w-full flex justify-center items-center p-1 100 rounded-xl mb-8"
-                        style={{ position: 'sticky', top: 0, zIndex: 30, background: 'bg-gray-100' }}
+                        style={{position: 'sticky', top: 0, background: 'bg-gray-100'}}
                     >
                         <div
                             className="flex flex-wrap sm:inline-flex rounded-lg overflow-hidden bg-gray-100 p-1 w-full sm:w-auto"

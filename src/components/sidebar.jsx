@@ -13,7 +13,6 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
     { to: "dashboard", icon: "/assets/icons/icons8-home-100.png", label: "Dashboard" },
     { to: "curriculum-vitae", icon: "/assets/icons/icons8-cv-100.png", label: "Curriculum Vitae" },
     { to: "project-selection", icon: "/assets/icons/icons8-project-management-100.png", label: "Pemilihan Proyek" },
-    { to: "settings", icon: "/assets/icons/icons8-setting-100.png", label: "Pengaturan" },
   ];
 
   // Menu untuk Dosen
@@ -29,8 +28,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
   const mitraMenu = [
     { to: "dashboard", icon: "/assets/icons/icons8-home-100.png", label: "Dashboard" },
     { to: "form-pengajuan-projek", icon: "/assets/icons/icons8-project-management-100.png", label: "Ajukan Proyek Baru" },
-    { to: "project-selection", icon: "/assets/icons/icons8-list-view-select-proyek-96.png", label: "Proyek" },
-    { to: "settings", icon: "/assets/icons/icons8-setting-100.png", label: "Pengaturan" },
+    { to: "project-selection", icon: "/assets/icons/icons8-list-view-select-proyek-96.png", label: "Manajemen Proyek" },
 
   ];
 
@@ -80,7 +78,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
             </button>
           </div>
           
-          <div className={`${isOpen ? 'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24' : 'hidden'} rounded-full flex items-center justify-center `} style={{ background: 'linear-gradient(135deg, #8EAFDA 0%, #1C6ED8 100%)' }}>
+          <div className={`${isOpen ? 'p-4 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24' : 'hidden'} rounded-full flex items-center justify-center `} style={{ background: 'linear-gradient(135deg, #8EAFDA 0%, #1C6ED8 100%)' }}>
             <Logo className="w-full h-full" />
           </div>
 
@@ -111,7 +109,7 @@ export default function Sidebar({ isOpen, toggleSidebar, role }) {
       {/* Bottom section */}
       <div className="w-full">
         {/* Setting Link - only show for non-Mahasiswa and Mitra roles */}
-        {role !== 'Mahasiswa' && role !== 'Mitra' && (
+        {(
           <ul className="w-full flex flex-col gap-1 sm:gap-2 p-1 sm:p-2">
             <li className="w-full rounded">
               <NavLink 
