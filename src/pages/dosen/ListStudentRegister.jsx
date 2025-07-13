@@ -10,9 +10,10 @@ import "react-toastify/dist/ReactToastify.css";
 export default function ListStudentRegister() {
   const [selectedProposal, setSelectedProposal] = useState(null);
   const [statusVerifikasi, setStatusVerifikasi] = useState({});
-  const [pendaftarBaru, setPendaftarBaru] = useState([]);
+  const [pendaftarBaru, setPendaftarBaru] = useState({});
   const [showTambah, setShowTambah] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [projectCreated, setProjectCreated] = useState(false);
   const [formProject, setFormProject] = useState({
     namaProject: "",
     namaMitra: "",
@@ -45,16 +46,19 @@ export default function ListStudentRegister() {
   const tambahMahasiswaKeProposal = (mhs) => {
     const newId = `NEW-${Date.now()}`;
 
-    setPendaftarBaru((prev) => [
+    setPendaftarBaru((prev) => ({
       ...prev,
-      {
-        ...mhs,
-        ID_Proposal: selectedProposal.ID_Proposal,
-        ID_PENDAFTAR: newId,
-        Status: "Disetujui",
-        "Tanggal Daftar": new Date().toISOString().split("T")[0],
-      },
-    ]);
+      [selectedProposal.ID_Proposal]: [
+        ...(prev[selectedProposal.ID_Proposal] || []),
+        {
+          ...mhs,
+          ID_Proposal: selectedProposal.ID_Proposal,
+          ID_PENDAFTAR: newId,
+          Status: "Disetujui",
+          "Tanggal Daftar": new Date().toISOString().split("T")[0],
+        },
+      ],
+    }));
 
     setStatusVerifikasi((prev) => ({
       ...prev,
@@ -75,7 +79,7 @@ export default function ListStudentRegister() {
       ...PENDAFTAR.PENDFTAR.filter(
         (mhs) => mhs.ID_Proposal === selectedProposal.ID_Proposal
       ),
-      ...pendaftarBaru,
+      ...(pendaftarBaru[selectedProposal.ID_Proposal] || []),
     ];
 
     const mahasiswaDisetujui = pendaftarProposal.filter(
@@ -192,7 +196,10 @@ export default function ListStudentRegister() {
 
           <div className="mt-5 flex justify-between items-center">
             <button
-              onClick={() => setSelectedProposal(null)}
+              onClick={() => {
+                setSelectedProposal(null);
+                setProjectCreated(false);
+              }}
               className="px-3 py-1 bg-secondary hover:bg-secondary/80 text-white rounded text-xs"
             >
               Kembali
@@ -206,9 +213,14 @@ export default function ListStudentRegister() {
                 });
                 setShowModal(true);
               }}
-              className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded text-xs"
+              disabled={projectCreated}
+              className={`px-3 py-1 rounded text-white text-xs ${
+                projectCreated
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-green-600 hover:bg-green-700"
+              }`}
             >
-              Create Project
+              {projectCreated ? "Project Already Exist" : "Create Project"}
             </button>
           </div>
         </div>
@@ -281,6 +293,7 @@ export default function ListStudentRegister() {
                     }
 
                     toast.success("GitHub Project Berhasil Dibuat!");
+                    setProjectCreated(true); // tandai sudah buat project
                     setShowModal(false);
                   }}
                   className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded"
