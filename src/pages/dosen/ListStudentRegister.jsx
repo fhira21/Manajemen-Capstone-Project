@@ -4,12 +4,20 @@ import PROPOSAL from "../../data/proposal.json";
 import MITRA from "../../data/mitra.json";
 import PENDAFTAR from "../../data/Pendaftar(dosen).json";
 import MAHASISWA from "../../data/mahasiswa.json";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ListStudentRegister() {
   const [selectedProposal, setSelectedProposal] = useState(null);
   const [statusVerifikasi, setStatusVerifikasi] = useState({});
   const [pendaftarBaru, setPendaftarBaru] = useState([]);
   const [showTambah, setShowTambah] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [formProject, setFormProject] = useState({
+    namaProject: "",
+    namaMitra: "",
+    github: "",
+  });
 
   const acceptedProposals = PROPOSAL.PROPOSAL.filter(
     (p) => p.status === "Disetujui"
@@ -31,9 +39,8 @@ export default function ListStudentRegister() {
     });
   };
 
-  const handleTambahMahasiswa = () => {
-    setShowTambah(true);
-  };
+  const handleTambahMahasiswa = () => setShowTambah(true);
+  const handleBatalTambah = () => setShowTambah(false);
 
   const tambahMahasiswaKeProposal = (mhs) => {
     const newId = `NEW-${Date.now()}`;
@@ -57,6 +64,12 @@ export default function ListStudentRegister() {
     setShowTambah(false);
   };
 
+  const handleInputChange = (e) => {
+    setFormProject({ ...formProject, [e.target.name]: e.target.value });
+  };
+
+  const closeModal = () => setShowModal(false);
+
   if (selectedProposal) {
     const pendaftarProposal = [
       ...PENDAFTAR.PENDFTAR.filter(
@@ -65,12 +78,23 @@ export default function ListStudentRegister() {
       ...pendaftarBaru,
     ];
 
+    const mahasiswaDisetujui = pendaftarProposal.filter(
+      (mhs) =>
+        (statusVerifikasi[mhs.ID_PENDAFTAR] || mhs.Status) === "Disetujui"
+    );
+
+    const getNIMByID = (idMahasiswa) => {
+      const m = MAHASISWA.MAHASISWA.find((m) => m.ID_Mahasiswa === idMahasiswa);
+      return m?.NIM || "N/A";
+    };
+
     return (
-      <div className="h-full overflow-auto px-4 py-6">
+      <div className="h-full overflow-auto px-4 py-6 relative">
         <PageTitle
           title="Detail Proposal"
           description={`Informasi detail dan daftar mahasiswa yang mendaftar untuk proyek "${selectedProposal.Judul_Project}".`}
         />
+
         <div className="bg-white rounded-md shadow-md w-full p-3 sm:p-4">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-sm font-semibold text-gray-700">
@@ -86,7 +110,15 @@ export default function ListStudentRegister() {
 
           {showTambah && (
             <div className="border p-2 sm:p-3 mb-4 rounded bg-gray-50">
-              <h4 className="text-xs font-semibold mb-2">Pilih Mahasiswa</h4>
+              <div className="flex justify-between items-center mb-2">
+                <h4 className="text-xs font-semibold">Pilih Mahasiswa</h4>
+                <button
+                  onClick={handleBatalTambah}
+                  className="text-xs text-red-500 hover:underline"
+                >
+                  X
+                </button>
+              </div>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-64 overflow-auto text-xs">
                 {MAHASISWA.MAHASISWA.map((mhs) => (
                   <li
@@ -158,15 +190,115 @@ export default function ListStudentRegister() {
             </p>
           )}
 
-          <div className="mt-5">
+          <div className="mt-5 flex justify-between items-center">
             <button
               onClick={() => setSelectedProposal(null)}
               className="px-3 py-1 bg-secondary hover:bg-secondary/80 text-white rounded text-xs"
             >
               Kembali
             </button>
+            <button
+              onClick={() => {
+                setFormProject({
+                  namaProject: selectedProposal.Judul_Project,
+                  namaMitra: getNamaMitra(selectedProposal.ID_Mitra),
+                  github: "",
+                });
+                setShowModal(true);
+              }}
+              className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded text-xs"
+            >
+              Create Project
+            </button>
           </div>
         </div>
+
+        {/* Modal */}
+        {showModal && (
+          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4">
+            <div className="bg-white w-full max-w-md p-5 rounded shadow-lg">
+              <h2 className="text-sm font-bold mb-3">Buat Project Baru</h2>
+              <div className="space-y-3 text-xs">
+                <div>
+                  <label>Nama Project</label>
+                  <input
+                    type="text"
+                    name="namaProject"
+                    value={formProject.namaProject}
+                    readOnly
+                    onChange={handleInputChange}
+                    className="w-full p-2 border rounded mt-1"
+                  />
+                </div>
+                <div>
+                  <label>Nama Mitra</label>
+                  <input
+                    type="text"
+                    name="namaMitra"
+                    value={formProject.namaMitra}
+                    readOnly
+                    onChange={handleInputChange}
+                    className="w-full p-2 border rounded mt-1"
+                  />
+                </div>
+                <div>
+                  <label>Anggota Project</label>
+                  <ul className="list-disc px-1 mt-1">
+                    {mahasiswaDisetujui.map((mhs) => (
+                      <li
+                        key={mhs.ID_PENDAFTAR}
+                        className="justify-between flex"
+                      >
+                        <span>{mhs.Nama}</span>
+                        <span>{mhs.NIM || getNIMByID(mhs.ID_Mahasiswa)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <label>Link GitHub</label>
+                  <textarea
+                    name="github"
+                    value={formProject.github}
+                    onChange={handleInputChange}
+                    className="w-full p-2 border rounded mt-1 resize-none"
+                    rows={2}
+                  />
+                </div>
+              </div>
+              <div className="flex justify-end mt-4 space-x-2 text-xs">
+                <button
+                  onClick={closeModal}
+                  className="px-3 py-1 bg-gray-300 hover:bg-gray-400 rounded"
+                >
+                  Batal
+                </button>
+                <button
+                  onClick={() => {
+                    if (!formProject.github.trim()) {
+                      toast.error("Link GitHub harus diisi!");
+                      return;
+                    }
+
+                    toast.success("GitHub Project Berhasil Dibuat!");
+                    setShowModal(false);
+                  }}
+                  className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded"
+                >
+                  Simpan
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar
+          closeButton={window.innerWidth > 640}
+          toastClassName="text-xs sm:text-sm !rounded-md !shadow-md !p-3 sm:!p-4"
+          bodyClassName="text-gray-800"
+        />
       </div>
     );
   }
