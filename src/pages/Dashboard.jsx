@@ -711,9 +711,9 @@ export default function Dashboard() {
         
         {/* Middle Section - Dashboard Tabs */}
         <div className="flex-1 flex justify-center w-full sm:w-auto">
-          <div className="flex items-center gap-0.5 sm:gap-1 bg-gray-100 p-0.5 sm:p-1 rounded-lg w-full">
+          <div className="flex items-center justify-center gap-0.5 sm:gap-1 bg-gray-100 p-0.5 sm:p-1 rounded-lg w-full">
             <button
-              className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-md flex items-center gap-1 text-xs sm:text-sm font-medium ${
+              className={`px-2 grow justify-center sm:px-3 py-1 sm:py-1.5 rounded-md flex items-center gap-1 text-xs sm:text-sm font-medium ${
                 dashboardTab === 'overview' ? 'bg-white shadow text-primary' : 'text-gray-600 hover:bg-gray-200'
               }`}
               onClick={() => setDashboardTab('overview')}
@@ -722,7 +722,7 @@ export default function Dashboard() {
               <span className="hidden xxs:inline">Ringkasan</span>
             </button>
             <button
-              className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-md flex items-center gap-1 text-xs sm:text-sm font-medium ${
+              className={`px-2 grow justify-center sm:px-3 py-1 sm:py-1.5 rounded-md flex items-center gap-1 text-xs sm:text-sm font-medium ${
                 dashboardTab === 'tasks' ? 'bg-white shadow text-primary' : 'text-gray-600 hover:bg-gray-200'
               }`}
               onClick={() => setDashboardTab('tasks')}
@@ -731,7 +731,7 @@ export default function Dashboard() {
               <span className="hidden xxs:inline">Tugas</span>
             </button>
             <button
-              className={`px-2 sm:px-3 py-1 sm:py-1.5 rounded-md flex items-center gap-1 text-xs sm:text-sm font-medium ${
+              className={`px-2 grow justify-center sm:px-3 py-1 sm:py-1.5 rounded-md flex items-center gap-1 text-xs sm:text-sm font-medium ${
                 dashboardTab === 'activity' ? 'bg-white shadow text-primary' : 'text-gray-600 hover:bg-gray-200'
               }`}
               onClick={() => setDashboardTab('activity')}
@@ -763,14 +763,16 @@ export default function Dashboard() {
               </div>
             </div>
                   
-              <button
-                type="button"
-                className="bg-secondary hover:bg-secondary/80 text-white px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow hover:bg-primary-dark transition text-xs sm:text-sm font-semibold flex items-center gap-1"
-                onClick={handleExportPDF}
-              >
-                <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
-                <span className="hidden sm:inline">Export Laporan</span>
-              </button>
+              {user?.role === 'Mahasiswa' && (
+                <button
+                  type="button"
+                  className="bg-secondary hover:bg-secondary/80 text-white px-2 py-1.5 sm:px-4 sm:py-2 rounded-lg shadow hover:bg-primary-dark transition text-xs sm:text-sm font-semibold flex items-center gap-1"
+                  onClick={handleExportPDF}
+                >
+                  <FiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="hidden sm:inline">Export Laporan</span>
+                </button>
+              )}
 
                   </div>
                 </div>
@@ -838,7 +840,7 @@ export default function Dashboard() {
                   {/* Issues Stats Card */}
                   <div className="bg-white rounded-lg shadow p-3 sm:p-4 flex flex-col w-full">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-gray-500 text-xs sm:text-sm font-medium">Masalah</h3>
+                      <h3 className="text-gray-500 text-xs sm:text-sm font-medium">Issue</h3>
                       <span className="bg-green-100 text-green-800 text-2xs xs:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
                         {issueStats.total} Total
                       </span>
