@@ -33,12 +33,10 @@ Capstone Project Management Platform adalah solusi terintegrasi untuk mengelola 
 
 ## 🧰 Teknologi yang Digunakan
 
-- **Frontend**: 
-- **Backend**: 
-- **Database**: 
+- **Frontend**: React js, Tailwind
+- **Backend** dan **Database** : LocalStorage
 - **Integrasi GitLab**: Webhook, API Token
 - **Autentikasi**: JWT (JSON Web Token)
-- **Deployment**: 
 
 ---
 
